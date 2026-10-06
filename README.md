@@ -1,0 +1,9 @@
+Screenshot halaman ada di docs/screenshots
+
+Kelompok 1
+Anggota Kelompok
+FADIIL RIZKY AKBAR 
+MUHAMMAD ADITYA ARHAM
+EJENIA MUTIARA KARIMUSE
+I PUTU GEDE DEVA GUNDHALA 
+ABDURRAHMAN SALEH
