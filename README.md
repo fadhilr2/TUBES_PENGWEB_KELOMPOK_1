@@ -1,9 +1,15 @@
-Screenshot halaman ada di docs/screenshots \
-
-Kelompok 1 \
-Anggota Kelompok \
-FADIIL RIZKY AKBAR \ 
-MUHAMMAD ADITYA ARHAM \
-EJENIA MUTIARA KARIMUSE \
-I PUTU GEDE DEVA GUNDHALA \ 
+Screenshot halaman ada di docs/screenshots. 
+<br>
+<br>
+Kelompok 1
+<br>
+<br>
+FADIIL RIZKY AKBAR 
+<br>
+MUHAMMAD ADITYA ARHAM 
+<br>
+EJENIA MUTIARA KARIMUSE 
+<br>
+I PUTU GEDE DEVA GUNDHALA
+<br>
 ABDURRAHMAN SALEH 
