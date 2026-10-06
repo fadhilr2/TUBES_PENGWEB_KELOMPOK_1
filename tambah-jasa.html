@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Daftarkan jasa dan keahlianmu di SewaSkill. Isi formulir pendaftaran talent untuk mulai menerima order dari klien di seluruh Indonesia.">
+    <title>Daftarkan Jasamu — SewaSkill Platform Jasa Freelance Mikro</title>
+</head>
+
+<body>
+
+    <header>
+        <a href="index.html" aria-label="SewaSkill, kembali ke beranda">
+            <img src="https://placehold.co/80x80/4F46E5/FFFFFF?text=SS"
+                alt="Logo SewaSkill — Platform Jasa Freelance Mikro" width="80" height="80">
+            <span>SewaSkill</span>
+        </a>
+
+        <nav aria-label="Navigasi Utama">
+            <ul>
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="katalog.html">Katalog Jasa</a></li>
+                <li><a href="tambah-jasa.html" aria-current="page">Daftarkan Jasamu</a></li>
+                <li><a href="detail-jasa.html">Contoh Detail Jasa</a></li>
+                <li><a href="order.html">Contoh Order</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Daftarkan Jasa &amp; Keahlianmu</h1>
+        <p>
+            Bergabunglah dengan ratusan talent profesional di SewaSkill.
+            Isi formulir berikut dengan lengkap dan jujur agar profilmu
+            mudah ditemukan oleh klien yang tepat.
+        </p>
+
+        <form action="#" method="post" enctype="multipart/form-data">
+
+            <fieldset>
+                <legend>Data Pribadi Talent</legend>
+
+                <div>
+                    <label for="nama-lengkap">Nama Lengkap: *</label>
+                    <input type="text" id="nama-lengkap" name="nama_lengkap" placeholder="Contoh: Rizky Aditya Pratama"
+                        required>
+                </div>
+
+                <div>
+                    <label for="email">Alamat Email: *</label>
+                    <input type="email" id="email" name="email" placeholder="Contoh: rizky@email.com" required>
+                </div>
+
+                <div>
+                    <label for="no-whatsapp">Nomor WhatsApp: *</label>
+                    <input type="tel" id="no-whatsapp" name="whatsapp" placeholder="Contoh: 08123456789" required>
+                </div>
+
+                <div>
+                    <label for="foto-profil">Foto Profil (JPG/PNG, maks. 2MB): *</label>
+                    <input type="file" id="foto-profil" name="foto_profil" accept="image/jpeg, image/png" required>
+                </div>
+
+                <div>
+                    <label for="link-portofolio">Link Portofolio / Media Sosial:</label>
+                    <input type="url" id="link-portofolio" name="link_porto"
+                        placeholder="Contoh: https://instagram.com/rizkydesign">
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Detail Jasa yang Ditawarkan</legend>
+
+                <div>
+                    <label for="kategori-skill">Kategori Skill Utama: *</label>
+                    <select id="kategori-skill" name="kategori" required>
+                        <option value="">-- Pilih Kategori --</option>
+                        <option value="video">Edit Video Pendek (Reels/TikTok/Shorts)</option>
+                        <option value="thumbnail">Desain Thumbnail YouTube</option>
+                        <option value="logo">Desain Logo &amp; Branding</option>
+                        <option value="koding">Tutor / Joki Koding (HTML, CSS, JS, Python)</option>
+                        <option value="konten">Penulisan Konten &amp; Copywriting</option>
+                        <option value="foto">Editing Foto &amp; Retouching</option>
+                        <option value="lainnya">Lainnya</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="judul-jasa">Judul Jasa: *</label>
+                    <input type="text" id="judul-jasa" name="judul_jasa"
+                        placeholder="Contoh: Jasa Edit Video Reels Instagram Profesional" required>
+                </div>
+
+                <div>
+                    <label for="harga-dasar">Harga Dasar (Rp): *</label>
+                    <input type="number" id="harga-dasar" name="harga" min="10000" step="5000"
+                        placeholder="Contoh: 50000" required>
+                    <small>Harga minimum Rp 10.000</small>
+                </div>
+
+                <div>
+                    <label for="waktu-pengerjaan">Estimasi Waktu Pengerjaan (hari): *</label>
+                    <input type="number" id="waktu-pengerjaan" name="waktu_kerja" min="1" max="30"
+                        placeholder="Contoh: 3" required>
+                </div>
+
+                <div>
+                    <label for="deskripsi-jasa">Deskripsi Jasa &amp; Pengalaman: *</label>
+                    <textarea id="deskripsi-jasa" name="deskripsi" rows="6" cols="50"
+                        placeholder="Ceritakan pengalamanmu, hasil kerja yang pernah dibuat, tools yang dikuasai, dan apa yang membuat jasamu spesial..."
+                        required></textarea>
+                </div>
+
+                <div>
+                    <label for="sampel-karya">Upload Sampel Karya (maks. 5 file, JPG/PNG/MP4):</label>
+                    <input type="file" id="sampel-karya" name="sampel_karya[]" accept="image/jpeg, image/png, video/mp4"
+                        multiple>
+                    <small>Format yang diterima: JPG, PNG, MP4. Ukuran maks. 10MB per file.</small>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Status Ketersediaan Saat Ini</legend>
+
+                <div>
+                    <input type="radio" id="status-tersedia" name="status" value="tersedia" checked>
+                    <label for="status-tersedia">Tersedia (Siap menerima order baru)</label>
+                </div>
+
+                <div>
+                    <input type="radio" id="status-sibuk" name="status" value="sibuk">
+                    <label for="status-sibuk">Sedang Sibuk (Tidak menerima order dulu)</label>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Persetujuan &amp; Ketentuan</legend>
+
+                <div>
+                    <input type="checkbox" id="setuju-sk" name="setuju_sk" value="ya" required>
+                    <label for="setuju-sk">
+                        Saya menyetujui
+                        <a href="#syarat-ketentuan">Syarat &amp; Ketentuan</a>
+                        platform SewaSkill *
+                    </label>
+                </div>
+
+                <div>
+                    <input type="checkbox" id="setuju-data" name="setuju_data" value="ya" required>
+                    <label for="setuju-data">
+                        Saya menyatakan bahwa data dan sampel karya yang diunggah adalah milik saya sendiri *
+                    </label>
+                </div>
+            </fieldset>
+
+            <div>
+                <button type="submit">Daftarkan Jasa Saya</button>
+                <button type="reset">Bersihkan Form</button>
+            </div>
+
+        </form>
+
+        <p>
+            Sudah pernah mendaftarkan jasa? <a href="katalog.html">Lihat Katalog Talent</a>
+        </p>
+
+    </main>
+
+    <section id="syarat-ketentuan">
+        <h2>Syarat &amp; Ketentuan Platform SewaSkill</h2>
+        <ol>
+            <li>Talent wajib memberikan informasi yang jujur dan akurat.</li>
+            <li>Sampel karya yang diunggah harus merupakan hasil karya sendiri.</li>
+            <li>SewaSkill berhak menangguhkan akun yang terbukti melanggar ketentuan.</li>
+            <li>Pembayaran dilakukan melalui sistem escrow platform setelah order dikonfirmasi.</li>
+            <li>Revisi maksimal sesuai paket yang dipilih oleh klien.</li>
+        </ol>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 SewaSkill. Hak Cipta Dilindungi.</p>
+        <nav aria-label="Navigasi Footer">
+            <ul>
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="katalog.html">Katalog Jasa</a></li>
+                <li><a href="tambah-jasa.html">Daftarkan Jasamu</a></li>
+            </ul>
+        </nav>
+        <p>Platform Jasa Freelance Mikro untuk Generasi Digital Indonesia</p>
+    </footer>
+
+</body>
+
+</html>
