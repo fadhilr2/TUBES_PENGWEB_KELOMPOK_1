@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="id">
 
 <head>
@@ -7,214 +7,237 @@
   <meta name="description"
     content="Konfirmasi dan pesan jasa edit video Rizky Aditya di SewaSkill. Isi data pemesanan, pilih paket, dan lakukan pembayaran dengan mudah.">
   <title>Pesan Jasa Rizky Aditya — Edit Video | SewaSkill</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="page-order">
 
-  <header>
-    <a href="index.html" aria-label="SewaSkill, kembali ke beranda">
-      <img src="https://placehold.co/80x80/4F46E5/FFFFFF?text=SS" alt="Logo SewaSkill — Platform Jasa Freelance Mikro"
-        width="80" height="80">
-      <span>SewaSkill</span>
-    </a>
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html" aria-label="SewaSkill, kembali ke beranda">
+        <img src="https://placehold.co/80x80/4F46E5/FFFFFF?text=SS" alt="Logo SewaSkill — Platform Jasa Freelance Mikro"
+          width="80" height="80">
+        <span>SewaSkill</span>
+      </a>
 
-    <nav aria-label="Navigasi Utama">
-      <ul>
-        <li><a href="index.html">Beranda</a></li>
-        <li><a href="katalog.html">Katalog Jasa</a></li>
-        <li><a href="tambah-jasa.html">Daftarkan Jasamu</a></li>
-        <li><a href="detail-jasa.html">Contoh Detail Jasa</a></li>
-        <li><a href="order.html" aria-current="page">Contoh Order</a></li>
-      </ul>
-    </nav>
+      <nav class="primary-nav" aria-label="Navigasi Utama">
+        <ul>
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="katalog.html">Katalog</a></li>
+          <li><a href="tambah-jasa.html">Daftar Jasa</a></li>
+          <li><a href="detail-jasa.html">Detail</a></li>
+          <li><a href="order.html" aria-current="page">Order</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <h1>Konfirmasi &amp; Pesan Jasa</h1>
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol class="breadcrumb__list">
+          <li class="breadcrumb__item"><a href="index.html">Beranda</a></li>
+          <li class="breadcrumb__item"><a href="katalog.html">Katalog</a></li>
+          <li class="breadcrumb__item"><a href="detail-jasa.html">Rizky Aditya</a></li>
+          <li class="breadcrumb__item" aria-current="page">Pesan Jasa</li>
+        </ol>
+      </nav>
 
-    <nav aria-label="Breadcrumb">
-      <ol>
-        <li><a href="index.html">Beranda</a></li>
-        <li><a href="katalog.html">Katalog</a></li>
-        <li><a href="detail-jasa.html">Rizky Aditya</a></li>
-        <li>Pesan Jasa</li>
-      </ol>
-    </nav>
+      <h1>Konfirmasi &amp; Pesan Jasa</h1>
 
-    <aside id="ringkasan-order">
-      <h2>Ringkasan Pesanan</h2>
+      <div class="checkout-layout">
+        <aside id="ringkasan-order" class="order-summary">
+          <h2>Ringkasan Pesanan</h2>
 
-      <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80"
-        alt="Foto profil Rizky Aditya, talent yang jasanya sedang dipesan" width="80" height="80">
-
-      <p><strong>Talent:</strong> Rizky Aditya</p>
-      <p><strong>Jasa:</strong> Edit Video Pendek — Paket Standard</p>
-
-      <table>
-        <caption>Rincian biaya pesanan jasa edit video Rizky Aditya — Paket Standard</caption>
-        <thead>
-          <tr>
-            <th scope="col">Item</th>
-            <th scope="col">Keterangan</th>
-            <th scope="col">Harga</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Jasa Edit Video — Paket Standard</td>
-            <td>Maks. 60 detik, 3x revisi, dengan subtitel</td>
-            <td>Rp 100.000</td>
-          </tr>
-          <tr>
-            <td>Biaya Layanan Platform</td>
-            <td>5% dari harga jasa</td>
-            <td>Rp 5.000</td>
-          </tr>
-          <tr>
-            <td>Biaya Admin Pembayaran</td>
-            <td>Transfer Bank / E-Wallet</td>
-            <td>Rp 0</td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <th scope="row" colspan="2">Total Pembayaran</th>
-            <td><strong>Rp 105.000</strong></td>
-          </tr>
-        </tfoot>
-      </table>
-
-      <p><strong>Estimasi Selesai:</strong> 2 hari kerja setelah aset diterima</p>
-    </aside>
-
-    <section id="form-pemesanan">
-      <h2>Isi Data Pemesanan</h2>
-
-      <form action="#" method="post" enctype="multipart/form-data">
-        <fieldset>
-          <legend>Data Diri Pemesan</legend>
-
-          <div>
-            <label for="nama-pemesan">Nama Lengkap: *</label>
-            <input type="text" id="nama-pemesan" name="nama_pemesan" placeholder="Contoh: Dinda Rahayu" required>
+          <div class="talent-summary">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80"
+              alt="Foto profil Rizky Aditya, talent yang jasanya sedang dipesan" class="talent-avatar" width="80"
+              height="80">
+            <div class="talent-info">
+              <p class="talent-name"><strong>Talent:</strong> Rizky Aditya</p>
+              <p class="talent-service"><strong>Jasa:</strong> Edit Video Pendek — Paket Standard</p>
+            </div>
           </div>
 
-          <div>
-            <label for="email-pemesan">Alamat Email: *</label>
-            <input type="email" id="email-pemesan" name="email_pemesan" placeholder="Contoh: dinda@email.com" required>
+          <div class="table-wrapper">
+            <table>
+              <caption>Rincian biaya pesanan jasa edit video Rizky Aditya — Paket Standard</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Item</th>
+                  <th scope="col">Keterangan</th>
+                  <th scope="col">Harga</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Jasa Edit Video — Paket Standard</td>
+                  <td>Maks. 60 detik, 3x revisi, dengan subtitel</td>
+                  <td>Rp 100.000</td>
+                </tr>
+                <tr>
+                  <td>Biaya Layanan Platform</td>
+                  <td>5% dari harga jasa</td>
+                  <td>Rp 5.000</td>
+                </tr>
+                <tr>
+                  <td>Biaya Admin Pembayaran</td>
+                  <td>Transfer Bank / E-Wallet</td>
+                  <td>Rp 0</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th scope="row" colspan="2">Total Pembayaran</th>
+                  <td><strong>Rp 105.000</strong></td>
+                </tr>
+              </tfoot>
+            </table>
           </div>
 
-          <div>
-            <label for="wa-pemesan">Nomor WhatsApp: *</label>
-            <input type="tel" id="wa-pemesan" name="wa_pemesan" placeholder="Contoh: 08123456789" required>
-          </div>
-        </fieldset>
+          <p class="summary-estimate"><strong>Estimasi Selesai:</strong> 2 hari kerja setelah aset diterima</p>
+        </aside>
 
-        <fieldset>
-          <legend>Detail Pesanan</legend>
+        <section id="form-pemesanan" class="form-card">
+          <h2>Isi Data Pemesanan</h2>
 
-          <div>
-            <label for="pilih-paket">Pilih Paket: *</label>
-            <select id="pilih-paket" name="paket" required>
-              <option value="">-- Pilih Paket --</option>
-              <option value="basic">Paket Basic — Rp 50.000 (Maks. 30 detik, 1x revisi)</option>
-              <option value="standard" selected>Paket Standard — Rp 100.000 (Maks. 60 detik, 3x revisi)</option>
-              <option value="premium">Paket Premium — Rp 200.000 (Maks. 3 menit, revisi tak terbatas)</option>
-            </select>
-          </div>
+          <form action="#" method="post" enctype="multipart/form-data">
+            <fieldset>
+              <legend>Data Diri Pemesan</legend>
 
-          <div>
-            <label for="deadline">Tanggal Deadline yang Diinginkan:</label>
-            <input type="date" id="deadline" name="deadline">
-            <small>Opsional. Pengerjaan standar 2&ndash;3 hari kerja.</small>
-          </div>
+              <div class="form-group">
+                <label for="nama-pemesan">Nama Lengkap: *</label>
+                <input type="text" id="nama-pemesan" name="nama_pemesan" placeholder="Contoh: Dinda Rahayu" required>
+              </div>
 
-          <div>
-            <label for="brief-proyek">Brief Proyek / Catatan untuk Talent: *</label>
-            <textarea id="brief-proyek" name="brief" rows="7" cols="50"
-              placeholder="Jelaskan detail proyek kamu: tema video, gaya editing yang diinginkan, referensi video sejenis, pesan yang ingin disampaikan, target audiens, dll."
-              required></textarea>
-          </div>
+              <div class="form-group">
+                <label for="email-pemesan">Alamat Email: *</label>
+                <input type="email" id="email-pemesan" name="email_pemesan" placeholder="Contoh: dinda@email.com"
+                  required>
+              </div>
 
-          <div>
-            <label for="upload-aset">Upload Bahan / Aset Proyek (Video mentah, foto, logo, dll.):</label>
-            <input type="file" id="upload-aset" name="aset_proyek[]"
-              accept="video/mp4, image/jpeg, image/png, .zip, .rar" multiple>
-            <small>Format: MP4, JPG, PNG, ZIP, RAR. Maks. 500MB total.</small>
-          </div>
-        </fieldset>
+              <div class="form-group">
+                <label for="wa-pemesan">Nomor WhatsApp: *</label>
+                <input type="tel" id="wa-pemesan" name="wa_pemesan" placeholder="Contoh: 08123456789" required>
+              </div>
+            </fieldset>
 
-        <fieldset>
-          <legend>Metode Pembayaran</legend>
+            <fieldset>
+              <legend>Detail Pesanan</legend>
 
-          <div>
-            <input type="radio" id="bayar-bca" name="metode_bayar" value="bca" checked>
-            <label for="bayar-bca">Transfer Bank BCA</label>
-          </div>
+              <div class="form-group">
+                <label for="pilih-paket">Pilih Paket: *</label>
+                <select id="pilih-paket" name="paket" required>
+                  <option value="">-- Pilih Paket --</option>
+                  <option value="basic">Paket Basic — Rp 50.000 (Maks. 30 detik, 1x revisi)</option>
+                  <option value="standard" selected>Paket Standard — Rp 100.000 (Maks. 60 detik, 3x revisi)</option>
+                  <option value="premium">Paket Premium — Rp 200.000 (Maks. 3 menit, revisi tak terbatas)</option>
+                </select>
+              </div>
 
-          <div>
-            <input type="radio" id="bayar-mandiri" name="metode_bayar" value="mandiri">
-            <label for="bayar-mandiri">Transfer Bank Mandiri</label>
-          </div>
+              <div class="form-group">
+                <label for="deadline">Tanggal Deadline yang Diinginkan:</label>
+                <input type="date" id="deadline" name="deadline">
+                <small>Opsional. Pengerjaan standar 2&ndash;3 hari kerja.</small>
+              </div>
 
-          <div>
-            <input type="radio" id="bayar-gopay" name="metode_bayar" value="gopay">
-            <label for="bayar-gopay">GoPay</label>
-          </div>
+              <div class="form-group">
+                <label for="brief-proyek">Brief Proyek / Catatan untuk Talent: *</label>
+                <textarea id="brief-proyek" name="brief" rows="5" cols="50"
+                  placeholder="Jelaskan detail proyek kamu: tema video, gaya editing yang diinginkan, referensi video sejenis, pesan yang ingin disampaikan, target audiens, dll."
+                  required></textarea>
+              </div>
 
-          <div>
-            <input type="radio" id="bayar-ovo" name="metode_bayar" value="ovo">
-            <label for="bayar-ovo">OVO</label>
-          </div>
+              <div class="form-group">
+                <label for="upload-aset">Upload Bahan / Aset Proyek (Video mentah, foto, logo, dll.):</label>
+                <input type="file" id="upload-aset" name="aset_proyek[]"
+                  accept="video/mp4, image/jpeg, image/png, .zip, .rar" multiple>
+                <small>Format: MP4, JPG, PNG, ZIP, RAR. Maks. 500MB total.</small>
+              </div>
+            </fieldset>
 
-          <div>
-            <input type="radio" id="bayar-dana" name="metode_bayar" value="dana">
-            <label for="bayar-dana">DANA</label>
-          </div>
-        </fieldset>
+            <fieldset>
+              <legend>Metode Pembayaran</legend>
 
-        <fieldset>
-          <legend>Konfirmasi Pesanan</legend>
+              <div class="payment-options">
+                <div class="payment-option">
+                  <input type="radio" id="bayar-bca" name="metode_bayar" value="bca" checked>
+                  <label for="bayar-bca">Transfer Bank BCA</label>
+                </div>
 
-          <div>
-            <input type="checkbox" id="setuju-sk-order" name="setuju_sk" value="ya" required>
-            <label for="setuju-sk-order">
-              Saya menyetujui
-              <a href="detail-jasa.html#syarat">Syarat &amp; Ketentuan</a>
-              layanan ini, termasuk kebijakan revisi dan refund *
-            </label>
-          </div>
+                <div class="payment-option">
+                  <input type="radio" id="bayar-mandiri" name="metode_bayar" value="mandiri">
+                  <label for="bayar-mandiri">Transfer Bank Mandiri</label>
+                </div>
 
-          <div>
-            <input type="checkbox" id="konfirmasi-data" name="konfirmasi_data" value="ya" required>
-            <label for="konfirmasi-data">
-              Saya menyatakan bahwa brief dan aset yang saya unggah adalah milik saya
-              dan tidak melanggar hak cipta pihak lain *
-            </label>
-          </div>
-        </fieldset>
+                <div class="payment-option">
+                  <input type="radio" id="bayar-gopay" name="metode_bayar" value="gopay">
+                  <label for="bayar-gopay">GoPay</label>
+                </div>
 
-        <div>
-          <p><strong>Total yang akan dibayar: Rp 105.000</strong></p>
-          <button type="submit">Konfirmasi &amp; Bayar Sekarang</button>
-          <a href="detail-jasa.html">Kembali ke Halaman Jasa</a>
-        </div>
+                <div class="payment-option">
+                  <input type="radio" id="bayar-ovo" name="metode_bayar" value="ovo">
+                  <label for="bayar-ovo">OVO</label>
+                </div>
 
-      </form>
-    </section>
+                <div class="payment-option">
+                  <input type="radio" id="bayar-dana" name="metode_bayar" value="dana">
+                  <label for="bayar-dana">DANA</label>
+                </div>
+              </div>
+            </fieldset>
 
+            <fieldset>
+              <legend>Konfirmasi Pesanan</legend>
+
+              <div class="checkbox-group">
+                <input type="checkbox" id="setuju-sk-order" name="setuju_sk" value="ya" required>
+                <label for="setuju-sk-order">
+                  Saya menyetujui
+                  <a href="detail-jasa.html#syarat">Syarat &amp; Ketentuan</a>
+                  layanan ini, termasuk kebijakan revisi dan refund *
+                </label>
+              </div>
+
+              <div class="checkbox-group">
+                <input type="checkbox" id="konfirmasi-data" name="konfirmasi_data" value="ya" required>
+                <label for="konfirmasi-data">
+                  Saya menyatakan bahwa brief dan aset yang saya unggah adalah milik saya
+                  dan tidak melanggar hak cipta pihak lain *
+                </label>
+              </div>
+            </fieldset>
+
+            <div class="form-actions">
+              <p class="total-pay"><strong>Total yang akan dibayar: Rp 105.000</strong></p>
+              <button type="submit" class="button button--primary">Konfirmasi &amp; Bayar Sekarang</button>
+              <a href="detail-jasa.html" class="button button--secondary">Kembali ke Halaman Jasa</a>
+            </div>
+
+          </form>
+        </section>
+      </div>
+
+    </div>
   </main>
 
-  <footer>
-    <p>&copy; 2025 SewaSkill. Hak Cipta Dilindungi.</p>
-    <nav aria-label="Navigasi Footer">
-      <ul>
-        <li><a href="index.html">Beranda</a></li>
-        <li><a href="katalog.html">Katalog Jasa</a></li>
-        <li><a href="tambah-jasa.html">Daftarkan Jasamu</a></li>
-      </ul>
-    </nav>
-    <p>Pembayaran aman dilindungi sistem escrow SewaSkill</p>
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <div>
+        <a class="brand brand--footer" href="index.html">
+          <span>SewaSkill</span>
+        </a>
+        <p>Platform Jasa Freelance Mikro untuk Generasi Digital Indonesia</p>
+      </div>
+      <nav aria-label="Navigasi Footer">
+        <ul>
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="katalog.html">Katalog</a></li>
+          <li><a href="tambah-jasa.html">Daftar Jasa</a></li>
+        </ul>
+      </nav>
+      <p class="site-footer__copyright">&copy; 2025 SewaSkill. Hak Cipta Dilindungi.</p>
+    </div>
   </footer>
 
 </body>
