@@ -556,6 +556,564 @@ th {
 /* PAGE: TAMBAH JASA */
 
 /* PAGE: DETAIL JASA */
+.page-service-detail main {
+  padding-bottom: 5rem;
+}
+
+.page-service-detail .breadcrumb {
+  padding-block: 1.5rem 1.25rem;
+}
+
+.page-service-detail .breadcrumb__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.88rem;
+  color: var(--color-muted);
+}
+
+.page-service-detail .breadcrumb__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.page-service-detail .breadcrumb__item:not(:last-child)::after {
+  content: "/";
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+.page-service-detail .breadcrumb__item a {
+  color: var(--color-muted);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color var(--transition);
+}
+
+.page-service-detail .breadcrumb__item a:hover {
+  color: var(--color-primary);
+}
+
+.page-service-detail .breadcrumb__item[aria-current="page"] {
+  color: var(--color-ink);
+  font-weight: 700;
+}
+
+/* Profile Two-Column Layout */
+.page-service-detail .profile-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(20rem, 0.85fr);
+  align-items: start;
+  gap: 2.25rem;
+  margin-bottom: 3.5rem;
+}
+
+.page-service-detail .profile-main {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  box-shadow: var(--shadow-sm);
+}
+
+.page-service-detail .profile-header-card {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 1.75rem;
+}
+
+.page-service-detail .profile-avatar-wrap {
+  flex: 0 0 auto;
+}
+
+.page-service-detail .profile-avatar {
+  width: 9rem;
+  height: 9rem;
+  border-radius: var(--radius-md);
+  object-fit: cover;
+  border: 3px solid #eef2ff;
+  box-shadow: 0 6px 18px rgba(79, 70, 229, 0.15);
+}
+
+.page-service-detail .profile-header-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.page-service-detail .profile-header-info h1 {
+  font-size: clamp(1.85rem, 3.5vw, 2.5rem);
+  margin-bottom: 0.25rem;
+  line-height: 1.15;
+}
+
+.page-service-detail .profile-role {
+  margin: 0;
+  color: var(--color-primary-dark);
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.page-service-detail .profile-status-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 0.35rem;
+}
+
+/* Badges & Rating */
+.page-service-detail .badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 2rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.page-service-detail .badge__icon {
+  width: 0.95rem;
+  height: 0.95rem;
+}
+
+.page-service-detail .badge--success {
+  background: #dcfce7;
+  color: #15803d;
+  border: 1px solid #bbf7d0;
+}
+
+.page-service-detail .badge--soft {
+  background: var(--color-primary-soft);
+  color: var(--color-primary-dark);
+}
+
+.page-service-detail .badge--recommended {
+  background: var(--color-accent);
+  color: #172033;
+  font-size: 0.72rem;
+  padding: 0.25rem 0.55rem;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
+.page-service-detail .rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #b45309;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.page-service-detail .rating__icon {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+/* Profile Meta Grid */
+.page-service-detail .profile-meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem 1.25rem;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 1.75rem;
+}
+
+.page-service-detail .profile-meta__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+  font-size: 0.92rem;
+  color: #334155;
+}
+
+.page-service-detail .profile-meta__icon {
+  width: 1.15rem;
+  height: 1.15rem;
+  flex: 0 0 auto;
+  margin-top: 0.2rem;
+}
+
+.page-service-detail .profile-meta__item p {
+  margin: 0;
+  line-height: 1.45;
+}
+
+.page-service-detail .profile-meta__item strong {
+  color: var(--color-ink);
+}
+
+/* Profile Bio */
+.page-service-detail .profile-bio h2 {
+  font-size: 1.45rem;
+  margin-bottom: 0.85rem;
+}
+
+.page-service-detail .profile-bio p {
+  color: #475569;
+  font-size: 1rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Profile Skills & Features */
+.page-service-detail .profile-skills {
+  border-top: 1px solid var(--color-border);
+  padding-top: 1.5rem;
+}
+
+.page-service-detail .profile-skills h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.85rem;
+}
+
+.page-service-detail .skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  padding: 0;
+  margin: 0 0 1.75rem;
+  list-style: none;
+}
+
+.page-service-detail .skill-tag {
+  display: inline-block;
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--radius-sm);
+  background: var(--color-primary-soft);
+  color: var(--color-primary-dark);
+  font-size: 0.86rem;
+  font-weight: 700;
+  border: 1px solid #dbeafe;
+}
+
+.page-service-detail .features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.page-service-detail .features-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  color: #334155;
+  font-size: 0.92rem;
+}
+
+.page-service-detail .features-list__icon {
+  width: 1.1rem;
+  height: 1.1rem;
+  flex: 0 0 auto;
+}
+
+/* Profile Summary / Booking Aside */
+.page-service-detail .profile-card {
+  position: sticky;
+  top: 1.5rem;
+  background: var(--color-surface);
+  border: 2px solid var(--color-primary-soft);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.page-service-detail .profile-card h2 {
+  font-size: 1.35rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 0.85rem;
+}
+
+.page-service-detail .profile-card__price-box {
+  background: #f8faff;
+  border: 1px solid #e0e7ff;
+  border-radius: var(--radius-sm);
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.page-service-detail .profile-card__label {
+  color: var(--color-muted);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.25rem;
+}
+
+.page-service-detail .profile-card__amount {
+  color: var(--color-primary-dark);
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.page-service-detail .profile-card__amount strong {
+  font-size: 1rem;
+  color: var(--color-ink);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.page-service-detail .profile-card__delivery {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  color: #334155;
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+.page-service-detail .profile-card__icon {
+  width: 1.15rem;
+  height: 1.15rem;
+  flex: 0 0 auto;
+}
+
+.page-service-detail .profile-card__delivery p {
+  margin: 0;
+}
+
+.page-service-detail .profile-card .cta-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.page-service-detail .profile-card .button {
+  width: 100%;
+}
+
+.page-service-detail .profile-card__guarantee {
+  margin-top: 1.25rem;
+  border-top: 1px solid var(--color-border);
+  padding-top: 1rem;
+  font-size: 0.82rem;
+  color: var(--color-muted);
+  text-align: center;
+}
+
+.page-service-detail .profile-card__guarantee p {
+  margin: 0;
+}
+
+/* Portfolio Gallery Grid */
+.page-service-detail .portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.page-service-detail .portfolio-item {
+  margin: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(23, 32, 51, 0.04);
+  transition: border-color var(--transition);
+}
+
+.page-service-detail .portfolio-item:hover {
+  border-color: #a5b4fc;
+}
+
+.page-service-detail .portfolio-item img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.page-service-detail .portfolio-item figcaption {
+  padding: 1rem 1.25rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-ink);
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  line-height: 1.45;
+}
+
+/* Comparison Table */
+.page-service-detail .table-wrapper {
+  overflow-x: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  box-shadow: 0 6px 20px rgba(23, 32, 51, 0.05);
+}
+
+.page-service-detail table {
+  margin: 0;
+  width: 100%;
+}
+
+.page-service-detail caption {
+  caption-side: top;
+  text-align: left;
+  padding: 1.15rem 1.5rem;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--color-muted);
+  background: #f8fafc;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.page-service-detail thead th {
+  background: #111827;
+  color: #ffffff;
+  padding: 1.15rem 1.25rem;
+  font-size: 0.96rem;
+  border-bottom: 2px solid #334155;
+  white-space: nowrap;
+}
+
+.page-service-detail thead th.is-recommended {
+  background: #3730a3;
+  border-bottom: 3px solid var(--color-accent);
+}
+
+.page-service-detail tbody th {
+  background: #fafbfe;
+  color: var(--color-ink);
+  font-weight: 700;
+  font-size: 0.92rem;
+  padding: 1rem 1.25rem;
+  white-space: nowrap;
+  border-right: 1px solid var(--color-border);
+}
+
+.page-service-detail tbody td {
+  padding: 1rem 1.25rem;
+  font-size: 0.92rem;
+  color: #334155;
+  transition: background-color var(--transition);
+}
+
+.page-service-detail tbody td.is-recommended {
+  background: #f5f7ff;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  border-inline: 1px solid #dbeafe;
+}
+
+.page-service-detail tbody tr:hover td {
+  background-color: #f1f5f9;
+}
+
+.page-service-detail tbody tr:hover td.is-recommended {
+  background-color: #eef2ff;
+}
+
+/* Reviews Grid */
+.page-service-detail .reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.page-service-detail .review-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  padding: 1.75rem;
+  box-shadow: 0 4px 16px rgba(23, 32, 51, 0.04);
+  transition: border-color var(--transition);
+}
+
+.page-service-detail .review-card:hover {
+  border-color: #a5b4fc;
+}
+
+.page-service-detail .review-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.2rem;
+}
+
+.page-service-detail .review-card blockquote {
+  margin: 0 0 1.25rem;
+  padding: 0;
+  flex: 1 0 auto;
+}
+
+.page-service-detail .review-card blockquote p {
+  color: #334155;
+  font-size: 0.98rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.page-service-detail .review-card cite {
+  display: block;
+  font-style: normal;
+  font-weight: 800;
+  color: var(--color-ink);
+  font-size: 0.92rem;
+  margin-bottom: 0.4rem;
+}
+
+.page-service-detail .review-card__meta {
+  color: var(--color-muted);
+  font-size: 0.82rem;
+  margin: 0;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 0.75rem;
+}
+
+/* Final CTA Section */
+.page-service-detail .section--cta {
+  padding-top: 1rem;
+}
+
+.page-service-detail .cta-box {
+  background: #111827;
+  color: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: clamp(2.5rem, 6vw, 4.25rem) clamp(1.5rem, 4vw, 3rem);
+  text-align: center;
+  box-shadow: var(--shadow-md);
+}
+
+.page-service-detail .cta-box h2 {
+  color: #ffffff;
+  margin-bottom: 0.85rem;
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+}
+
+.page-service-detail .cta-box p {
+  color: #cbd5e1;
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  max-width: 38rem;
+  margin: 0 auto 2rem;
+}
+
+.page-service-detail .cta-box .cta-actions {
+  display: flex;
+  justify-content: center;
+}
 
 /* PAGE: ORDER */
 
@@ -663,6 +1221,124 @@ th {
 
   .site-footer__copyright {
     grid-column: auto;
+  }
+
+  /* PAGE: DETAIL JASA RESPONSIVE (Anggota 4) */
+  .page-service-detail .profile-hero {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .page-service-detail .profile-header-card {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  .page-service-detail .profile-header-info {
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  .page-service-detail .profile-role {
+    font-size: 0.95rem;
+    text-align: center;
+    word-break: break-word;
+  }
+
+  .page-service-detail .profile-status-wrap {
+    justify-content: center;
+  }
+
+  .page-service-detail .profile-meta {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+
+  .page-service-detail .portfolio-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .page-service-detail .reviews-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .page-service-detail .table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .page-service-detail .table-wrapper table {
+    min-width: 38rem;
+  }
+
+  .page-service-detail .profile-card {
+    position: static;
+  }
+
+  .page-service-detail .cta-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .page-service-detail .cta-actions .button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-service-detail .profile-hero,
+  .page-service-detail .portfolio-grid,
+  .page-service-detail .reviews-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-service-detail .profile-header-card {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .page-service-detail .profile-header-info {
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  .page-service-detail .profile-role {
+    font-size: 0.95rem;
+    text-align: center;
+    word-break: break-word;
+  }
+
+  .page-service-detail .profile-status-wrap {
+    justify-content: center;
+  }
+
+  .page-service-detail .profile-meta {
+    grid-template-columns: 1fr;
+  }
+
+  .page-service-detail .table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .page-service-detail .table-wrapper table {
+    min-width: 38rem;
+  }
+
+  .page-service-detail .profile-card {
+    position: static;
+  }
+
+  .page-service-detail .cta-actions,
+  .page-service-detail .cta-actions .button {
+    width: 100%;
   }
 }
 
