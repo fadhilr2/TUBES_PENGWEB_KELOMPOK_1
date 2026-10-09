@@ -1,4 +1,4 @@
-﻿/* ============================================================
+/* ============================================================
    GLOBAL STYLE
    ============================================================ */
 
@@ -1096,6 +1096,224 @@ th {
 
 
 /* ============================================================
+   PAGE: TAMBAH JASA
+   ============================================================ */
+
+.page-add-service main {
+  padding-bottom: 5rem;
+}
+
+.page-add-service__intro {
+  padding-top: 2.5rem;
+  padding-bottom: 2rem;
+  max-width: 52rem;
+}
+
+.page-add-service__intro h1 {
+  margin-bottom: 0.75rem;
+  font-size: 2.75rem;
+}
+
+.page-add-service__lead {
+  color: #5f6b7d;
+  font-size: 1.08rem;
+  margin-bottom: 0;
+  max-width: 46rem;
+}
+
+.page-add-service .form-card {
+  background: #ffffff;
+  border: 1px solid #dfe3ec;
+  border-radius: 1.25rem;
+  padding: 2.5rem;
+  box-shadow: 0 8px 24px rgba(23, 32, 51, 0.08);
+  margin-bottom: 2.5rem;
+}
+
+.page-add-service fieldset {
+  border: 1px solid #dfe3ec;
+  border-radius: 0.75rem;
+  padding: 1.5rem 1.75rem;
+  margin: 0 0 1.75rem;
+  background: #fafbfe;
+}
+
+.page-add-service legend {
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: #172033;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.page-add-service .form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0 1.5rem;
+}
+
+.page-add-service .form-group {
+  margin-bottom: 1.15rem;
+}
+
+.page-add-service .form-group:last-child {
+  margin-bottom: 0;
+}
+
+.page-add-service .form-group label {
+  display: block;
+  font-weight: 700;
+  font-size: 0.92rem;
+  margin-bottom: 0.35rem;
+  color: #172033;
+}
+
+.page-add-service .form-group input:not([type="radio"]):not([type="checkbox"]):not([type="file"]),
+.page-add-service .form-group select,
+.page-add-service .form-group textarea {
+  display: block;
+  width: 100%;
+  transition: border-color 200ms ease-out;
+}
+
+.page-add-service .form-group input:not([type="radio"]):not([type="checkbox"]):not([type="file"]):focus,
+.page-add-service .form-group select:focus,
+.page-add-service .form-group textarea:focus {
+  border-color: #4f46e5;
+}
+
+.page-add-service .form-group textarea {
+  resize: vertical;
+  min-height: 7.5rem;
+}
+
+.page-add-service .form-group input[type="file"] {
+  width: 100%;
+  border: 1px solid #dfe3ec;
+  border-radius: 0.75rem;
+  padding: 0.6rem 0.8rem;
+  background: #ffffff;
+  color: #465166;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: border-color 200ms ease-out;
+}
+
+.page-add-service .form-group input[type="file"]:hover {
+  border-color: #4f46e5;
+}
+
+.page-add-service .field-help {
+  display: block;
+  margin-top: 0.35rem;
+  color: #5f6b7d;
+  font-size: 0.82rem;
+}
+
+.page-add-service .required-mark {
+  color: #dc2626;
+  margin-left: 0.15rem;
+}
+
+.page-add-service .radio-group {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin-bottom: 0.65rem;
+}
+
+.page-add-service .radio-group input[type="radio"] {
+  width: auto;
+  flex: 0 0 auto;
+  margin: 0;
+  cursor: pointer;
+  accent-color: #4f46e5;
+}
+
+.page-add-service .radio-group label {
+  display: inline;
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #334155;
+  cursor: pointer;
+}
+
+.page-add-service .checkbox-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  margin-bottom: 0.85rem;
+}
+
+.page-add-service .checkbox-group:last-child {
+  margin-bottom: 0;
+}
+
+.page-add-service .checkbox-group input[type="checkbox"] {
+  width: auto;
+  flex: 0 0 auto;
+  margin-top: 0.2rem;
+  cursor: pointer;
+  accent-color: #4f46e5;
+}
+
+.page-add-service .checkbox-group label {
+  display: inline;
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #334155;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.page-add-service .form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  padding-top: 0.5rem;
+}
+
+.page-add-service__catalog-link {
+  margin-top: 1.25rem;
+  margin-bottom: 0;
+  color: #5f6b7d;
+  font-size: 0.92rem;
+  border-top: 1px solid #dfe3ec;
+  padding-top: 1.25rem;
+}
+
+.page-add-service__terms {
+  background: #f1f5f9;
+  border-top: 1px solid #dfe3ec;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.page-add-service__terms h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.page-add-service__terms ol {
+  color: #334155;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  padding-left: 1.35rem;
+  margin: 0;
+}
+
+.page-add-service__terms li {
+  margin-bottom: 0.5rem;
+}
+
+.page-add-service__terms li:last-child {
+  margin-bottom: 0;
+}
+
+
+/* ============================================================
    PAGE: ORDER.HTML
    ============================================================ */
 
@@ -1538,6 +1756,38 @@ th {
 
   .page-order .form-actions {
     width: 100%;
+  }
+
+  /* --- PAGE: TAMBAH JASA responsive --- */
+  .page-add-service .form-card {
+    padding: 1.5rem;
+  }
+
+  .page-add-service .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-add-service fieldset {
+    padding: 1rem;
+  }
+
+  .page-add-service .form-group input:not([type="radio"]):not([type="checkbox"]):not([type="file"]),
+  .page-add-service .form-group select,
+  .page-add-service .form-group textarea,
+  .page-add-service .form-group input[type="file"] {
+    width: 100%;
+  }
+
+  .page-add-service .form-actions {
+    flex-direction: column;
+  }
+
+  .page-add-service .form-actions .button {
+    width: 100%;
+  }
+
+  .page-add-service__intro h1 {
+    font-size: 2rem;
   }
 }
 
