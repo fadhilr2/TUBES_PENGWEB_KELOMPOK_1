@@ -1,5 +1,5 @@
 ﻿/* ============================================================
-   SHARED BASE STYLES & RESET (Used across all pages)
+   GLOBAL STYLE
    ============================================================ */
 
 *,
@@ -1507,6 +1507,38 @@ th {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
+
+  .page-order .order-summary,
+  .page-order .form-card {
+    padding: 1.5rem;
+    width: 100%;
+  }
+
+  .page-order .talent-summary {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .page-order .talent-avatar {
+    margin: 0 auto;
+  }
+
+  .page-order .order-summary .table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .page-order .order-summary table {
+    min-width: 28rem;
+  }
+
+  .page-order fieldset {
+    padding: 1rem;
+  }
+
+  .page-order .form-actions {
+    width: 100%;
+  }
 }
 
 @media (max-width: 480px) {
@@ -1535,5 +1567,18 @@ th {
 
   .site-footer nav ul {
     flex-direction: column;
+  }
+
+  .page-order h1 {
+    font-size: 2.25rem;
+  }
+
+  .page-order .order-summary,
+  .page-order .form-card {
+    padding: 1.25rem;
+  }
+
+  .page-order .payment-option {
+    padding: 0.5rem 0.75rem;
   }
 }
