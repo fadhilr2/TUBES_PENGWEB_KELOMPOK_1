@@ -5,196 +5,270 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Katalog jasa dan talent profesional SewaSkill untuk kebutuhan desain, video, konten, dan pemrograman.">
   <title>Katalog Jasa &amp; Talent SewaSkill</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <header>
-    <a href="index.html" aria-label="SewaSkill, kembali ke beranda">
-      <img src="https://placehold.co/80x80/4F46E5/FFFFFF?text=SS" alt="Logo SewaSkill — Platform Jasa Freelance Mikro" width="80" height="80">
-      <span>SewaSkill</span>
-    </a>
+<body class="page-catalog">
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html" aria-label="SewaSkill, kembali ke beranda">
+        <img src="https://placehold.co/80x80/4F46E5/FFFFFF?text=SS" alt="Logo SewaSkill — Platform Jasa Freelance Mikro" width="80" height="80">
+        <span>SewaSkill</span>
+      </a>
 
-    <nav aria-label="Navigasi Utama">
-      <ul>
-        <li><a href="index.html">Beranda</a></li>
-        <li><a href="katalog.html" aria-current="page">Katalog Jasa</a></li>
-        <li><a href="tambah-jasa.html">Daftarkan Jasamu</a></li>
-        <li><a href="detail-jasa.html">Contoh Detail Jasa</a></li>
-        <li><a href="order.html">Contoh Order</a></li>
-      </ul>
-    </nav>
+      <nav class="primary-nav" aria-label="Navigasi Utama">
+        <ul>
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="katalog.html" aria-current="page">Katalog</a></li>
+          <li><a href="tambah-jasa.html">Daftar Jasa</a></li>
+          <li><a href="detail-jasa.html" aria-label="Contoh detail jasa">Detail</a></li>
+          <li><a href="order.html" aria-label="Contoh order">Order</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <h1>Katalog Jasa &amp; Talent SewaSkill</h1>
-    <p>Temukan talent profesional sesuai kebutuhan proyekmu dari ratusan penyedia jasa terverifikasi.</p>
+    <div class="page-catalog__hero">
+      <div class="container">
+        <p class="eyebrow">Ratusan talent terverifikasi</p>
+        <h1>Katalog Jasa &amp; Talent SewaSkill</h1>
+        <p class="page-catalog__lead">Temukan talent profesional sesuai kebutuhan proyekmu dari ratusan penyedia jasa terverifikasi.</p>
+        <a class="button button--primary" href="tambah-jasa.html">Daftarkan Jasamu</a>
+      </div>
+    </div>
 
-    <section id="filter-pencarian" aria-labelledby="judul-filter">
-      <h2 id="judul-filter">Filter &amp; Pencarian</h2>
-      <form action="#" method="get">
-        <label for="cari-talent">Cari Talent atau Jasa:</label>
-        <input type="search" id="cari-talent" name="q" placeholder="Contoh: edit video, desain logo...">
+    <div class="container">
 
-        <label for="filter-kategori">Kategori Skill:</label>
-        <select id="filter-kategori" name="kategori">
-          <option value="">-- Semua Kategori --</option>
-          <option value="video">Edit Video</option>
-          <option value="desain">Desain Grafis / Thumbnail</option>
-          <option value="koding">Tutor / Joki Koding</option>
-          <option value="konten">Penulisan Konten</option>
-          <option value="foto">Editing Foto</option>
-        </select>
+      <section id="filter-pencarian" class="page-catalog__filter-panel" aria-labelledby="judul-filter">
+        <h2 id="judul-filter">Filter &amp; Pencarian</h2>
+        <form action="#" method="get" class="filter-grid">
 
-        <label for="filter-harga">Maksimal Harga (Rp):</label>
-        <input type="number" id="filter-harga" name="harga_max" min="0" step="5000" placeholder="Contoh: 100000">
+          <div class="page-catalog__form-group">
+            <label for="cari-talent">Cari Talent atau Jasa:</label>
+            <input type="search" id="cari-talent" name="q" placeholder="Contoh: edit video, desain logo...">
+          </div>
 
-        <label for="urut-berdasarkan">Urutkan:</label>
-        <select id="urut-berdasarkan" name="sort">
-          <option value="rating">Rating Tertinggi</option>
-          <option value="harga-asc">Harga Terendah</option>
-          <option value="harga-desc">Harga Tertinggi</option>
-        </select>
+          <div class="page-catalog__form-group">
+            <label for="filter-kategori">Kategori Skill:</label>
+            <select id="filter-kategori" name="kategori">
+              <option value="">-- Semua Kategori --</option>
+              <option value="video">Edit Video</option>
+              <option value="desain">Desain Grafis / Thumbnail</option>
+              <option value="koding">Tutor / Joki Koding</option>
+              <option value="konten">Penulisan Konten</option>
+              <option value="foto">Editing Foto</option>
+            </select>
+          </div>
 
-        <button type="submit">Cari</button>
-        <button type="reset">Reset</button>
-      </form>
-    </section>
+          <div class="page-catalog__form-group">
+            <label for="filter-harga">Maksimal Harga (Rp):</label>
+            <input type="number" id="filter-harga" name="harga_max" min="0" step="5000" placeholder="Contoh: 100000">
+          </div>
 
-    <section id="tabel-talent" aria-labelledby="judul-tabel">
-      <h2 id="judul-tabel">Daftar Talent Tersedia</h2>
-      <table>
-        <caption>Daftar talent dan penyedia jasa yang terdaftar di platform SewaSkill</caption>
-        <thead>
-          <tr>
-            <th scope="col">Foto</th>
-            <th scope="col">Nama Talent</th>
-            <th scope="col">Bidang Skill</th>
-            <th scope="col">Patokan Harga Mulai</th>
-            <th scope="col">Rating</th>
-            <th scope="col">Jumlah Order</th>
-            <th scope="col">Aksi</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80" alt="Foto profil Rizky Aditya, talent edit video profesional" width="60" height="60">
-            </td>
-            <td>Rizky Aditya</td>
-            <td>Edit Video Pendek (Reels/TikTok)</td>
-            <td>Rp 50.000</td>
-            <td>4.9 / 5.0 (120 ulasan)</td>
-            <td>320 order</td>
-            <td><a href="detail-jasa.html">Lihat Detail</a></td>
-          </tr>
-          <tr>
-            <td>
-              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80" alt="Foto profil Sari Dewi, desainer thumbnail YouTube" width="60" height="60">
-            </td>
-            <td>Sari Dewi</td>
-            <td>Desain Thumbnail YouTube</td>
-            <td>Rp 35.000</td>
-            <td>4.8 / 5.0 (88 ulasan)</td>
-            <td>210 order</td>
-            <td><a href="detail-jasa.html">Lihat Detail</a></td>
-          </tr>
-          <tr>
-            <td>
-              <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=200&q=80" alt="Foto profil Budi Santoso, tutor pemrograman Python dan web" width="60" height="60">
-            </td>
-            <td>Budi Santoso</td>
-            <td>Tutor Koding (Python &amp; Web)</td>
-            <td>Rp 75.000</td>
-            <td>4.7 / 5.0 (65 ulasan)</td>
-            <td>150 order</td>
-            <td><a href="detail-jasa.html">Lihat Detail</a></td>
-          </tr>
-          <tr>
-            <td>
-              <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=200&q=80" alt="Foto profil Maya Putri, penulis konten artikel SEO" width="60" height="60">
-            </td>
-            <td>Maya Putri</td>
-            <td>Penulisan Konten &amp; Artikel SEO</td>
-            <td>Rp 40.000</td>
-            <td>4.6 / 5.0 (54 ulasan)</td>
-            <td>130 order</td>
-            <td><a href="detail-jasa.html">Lihat Detail</a></td>
-          </tr>
-          <tr>
-            <td>
-              <img src="https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=200&q=80" alt="Foto profil Andi Wijaya, editor foto produk untuk e-commerce" width="60" height="60">
-            </td>
-            <td>Andi Wijaya</td>
-            <td>Editing Foto Produk / E-commerce</td>
-            <td>Rp 45.000</td>
-            <td>4.8 / 5.0 (76 ulasan)</td>
-            <td>180 order</td>
-            <td><a href="detail-jasa.html">Lihat Detail</a></td>
-          </tr>
-          <tr>
-            <td>
-              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80" alt="Foto profil Lestari, desain grafis brand kit dan logo" width="60" height="60">
-            </td>
-            <td>Lestari</td>
-            <td>Desain Brand Kit &amp; Logo</td>
-            <td>Rp 90.000</td>
-            <td>4.9 / 5.0 (93 ulasan)</td>
-            <td>240 order</td>
-            <td><a href="detail-jasa.html">Lihat Detail</a></td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
+          <div class="page-catalog__form-group">
+            <label for="urut-berdasarkan">Urutkan:</label>
+            <select id="urut-berdasarkan" name="sort">
+              <option value="rating">Rating Tertinggi</option>
+              <option value="harga-asc">Harga Terendah</option>
+              <option value="harga-desc">Harga Tertinggi</option>
+            </select>
+          </div>
 
-    <section id="kartu-talent" aria-labelledby="judul-kartu">
-      <h2 id="judul-kartu">Jelajahi Talent</h2>
+          <div class="page-catalog__form-actions">
+            <button class="button button--primary" type="submit">Cari</button>
+            <button class="button button--secondary" type="reset">Reset</button>
+          </div>
+        </form>
+      </section>
 
-      <article>
-        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80" alt="Foto profil Rizky Aditya, talent edit video profesional">
-        <h3>Rizky Aditya</h3>
-        <p><strong>Bidang:</strong> Edit Video Pendek</p>
-        <p><strong>Mulai dari:</strong> Rp 50.000</p>
-        <p><strong>Rating:</strong> 4.9/5.0</p>
-        <a href="detail-jasa.html">Lihat Profil Lengkap</a>
-      </article>
+      <section id="tabel-talent" aria-labelledby="judul-tabel">
+        <div class="section-heading">
+          <h2 id="judul-tabel">Daftar Talent Tersedia</h2>
+          <p>Ringkasan seluruh penyedia jasa aktif beserta bidang keahlian dan statistik performa mereka.</p>
+        </div>
+        <div class="table-wrapper">
+          <table>
+            <caption>Daftar talent dan penyedia jasa yang terdaftar di platform SewaSkill</caption>
+            <thead>
+              <tr>
+                <th scope="col">Foto</th>
+                <th scope="col">Nama Talent</th>
+                <th scope="col">Bidang Skill</th>
+                <th scope="col">Patokan Harga Mulai</th>
+                <th scope="col">Rating</th>
+                <th scope="col">Jumlah Order</th>
+                <th scope="col">Aksi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <img class="page-catalog__table-avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80" alt="Foto profil Rizky Aditya, talent edit video profesional" width="60" height="60">
+                </td>
+                <td>Rizky Aditya</td>
+                <td>Edit Video Pendek (Reels/TikTok)</td>
+                <td><span class="price">Rp 50.000</span></td>
+                <td><span class="rating">4.9 / 5.0 <small>(120 ulasan)</small></span></td>
+                <td>320 order</td>
+                <td><a href="detail-jasa.html" aria-label="Lihat detail jasa Rizky Aditya">Lihat Detail</a></td>
+              </tr>
+              <tr>
+                <td>
+                  <img class="page-catalog__table-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80" alt="Foto profil Sari Dewi, desainer thumbnail YouTube" width="60" height="60">
+                </td>
+                <td>Sari Dewi</td>
+                <td>Desain Thumbnail YouTube</td>
+                <td><span class="price">Rp 35.000</span></td>
+                <td><span class="rating">4.8 / 5.0 <small>(88 ulasan)</small></span></td>
+                <td>210 order</td>
+                <td><a href="detail-jasa.html" aria-label="Lihat detail jasa Sari Dewi">Lihat Detail</a></td>
+              </tr>
+              <tr>
+                <td>
+                  <img class="page-catalog__table-avatar" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=200&q=80" alt="Foto profil Budi Santoso, tutor pemrograman Python dan web" width="60" height="60">
+                </td>
+                <td>Budi Santoso</td>
+                <td>Tutor Koding (Python &amp; Web)</td>
+                <td><span class="price">Rp 75.000</span></td>
+                <td><span class="rating">4.7 / 5.0 <small>(65 ulasan)</small></span></td>
+                <td>150 order</td>
+                <td><a href="detail-jasa.html" aria-label="Lihat detail jasa Budi Santoso">Lihat Detail</a></td>
+              </tr>
+              <tr>
+                <td>
+                  <img class="page-catalog__table-avatar" src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=200&q=80" alt="Foto profil Maya Putri, penulis konten artikel SEO" width="60" height="60">
+                </td>
+                <td>Maya Putri</td>
+                <td>Penulisan Konten &amp; Artikel SEO</td>
+                <td><span class="price">Rp 40.000</span></td>
+                <td><span class="rating">4.6 / 5.0 <small>(54 ulasan)</small></span></td>
+                <td>130 order</td>
+                <td><a href="detail-jasa.html" aria-label="Lihat detail jasa Maya Putri">Lihat Detail</a></td>
+              </tr>
+              <tr>
+                <td>
+                  <img class="page-catalog__table-avatar" src="https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=200&q=80" alt="Foto profil Andi Wijaya, editor foto produk untuk e-commerce" width="60" height="60">
+                </td>
+                <td>Andi Wijaya</td>
+                <td>Editing Foto Produk / E-commerce</td>
+                <td><span class="price">Rp 45.000</span></td>
+                <td><span class="rating">4.8 / 5.0 <small>(76 ulasan)</small></span></td>
+                <td>180 order</td>
+                <td><a href="detail-jasa.html" aria-label="Lihat detail jasa Andi Wijaya">Lihat Detail</a></td>
+              </tr>
+              <tr>
+                <td>
+                  <img class="page-catalog__table-avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80" alt="Foto profil Lestari, desain grafis brand kit dan logo" width="60" height="60">
+                </td>
+                <td>Lestari</td>
+                <td>Desain Brand Kit &amp; Logo</td>
+                <td><span class="price">Rp 90.000</span></td>
+                <td><span class="rating">4.9 / 5.0 <small>(93 ulasan)</small></span></td>
+                <td>240 order</td>
+                <td><a href="detail-jasa.html" aria-label="Lihat detail jasa Lestari">Lihat Detail</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
 
-      <article>
-        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80" alt="Foto profil Sari Dewi, desainer thumbnail YouTube berpengalaman">
-        <h3>Sari Dewi</h3>
-        <p><strong>Bidang:</strong> Desain Thumbnail</p>
-        <p><strong>Mulai dari:</strong> Rp 35.000</p>
-        <p><strong>Rating:</strong> 4.8/5.0</p>
-        <a href="detail-jasa.html">Lihat Profil Lengkap</a>
-      </article>
+      <section id="kartu-talent" aria-labelledby="judul-kartu">
+        <div class="section-heading">
+          <h2 id="judul-kartu">Jelajahi Talent</h2>
+          <p>Temukan talent pilihan terbaik berdasarkan bidang dan kebutuhan proyekmu.</p>
+        </div>
 
-      <article>
-        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=80" alt="Foto profil Budi Santoso, tutor coding web dan Python yang ramah">
-        <h3>Budi Santoso</h3>
-        <p><strong>Bidang:</strong> Tutor Koding</p>
-        <p><strong>Mulai dari:</strong> Rp 75.000</p>
-        <p><strong>Rating:</strong> 4.7/5.0</p>
-        <a href="detail-jasa.html">Lihat Profil Lengkap</a>
-      </article>
+        <div class="talent-grid">
 
-      <article>
-        <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=600&q=80" alt="Foto profil Maya Putri, penulis konten artikel SEO berpengalaman">
-        <h3>Maya Putri</h3>
-        <p><strong>Bidang:</strong> Penulisan Konten</p>
-        <p><strong>Mulai dari:</strong> Rp 40.000</p>
-        <p><strong>Rating:</strong> 4.6/5.0</p>
-        <a href="detail-jasa.html">Lihat Profil Lengkap</a>
-      </article>
-    </section>
+          <article class="page-catalog__card">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80" alt="Foto profil Rizky Aditya, talent edit video profesional">
+            <div class="talent-meta">
+              <h3>Rizky Aditya</h3>
+              <p><strong>Bidang:</strong> Edit Video Pendek</p>
+              <p class="price">Mulai dari Rp 50.000</p>
+              <p class="rating">Rating: 4.9/5.0</p>
+              <a class="button button--primary" href="detail-jasa.html" aria-label="Lihat jasa Rizky Aditya">Lihat Jasa</a>
+            </div>
+          </article>
+
+          <article class="page-catalog__card">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80" alt="Foto profil Sari Dewi, desainer thumbnail YouTube berpengalaman">
+            <div class="talent-meta">
+              <h3>Sari Dewi</h3>
+              <p><strong>Bidang:</strong> Desain Thumbnail</p>
+              <p class="price">Mulai dari Rp 35.000</p>
+              <p class="rating">Rating: 4.8/5.0</p>
+              <a class="button button--primary" href="detail-jasa.html" aria-label="Lihat jasa Sari Dewi">Lihat Jasa</a>
+            </div>
+          </article>
+
+          <article class="page-catalog__card">
+            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=80" alt="Foto profil Budi Santoso, tutor coding web dan Python yang ramah">
+            <div class="talent-meta">
+              <h3>Budi Santoso</h3>
+              <p><strong>Bidang:</strong> Tutor Koding</p>
+              <p class="price">Mulai dari Rp 75.000</p>
+              <p class="rating">Rating: 4.7/5.0</p>
+              <a class="button button--primary" href="detail-jasa.html" aria-label="Lihat jasa Budi Santoso">Lihat Jasa</a>
+            </div>
+          </article>
+
+          <article class="page-catalog__card">
+            <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=600&q=80" alt="Foto profil Maya Putri, penulis konten artikel SEO berpengalaman">
+            <div class="talent-meta">
+              <h3>Maya Putri</h3>
+              <p><strong>Bidang:</strong> Penulisan Konten</p>
+              <p class="price">Mulai dari Rp 40.000</p>
+              <p class="rating">Rating: 4.6/5.0</p>
+              <a class="button button--primary" href="detail-jasa.html" aria-label="Lihat jasa Maya Putri">Lihat Jasa</a>
+            </div>
+          </article>
+
+          <article class="page-catalog__card">
+            <img src="https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=600&q=80" alt="Foto profil Andi Wijaya, editor foto produk untuk e-commerce">
+            <div class="talent-meta">
+              <h3>Andi Wijaya</h3>
+              <p><strong>Bidang:</strong> Editing Foto Produk</p>
+              <p class="price">Mulai dari Rp 45.000</p>
+              <p class="rating">Rating: 4.8/5.0</p>
+              <a class="button button--primary" href="detail-jasa.html" aria-label="Lihat jasa Andi Wijaya">Lihat Jasa</a>
+            </div>
+          </article>
+
+          <article class="page-catalog__card">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=80" alt="Foto profil Lestari, desainer brand kit dan logo profesional">
+            <div class="talent-meta">
+              <h3>Lestari</h3>
+              <p><strong>Bidang:</strong> Desain Brand Kit &amp; Logo</p>
+              <p class="price">Mulai dari Rp 90.000</p>
+              <p class="rating">Rating: 4.9/5.0</p>
+              <a class="button button--primary" href="detail-jasa.html" aria-label="Lihat jasa Lestari">Lihat Jasa</a>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+    </div>
   </main>
 
-  <footer>
-    <p>&copy; 2025 SewaSkill. Hak Cipta Dilindungi.</p>
-    <nav aria-label="Navigasi Footer">
-      <ul>
-        <li><a href="index.html">Beranda</a></li>
-        <li><a href="katalog.html">Katalog Jasa</a></li>
-        <li><a href="tambah-jasa.html">Daftarkan Jasamu</a></li>
-      </ul>
-    </nav>
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <div>
+        <a class="brand brand--footer" href="index.html">
+          <span>SewaSkill</span>
+        </a>
+        <p>Platform Jasa Freelance Mikro untuk Generasi Digital Indonesia</p>
+      </div>
+      <nav aria-label="Navigasi Footer">
+        <ul>
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="katalog.html">Katalog</a></li>
+          <li><a href="tambah-jasa.html">Daftar Jasa</a></li>
+        </ul>
+      </nav>
+      <p class="site-footer__copyright">&copy; 2025 SewaSkill. Hak Cipta Dilindungi.</p>
+    </div>
   </footer>
 </body>
 </html>

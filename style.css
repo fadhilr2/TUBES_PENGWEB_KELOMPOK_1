@@ -595,6 +595,202 @@ th {
    PAGE: KATALOG
    ============================================================ */
 
+/* --- Hero banner katalog --- */
+.page-catalog__hero {
+  background: linear-gradient(135deg, #eef2ff 0%, #f0f4ff 55%, #f8faff 100%);
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  border-bottom: 1px solid #dfe3ec;
+  margin-bottom: 3rem;
+}
+
+.page-catalog__hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.page-catalog__lead {
+  max-width: 42rem;
+  color: #5f6b7d;
+  font-size: 1.1rem;
+  margin-bottom: 1.75rem;
+}
+
+/* --- Filter panel --- */
+.page-catalog__filter-panel {
+  background: #ffffff;
+  border: 1px solid #dfe3ec;
+  border-radius: 1.25rem;
+  padding: 2rem;
+  margin-bottom: 3rem;
+  box-shadow: 0 4px 14px rgba(23, 32, 51, 0.055);
+}
+
+.page-catalog__filter-panel h2 {
+  font-size: 1.35rem;
+  margin-bottom: 1.25rem;
+  color: #172033;
+}
+
+.filter-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  align-items: end;
+}
+
+.page-catalog__form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.page-catalog__form-group label {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #354057;
+}
+
+.page-catalog__form-actions {
+  display: flex;
+  gap: 0.65rem;
+  align-items: flex-end;
+}
+
+/* --- Tabel talent --- */
+.page-catalog #tabel-talent {
+  margin-bottom: 3rem;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid #dfe3ec;
+  border-radius: 1.25rem;
+  box-shadow: 0 4px 14px rgba(23, 32, 51, 0.055);
+}
+
+.page-catalog .table-wrapper table {
+  min-width: 46rem;
+  border-radius: 1.25rem;
+  overflow: hidden;
+}
+
+.page-catalog .table-wrapper caption {
+  text-align: left;
+  font-size: 0.85rem;
+  color: #5f6b7d;
+  padding: 0.85rem 1rem 0.5rem;
+  font-weight: 600;
+}
+
+.page-catalog .table-wrapper thead th {
+  background: #f0f2f9;
+  color: #172033;
+  font-size: 0.88rem;
+}
+
+.page-catalog .table-wrapper tbody tr:nth-child(even) {
+  background: #f7f8fc;
+}
+
+.page-catalog .table-wrapper tbody tr:hover {
+  background: #eef2ff;
+}
+
+.page-catalog__table-avatar {
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 0.75rem;
+  object-fit: cover;
+  display: block;
+}
+
+/* --- Rating & price inline --- */
+.page-catalog .price {
+  font-weight: 800;
+  color: #3730a3;
+}
+
+.page-catalog .rating {
+  color: #b45309;
+  font-weight: 700;
+  font-size: 0.92rem;
+}
+
+.page-catalog .rating small {
+  font-weight: 400;
+  color: #5f6b7d;
+}
+
+/* --- Talent grid (kartu) --- */
+.talent-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+.page-catalog__card {
+  overflow: hidden;
+  border: 1px solid #dfe3ec;
+  border-radius: 1.25rem;
+  background: #ffffff;
+  box-shadow: 0 4px 14px rgba(23, 32, 51, 0.055);
+  transition: border-color 200ms ease-out;
+}
+
+.page-catalog__card:hover {
+  border-color: #b9bff5;
+}
+
+.page-catalog__card > img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.talent-meta {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.talent-meta h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.15rem;
+  color: #172033;
+}
+
+.talent-meta p {
+  margin: 0;
+  font-size: 0.92rem;
+  color: #475569;
+}
+
+.talent-meta .price {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #3730a3;
+}
+
+.talent-meta .rating {
+  font-size: 0.88rem;
+  color: #b45309;
+  font-weight: 700;
+  margin-bottom: 0.65rem;
+}
+
+.talent-meta .button {
+  margin-top: 0.5rem;
+  align-self: flex-start;
+  font-size: 0.9rem;
+  min-height: 2.6rem;
+  padding: 0.6rem 1.1rem;
+}
+
 
 /* ============================================================
    PAGE: DETAIL-JASA
@@ -1668,6 +1864,39 @@ th {
     grid-column: auto;
   }
 
+  /* --- PAGE: KATALOG responsive 768px --- */
+  .page-catalog__hero {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .page-catalog__hero h1 {
+    font-size: 2rem;
+  }
+
+  .filter-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-catalog__form-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .page-catalog__form-actions .button {
+    width: 100%;
+  }
+
+  .talent-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-catalog .table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
   .page-service-detail .profile-hero {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -1842,6 +2071,24 @@ th {
 
   .page-order .payment-option {
     padding: 0.5rem 0.75rem;
+  }
+
+  /* --- PAGE: KATALOG responsive 480px --- */
+  .page-catalog__hero h1 {
+    font-size: 1.75rem;
+  }
+
+  .page-catalog__filter-panel {
+    padding: 1.25rem;
+  }
+
+  .talent-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .talent-meta .button {
+    width: 100%;
+    align-self: stretch;
   }
 
   /* --- PAGE: DETAIL-JASA responsive 480px --- */
