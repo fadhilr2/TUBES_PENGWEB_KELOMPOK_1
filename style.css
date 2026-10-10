@@ -1843,4 +1843,18 @@ th {
   .page-order .payment-option {
     padding: 0.5rem 0.75rem;
   }
+
+  /* --- PAGE: DETAIL-JASA responsive 480px --- */
+  .page-service-detail .profile-main,
+  .page-service-detail .profile-card {
+    padding: 1.25rem;
+  }
+
+  .page-service-detail .cta-box {
+    padding: 2.25rem 1.25rem;
+  }
+
+  .page-service-detail .cta-box h2 {
+    font-size: 1.75rem;
+  }
 }
