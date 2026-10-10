@@ -2104,4 +2104,21 @@ th {
   .page-service-detail .cta-box h2 {
     font-size: 1.75rem;
   }
+
+  /* --- PAGE: TAMBAH JASA responsive 480px --- */
+  .page-add-service__intro h1 {
+    font-size: 1.75rem;
+  }
+
+  .page-add-service .form-card {
+    padding: 1.25rem;
+  }
+
+  .page-add-service fieldset {
+    padding: 0.85rem;
+  }
+
+  .page-add-service legend {
+    font-size: 1rem;
+  }
 }
