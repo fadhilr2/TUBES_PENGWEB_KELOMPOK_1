@@ -1,4 +1,5 @@
 ﻿import { NavLink, Link } from 'react-router-dom';
+import './Header.css';
 
 export default function Header() {
   return (
@@ -29,16 +30,6 @@ export default function Header() {
             <li>
               <NavLink to="/tambah-jasa">
                 Daftar Jasa
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/detail-jasa" aria-label="Contoh detail jasa">
-                Detail
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/order" aria-label="Contoh order">
-                Order
               </NavLink>
             </li>
           </ul>

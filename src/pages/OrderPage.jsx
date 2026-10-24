@@ -1,5 +1,6 @@
 ﻿import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import './OrderPage.css';
 
 const PACKAGES = {
   basic: {
@@ -49,11 +50,7 @@ export default function OrderPage() {
   const [orderPlaced, setOrderPlaced] = useState(false);
 
   useEffect(() => {
-    document.body.className = 'page-order';
-    document.title = 'Pesan Jasa Rizky Aditya — Edit Video | SewaSkill';
-    return () => {
-      document.body.className = '';
-    };
+    document.title = 'Konfirmasi & Pesan Jasa — SewaSkill';
   }, []);
 
   const pkg = PACKAGES[selectedPackage] || PACKAGES.standard;
@@ -77,7 +74,7 @@ export default function OrderPage() {
   };
 
   return (
-    <main>
+    <main className="order-container">
       <div className="container">
         <nav className="breadcrumb" aria-label="Breadcrumb">
           <ol className="breadcrumb__list">
@@ -96,51 +93,43 @@ export default function OrderPage() {
           </ol>
         </nav>
 
-        <h1>Konfirmasi &amp; Pesan Jasa</h1>
+        <h1 className="order-title">Konfirmasi &amp; Pesan Jasa</h1>
 
         {orderPlaced && (
-          <div
-            style={{
-              background: '#ecfdf5',
-              border: '1px solid #10b981',
-              borderRadius: '0.75rem',
-              padding: '1.25rem',
-              marginBottom: '2rem',
-              color: '#065f46'
-            }}
-          >
-            <h3 style={{ margin: '0 0 0.5rem 0' }}>Pesanan Berhasil Dibuat!</h3>
-            <p style={{ margin: 0 }}>
+          <div className="order-alert-success">
+            <h3>Pesanan Berhasil Dibuat!</h3>
+            <p>
               Instruksi pembayaran telah dikirimkan ke email <strong>{formData.email_pemesan}</strong> dan WhatsApp{' '}
               <strong>{formData.wa_pemesan}</strong>. Dana Anda aman bersama sistem Escrow SewaSkill.
             </p>
           </div>
         )}
 
-        <div className="checkout-layout">
-          <aside id="ringkasan-order" className="order-summary">
+        <div className="order-layout">
+          {/* Ringkasan Pesanan (ASIDE) */}
+          <aside id="ringkasan-order" className="order-card">
             <h2>Ringkasan Pesanan</h2>
 
-            <div className="talent-summary">
+            <div className="order-talent">
               <img
                 src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80"
                 alt="Foto profil Rizky Aditya, talent yang jasanya sedang dipesan"
-                className="talent-avatar"
-                width="80"
-                height="80"
+                className="order-talent-img"
+                width="72"
+                height="72"
               />
-              <div className="talent-info">
-                <p className="talent-name">
+              <div className="order-talent-info">
+                <p>
                   <strong>Talent:</strong> Rizky Aditya
                 </p>
-                <p className="talent-service">
+                <p>
                   <strong>Jasa:</strong> Edit Video Pendek — {pkg.name}
                 </p>
               </div>
             </div>
 
-            <div className="table-wrapper">
-              <table>
+            <div className="order-table-wrap">
+              <table className="order-table">
                 <caption>Rincian biaya pesanan jasa edit video Rizky Aditya — {pkg.name}</caption>
                 <thead>
                   <tr>
@@ -179,19 +168,21 @@ export default function OrderPage() {
               </table>
             </div>
 
-            <p className="summary-estimate">
+            <p className="order-estimate">
               <strong>Estimasi Selesai:</strong> 2 hari kerja setelah aset diterima
             </p>
           </aside>
 
-          <section id="form-pemesanan" className="form-card">
+          {/* Form Pemesanan (SECTION) */}
+          <section id="form-pemesanan" className="order-card">
             <h2>Isi Data Pemesanan</h2>
 
             <form onSubmit={handleSubmit}>
-              <fieldset>
+              {/* Bagian 1: Data Diri */}
+              <fieldset className="order-fieldset">
                 <legend>Data Diri Pemesan</legend>
 
-                <div className="form-group">
+                <div className="order-field">
                   <label htmlFor="nama-pemesan">Nama Lengkap: *</label>
                   <input
                     type="text"
@@ -204,7 +195,7 @@ export default function OrderPage() {
                   />
                 </div>
 
-                <div className="form-group">
+                <div className="order-field">
                   <label htmlFor="email-pemesan">Alamat Email: *</label>
                   <input
                     type="email"
@@ -217,7 +208,7 @@ export default function OrderPage() {
                   />
                 </div>
 
-                <div className="form-group">
+                <div className="order-field">
                   <label htmlFor="wa-pemesan">Nomor WhatsApp: *</label>
                   <input
                     type="tel"
@@ -231,10 +222,11 @@ export default function OrderPage() {
                 </div>
               </fieldset>
 
-              <fieldset>
+              {/* Bagian 2: Detail Pesanan */}
+              <fieldset className="order-fieldset">
                 <legend>Detail Pesanan</legend>
 
-                <div className="form-group">
+                <div className="order-field">
                   <label htmlFor="pilih-paket">Pilih Paket: *</label>
                   <select
                     id="pilih-paket"
@@ -249,7 +241,7 @@ export default function OrderPage() {
                   </select>
                 </div>
 
-                <div className="form-group">
+                <div className="order-field">
                   <label htmlFor="deadline">Tanggal Deadline yang Diinginkan:</label>
                   <input
                     type="date"
@@ -261,7 +253,7 @@ export default function OrderPage() {
                   <small>Opsional. Pengerjaan standar 2–3 hari kerja.</small>
                 </div>
 
-                <div className="form-group">
+                <div className="order-field">
                   <label htmlFor="brief-proyek">Brief Proyek / Catatan untuk Talent: *</label>
                   <textarea
                     id="brief-proyek"
@@ -270,12 +262,12 @@ export default function OrderPage() {
                     cols="50"
                     value={formData.brief}
                     onChange={handleChange}
-                    placeholder="Jelaskan detail proyek kamu: tema video, gaya editing yang diinginkan, referensi video sejenis, pesan yang ingin disampaikan, target audiens, dll."
+                    placeholder="Jelaskan detail proyek kamu: tema video, gaya editing yang diinginkan, referensi video sejenis, dll."
                     required
                   ></textarea>
                 </div>
 
-                <div className="form-group">
+                <div className="order-field">
                   <label htmlFor="upload-aset">Upload Bahan / Aset Proyek (Video mentah, foto, logo, dll.):</label>
                   <input
                     type="file"
@@ -288,11 +280,12 @@ export default function OrderPage() {
                 </div>
               </fieldset>
 
-              <fieldset>
+              {/* Bagian 3: Metode Pembayaran */}
+              <fieldset className="order-fieldset">
                 <legend>Metode Pembayaran</legend>
 
-                <div className="payment-options">
-                  <div className="payment-option">
+                <div className="order-options">
+                  <div className="order-option-item">
                     <input
                       type="radio"
                       id="bayar-bca"
@@ -304,7 +297,7 @@ export default function OrderPage() {
                     <label htmlFor="bayar-bca">Transfer Bank BCA</label>
                   </div>
 
-                  <div className="payment-option">
+                  <div className="order-option-item">
                     <input
                       type="radio"
                       id="bayar-mandiri"
@@ -316,7 +309,7 @@ export default function OrderPage() {
                     <label htmlFor="bayar-mandiri">Transfer Bank Mandiri</label>
                   </div>
 
-                  <div className="payment-option">
+                  <div className="order-option-item">
                     <input
                       type="radio"
                       id="bayar-gopay"
@@ -328,7 +321,7 @@ export default function OrderPage() {
                     <label htmlFor="bayar-gopay">GoPay</label>
                   </div>
 
-                  <div className="payment-option">
+                  <div className="order-option-item">
                     <input
                       type="radio"
                       id="bayar-ovo"
@@ -340,7 +333,7 @@ export default function OrderPage() {
                     <label htmlFor="bayar-ovo">OVO</label>
                   </div>
 
-                  <div className="payment-option">
+                  <div className="order-option-item">
                     <input
                       type="radio"
                       id="bayar-dana"
@@ -354,10 +347,11 @@ export default function OrderPage() {
                 </div>
               </fieldset>
 
-              <fieldset>
+              {/* Bagian 4: Konfirmasi */}
+              <fieldset className="order-fieldset">
                 <legend>Konfirmasi Pesanan</legend>
 
-                <div className="checkbox-group">
+                <div className="order-check-item">
                   <input
                     type="checkbox"
                     id="setuju-sk-order"
@@ -374,7 +368,7 @@ export default function OrderPage() {
                   </label>
                 </div>
 
-                <div className="checkbox-group">
+                <div className="order-check-item">
                   <input
                     type="checkbox"
                     id="konfirmasi-data"
@@ -390,8 +384,8 @@ export default function OrderPage() {
                 </div>
               </fieldset>
 
-              <div className="form-actions">
-                <p className="total-pay">
+              <div className="order-actions">
+                <p className="order-total-text">
                   <strong>Total yang akan dibayar: {pkg.totalFormatted}</strong>
                 </p>
                 <button type="submit" className="button button--primary">

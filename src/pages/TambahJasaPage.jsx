@@ -1,5 +1,6 @@
 ﻿import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import './TambahJasaPage.css';
 
 export default function TambahJasaPage() {
   const [formData, setFormData] = useState({
@@ -19,11 +20,7 @@ export default function TambahJasaPage() {
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
-    document.body.className = 'page-add-service';
     document.title = 'Daftarkan Jasamu — SewaSkill Platform Jasa Freelance Mikro';
-    return () => {
-      document.body.className = '';
-    };
   }, []);
 
   const handleChange = (e) => {
@@ -59,7 +56,7 @@ export default function TambahJasaPage() {
   };
 
   return (
-    <main>
+    <main className="page-add-service">
       <div className="container">
         <nav className="breadcrumb" aria-label="Breadcrumb">
           <ol className="breadcrumb__list">

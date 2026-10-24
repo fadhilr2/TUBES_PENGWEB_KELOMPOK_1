@@ -1,13 +1,10 @@
 ﻿import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import './HomePage.css';
 
 export default function HomePage() {
   useEffect(() => {
-    document.body.className = 'page-home';
     document.title = 'SewaSkill — Temukan Talent Terbaik untuk Proyekmu';
-    return () => {
-      document.body.className = '';
-    };
   }, []);
 
   return (
@@ -120,7 +117,7 @@ export default function HomePage() {
                 <p>Bangun komunikasi yang lebih kuat melalui artikel, caption, dan naskah yang sesuai kebutuhanmu.</p>
                 <Link to="/katalog" aria-label="Lihat jasa Penulisan Konten">
                   <span>Lihat Jasa</span>
-                  <img className="category-card__link-icon" src="/assets/icons/arrow-right.svg" alt="" aria-hidden="true"></img>
+                  <img className="category-card__link-icon" src="/assets/icons/arrow-right.svg" alt="" aria-hidden="true" />
                 </Link>
               </div>
             </article>

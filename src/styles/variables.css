@@ -1,0 +1,48 @@
+﻿/* ============================================================
+   DESIGN TOKENS & CSS VARIABLES
+   ============================================================ */
+
+:root {
+  /* Colors */
+  --color-primary: #4f46e5;
+  --color-primary-hover: #3730a3;
+  --color-primary-light: #eef2ff;
+  --color-primary-glow: rgba(79, 70, 229, 0.25);
+
+  --color-bg-page: #f7f8fc;
+  --color-bg-card: #ffffff;
+  --color-bg-dark: #111827;
+  --color-bg-footer: #0b1120;
+
+  --color-text-main: #172033;
+  --color-text-muted: #5f6b7d;
+  --color-text-light: #d9deea;
+  --color-text-subtle: #94a3b8;
+
+  --color-border: #dfe3ec;
+  --color-border-dark: #273247;
+
+  --color-accent-amber: #f59e0b;
+  --color-accent-gold: #fbbf24;
+  --color-success: #10b981;
+  --color-success-bg: #ecfdf5;
+
+  /* Typography */
+  --font-family-base: Arial, Helvetica, sans-serif;
+
+  /* Border Radius */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
+  --radius-pill: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 12px rgba(23, 32, 51, 0.06);
+  --shadow-lg: 0 8px 24px rgba(23, 32, 51, 0.08);
+  --shadow-primary: 0 12px 24px rgba(79, 70, 229, 0.25);
+
+  /* Transitions */
+  --transition-fast: 200ms ease-out;
+}

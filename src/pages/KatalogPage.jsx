@@ -1,5 +1,6 @@
 ﻿import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import './KatalogPage.css';
 
 const TALENTS = [
   {
@@ -95,11 +96,7 @@ export default function KatalogPage() {
   const [sortBy, setSortBy] = useState('rating');
 
   useEffect(() => {
-    document.body.className = 'page-catalog';
     document.title = 'Katalog Jasa & Talent SewaSkill';
-    return () => {
-      document.body.className = '';
-    };
   }, []);
 
   const handleReset = () => {

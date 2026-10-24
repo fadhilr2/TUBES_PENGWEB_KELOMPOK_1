@@ -1,13 +1,10 @@
 ﻿import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import './DetailJasaPage.css';
 
 export default function DetailJasaPage() {
   useEffect(() => {
-    document.body.className = 'page-service-detail';
     document.title = 'Rizky Aditya — Edit Video | SewaSkill';
-    return () => {
-      document.body.className = '';
-    };
   }, []);
 
   return (
