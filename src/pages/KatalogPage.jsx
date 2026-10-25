@@ -121,7 +121,7 @@ export default function KatalogPage() {
 
   return (
     <main>
-      <div className="hero-section text-white py-5">
+      <div className="bg-primary text-white py-5">
         <div className="container py-3">
           <p className="text-white-50 fw-semibold text-uppercase small" style={{ letterSpacing: '.08em' }}>
             Ratusan talent terverifikasi
