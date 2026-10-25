@@ -39,11 +39,6 @@ export default function HomePage() {
                 width="800"
                 height="533"
               />
-              <div className="position-absolute bottom-0 start-50 translate-middle-x mb-n3">
-                <span className="badge bg-white text-dark shadow px-3 py-2 fs-6">
-                  <strong>500+</strong> Talent siap membantu
-                </span>
-              </div>
             </div>
           </div>
         </div>
