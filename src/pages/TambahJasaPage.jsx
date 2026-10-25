@@ -9,12 +9,10 @@ export default function TambahJasaPage() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     document.title = 'Daftarkan Jasamu - SewaSkill Platform Jasa Freelance Mikro';
 
-    // Fetch (Json ada di data yaakkkk)
     fetch('/data/dataJasa.json')
       .then((res) => {
         if (!res.ok) throw new Error(`HTTP ${res.status}: Gagal memuat data`);
@@ -37,18 +35,10 @@ export default function TambahJasaPage() {
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData((prev) => ({ ...prev, [name]: type === 'checkbox' ? checked : value }));
-    // Hapus error field saat user mulai mengetik
-    if (errors[name]) setErrors((prev) => ({ ...prev, [name]: '' }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const validationErrors = validate();
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      return;
-    }
-    setErrors({});
     setSubmitted(true);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -56,9 +46,12 @@ export default function TambahJasaPage() {
   return (
     <main className="py-5">
       <div className="container">
-        <div className="mb-5">
+        <div className="mb-4">
           <h1 className="fw-bold display-6 mb-2">Daftarkan Jasa &amp; Keahlianmu</h1>
         </div>
+
+        {loading && <div className="alert alert-info py-2 mb-3">Memuat data template jasa...</div>}
+        {error && <div className="alert alert-warning py-2 mb-3">{error}</div>}
 
         {submitted && (
           <div className="alert alert-success alert-dismissible" role="alert">
@@ -69,7 +62,7 @@ export default function TambahJasaPage() {
 
         <div className="card border-0 shadow-sm">
           <div className="card-body p-4 p-md-5">
-            <form onSubmit={handleSubmit} noValidate>
+            <form onSubmit={handleSubmit}>
               {/* ── Data Pribadi ── */}
               <fieldset className="mb-4">
                 <legend className="h6 fw-semibold border-bottom pb-2 mb-4">Data Pribadi Talent</legend>
@@ -80,12 +73,11 @@ export default function TambahJasaPage() {
                     </label>
                     <input
                       type="text" id="nama-lengkap" name="nama_lengkap"
-                      className={`form-control ${errors.nama_lengkap ? 'is-invalid' : ''}`}
+                      className="form-control"
                       value={formData.nama_lengkap} onChange={handleChange}
                       placeholder="Contoh: Rizky Aditya Pratama"
-                      required aria-required="true"
+                      required
                     />
-                    {fieldError('nama_lengkap')}
                   </div>
                   <div className="col-md-6">
                     <label htmlFor="email" className="form-label fw-semibold">
@@ -93,12 +85,11 @@ export default function TambahJasaPage() {
                     </label>
                     <input
                       type="email" id="email" name="email"
-                      className={`form-control ${errors.email ? 'is-invalid' : ''}`}
+                      className="form-control"
                       value={formData.email} onChange={handleChange}
                       placeholder="Contoh: rizky@email.com"
-                      required aria-required="true"
+                      required
                     />
-                    {fieldError('email')}
                   </div>
                   <div className="col-md-6">
                     <label htmlFor="no-whatsapp" className="form-label fw-semibold">
@@ -106,12 +97,11 @@ export default function TambahJasaPage() {
                     </label>
                     <input
                       type="tel" id="no-whatsapp" name="whatsapp"
-                      className={`form-control ${errors.whatsapp ? 'is-invalid' : ''}`}
+                      className="form-control"
                       value={formData.whatsapp} onChange={handleChange}
                       placeholder="Contoh: 08123456789"
-                      required aria-required="true"
+                      required
                     />
-                    {fieldError('whatsapp')}
                   </div>
                   <div className="col-md-6">
                     <label htmlFor="link-portofolio" className="form-label fw-semibold">Link Portofolio / Media Sosial</label>
@@ -134,12 +124,11 @@ export default function TambahJasaPage() {
                   </label>
                   <input
                     type="text" id="judul-jasa" name="judul_jasa"
-                    className={`form-control ${errors.judul_jasa ? 'is-invalid' : ''}`}
+                    className="form-control"
                     value={formData.judul_jasa} onChange={handleChange}
                     placeholder="Contoh: Jasa Edit Video Reels Instagram Profesional"
-                    required aria-required="true"
+                    required
                   />
-                  {fieldError('judul_jasa')}
                 </div>
                 <div className="row g-3 mb-3">
                   <div className="col-md-6">
@@ -148,13 +137,12 @@ export default function TambahJasaPage() {
                     </label>
                     <input
                       type="number" id="harga-dasar" name="harga"
-                      className={`form-control ${errors.harga ? 'is-invalid' : ''}`}
+                      className="form-control"
                       min="10000" step="5000"
                       value={formData.harga} onChange={handleChange}
                       placeholder="Harga minimum Rp 10.000"
-                      required aria-required="true"
+                      required
                     />
-                    {fieldError('harga')}
                   </div>
                   <div className="col-md-6">
                     <label htmlFor="waktu-pengerjaan" className="form-label fw-semibold">
@@ -162,13 +150,12 @@ export default function TambahJasaPage() {
                     </label>
                     <input
                       type="number" id="waktu-pengerjaan" name="waktu_kerja"
-                      className={`form-control ${errors.waktu_kerja ? 'is-invalid' : ''}`}
+                      className="form-control"
                       min="1" max="30"
                       value={formData.waktu_kerja} onChange={handleChange}
                       placeholder="Contoh: 3"
-                      required aria-required="true"
+                      required
                     />
-                    {fieldError('waktu_kerja')}
                   </div>
                 </div>
                 <div className="mb-3">
@@ -177,12 +164,11 @@ export default function TambahJasaPage() {
                   </label>
                   <textarea
                     id="deskripsi-jasa" name="deskripsi" rows="5"
-                    className={`form-control ${errors.deskripsi ? 'is-invalid' : ''}`}
+                    className="form-control"
                     value={formData.deskripsi} onChange={handleChange}
                     placeholder="Ceritakan pengalamanmu, hasil kerja yang pernah dibuat, tools yang dikuasai..."
-                    required aria-required="true"
+                    required
                   />
-                  {fieldError('deskripsi')}
                 </div>
               </fieldset>
 
@@ -191,28 +177,26 @@ export default function TambahJasaPage() {
                 <legend className="h6 fw-semibold border-bottom pb-2 mb-4">Persetujuan &amp; Ketentuan</legend>
                 <div className="form-check mb-2">
                   <input
-                    className={`form-check-input ${errors.setuju_sk ? 'is-invalid' : ''}`}
+                    className="form-check-input"
                     type="checkbox" id="setuju-sk" name="setuju_sk"
                     checked={formData.setuju_sk} onChange={handleChange}
-                    required aria-required="true"
+                    required
                   />
                   <label className="form-check-label" htmlFor="setuju-sk">
                     Saya menyetujui Syarat &amp; Ketentuan platform SewaSkill <span className="text-danger" aria-hidden="true">*</span>
                   </label>
-                  {fieldError('setuju_sk')}
                 </div>
                 <div className="form-check mb-3">
                   <input
-                    className={`form-check-input ${errors.setuju_data ? 'is-invalid' : ''}`}
+                    className="form-check-input"
                     type="checkbox" id="setuju-data" name="setuju_data"
                     checked={formData.setuju_data} onChange={handleChange}
-                    required aria-required="true"
+                    required
                   />
                   <label className="form-check-label" htmlFor="setuju-data">
                     Saya menyatakan bahwa data dan karya yang diunggah adalah milik saya sendiri{' '}
                     <span className="text-danger" aria-hidden="true">*</span>
                   </label>
-                  {fieldError('setuju_data')}
                 </div>
               </fieldset>
 
