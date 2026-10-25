@@ -15,6 +15,8 @@ export default function OrderPage() {
   });
   const [orderResult, setOrderResult] = useState(null);
 
+  const pkg = packages.find((p) => p.id === selectedPackageId) || null;
+
 
   useEffect(() => {
     document.title = 'Konfirmasi & Pesan Jasa - SewaSkill';
