@@ -1,0 +1,26 @@
+[
+  {
+    "id": "basic",
+    "name": "Paket Basic",
+    "desc": "Maks. 30 detik, 1x revisi",
+    "price": 50000,
+    "fee": 2500,
+    "total": 52500
+  },
+  {
+    "id": "standard",
+    "name": "Paket Standard",
+    "desc": "Maks. 60 detik, 3x revisi, dengan subtitel",
+    "price": 100000,
+    "fee": 5000,
+    "total": 105000
+  },
+  {
+    "id": "premium",
+    "name": "Paket Premium",
+    "desc": "Maks. 3 menit, revisi tak terbatas",
+    "price": 200000,
+    "fee": 10000,
+    "total": 210000
+  }
+]

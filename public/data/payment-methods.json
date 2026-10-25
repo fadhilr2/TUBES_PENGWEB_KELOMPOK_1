@@ -1,0 +1,7 @@
+[
+  { "id": "bca",     "label": "Transfer Bank BCA" },
+  { "id": "mandiri", "label": "Transfer Bank Mandiri" },
+  { "id": "gopay",   "label": "GoPay" },
+  { "id": "ovo",     "label": "OVO" },
+  { "id": "dana",    "label": "DANA" }
+]
