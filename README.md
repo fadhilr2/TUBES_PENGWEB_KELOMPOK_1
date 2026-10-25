@@ -1,86 +1,76 @@
-# SewaSkill — Platform Freelance Mikro Jasa Digital
+# SewaSkill — Platform Freelance Jasa Digital
 
-> **Tugas Besar I (UTS) — Perancangan dan Pemrograman Web**  
-> **Kelompok 1** | Frontend Development Web Application
+> Tugas Besar I (UTS) — Perancangan dan Pemrograman Web  
+> Kelompok 1
 
 ---
 
 ## Deskripsi Proyek
-**SewaSkill** adalah aplikasi web berbasis *Single Page Application* (SPA) yang mempertemukan pencari jasa dengan talent digital independen (freelancer) untuk berbagai kebutuhan mikro, seperti *editing video*, *desain thumbnail/logo*, *tutor pemrograman*, hingga *penulisan konten kreatif*.
 
-Aplikasi ini dibangun menggunakan arsitektur komponen React modern, penataan tata letak responsif menggunakan Bootstrap 5, serta integrasi pemanggilan data dinamis (*Mock API*) menggunakan Fetch API.
+SewaSkill adalah platform web untuk mencari dan memesan jasa freelance digital skala mikro, seperti edit video, desain grafis, bimbingan koding, dan penulisan konten.
 
----
-
-## Tim Pengembang (Kelompok 1)
-
-| No | Nama Anggota | GitHub | Peran / Kontribusi Halaman |
-|:--:|:---|:---:|:---|
-| 1 | **Fadhil R.** | `@fadhilr2` | Setup Project, Routing, Migrasi Bootstrap |
-| 2 | **I Putu Gede Deva Gundhala** | `@theepar` | Halaman Beranda, Refactoring & Clean Architecture |
-| 3 | **Adita R.** | `@aditarhm` | Halaman Katalog Jasa & Filter |
-| 4 | **Jeni** | `@ejeniamutiara` | Halaman Tambah Jasa & Form |
-| 5 | **Arsal** | `@JustAHermit` | Halaman Detail Jasa & Order |
+Proyek ini dikembangkan menggunakan React 19 dan Bootstrap 5 dengan arsitektur Single Page Application (SPA), serta memanfaatkan Fetch API untuk mengambil data dari mock JSON lokal.
 
 ---
 
-## Tech Stack & Teknologi
+## Tim Pengembang
 
-* **Frontend Library:** [React 19](https://react.dev/) (Komponen fungsional & Hooks: `useState`, `useEffect`)
-* **Build Tool & Dev Server:** [Vite 8](https://vitejs.dev/) (Fast HMR & Optimized Bundler)
-* **Routing:** [React Router DOM v7](https://reactrouter.com/) (Client-side routing SPA)
-* **CSS Framework & Styling:** [Bootstrap 5](https://getbootstrap.com/) (`v5.3.8`) + Custom CSS
-* **Data Fetching:** Fetch API native JavaScript (JSON Mock API)
-* **Linter & Code Quality:** [ESLint 10](https://eslint.org/) (Strict React Hooks & Refresh rules)
+| No | Nama Anggota | GitHub | Bagian Pengerjaan |
+| :-: | :--- | :---: | :--- |
+| 1 | **Fadhil R.** | `@fadhilr2` | Setup project, routing, dan styling Bootstrap |
+| 2 | **I Putu Gede Deva Gundhala** | `@theepar` | Halaman beranda, refactoring, dan struktur data |
+| 3 | **Adita R.** | `@aditarhm` | Halaman katalog jasa dan filter data |
+| 4 | **Jeni** | `@ejeniamutiara` | Halaman tambah jasa dan form pendaftaran |
+| 5 | **Arsal** | `@JustAHermit` | Halaman detail jasa dan pemesanan |
 
 ---
 
-## Daftar Halaman & Fitur Aplikasi
+## Tech Stack
 
-Aplikasi terdiri dari minimal **5 halaman utama** yang saling terhubung:
+- **Framework:** React 19
+- **Build Tool:** Vite 8
+- **Routing:** React Router DOM v7
+- **CSS Framework:** Bootstrap 5.3
+- **Data Source:** Fetch API (Mock JSON)
+- **Linter:** ESLint 10
+
+---
+
+## Halaman dan Fitur
 
 1. **Beranda (`/`)**
-   * Hero banner promosi dan pengenalan platform
-   * Kategori jasa populer (Video, Desain, Koding, Konten)
-   * Nilai keunggulan platform SewaSkill
-   * Seksi testimoni pengguna dinamis
-   * Aksesibilitas penuh (`aria-labelledby`, semantik HTML5)
+   - Banner pengenalan platform
+   - Kategori jasa populer
+   - Seksi keunggulan layanan
+   - Ulasan pengguna
 
 2. **Katalog Jasa (`/katalog`)**
-   * Pencarian langsung berdasarkan kata kunci nama & keahlian
-   * Filter multi-kategori (Semua, Desain, Video, Koding, dll.)
-   * Filter harga maksimum interaktif
-   * Pengurutan (*Sort by*: Rating tertinggi, Harga terendah, Harga tertinggi)
-   * Fitur ganti mode tampilan: **Mode Kartu (Grid)** & **Mode Tabel Responsif**
+   - Pencarian talent berdasarkan nama dan keahlian
+   - Filter kategori dan batas harga maksimum
+   - Pengurutan berdasarkan rating dan harga
+   - Pilihan tampilan kartu (grid) atau tabel
 
-3. **Detail Profil Jasa (`/detail-jasa`)**
-   * Navigasi Breadcrumb
-   * Profil lengkap talent, status ketersediaan, rating, dan riwayat order
-   * Pilihan paket layanan (*Basic*, *Standard*, *Premium*)
-   * Portofolio karya dan ulasan klien terdahulu
-   * FAQ interaktif seputar pemesanan
+3. **Detail Jasa (`/detail-jasa`)**
+   - Profil talent, status ketersediaan, dan rating
+   - Pilihan paket jasa (Basic, Standard, Premium)
+   - Portofolio karya dan FAQ pemesanan
 
-4. **Pendaftaran Jasa Baru (`/tambah-jasa`)**
-   * Formulir pendaftaran talent baru
-   * Pengelompokan data semantik menggunakan `<fieldset>` & `<legend>`
-   * Validasi formulir sisi klien (*client-side form validation*)
-   * Feedback status pengiriman pendaftaran
+4. **Tambah Jasa (`/tambah-jasa`)**
+   - Formulir pendaftaran jasa baru
+   - Validasi input form di sisi klien
 
-5. **Pemesanan Layanan (`/order`)**
-   * Rincian pemesanan dan kalkulasi otomatis harga paket + biaya platform
-   * Formulir data diri pemesan dan *briefing* kebutuhan proyek
-   * Pilihan metode pembayaran (Transfer Bank & E-Wallet)
-   * Notifikasi sukses pemesanan
+5. **Pemesanan (`/order`)**
+   - Ringkasan pesanan dan kalkulasi biaya
+   - Formulir data pemesan dan metode pembayaran
+   - Notifikasi konfirmasi pemesanan
 
 ---
 
-## Panduan Menjalankan Proyek (Setup Instructions)
+## Cara Menjalankan Proyek
 
-Ikuti langkah-langkah berikut untuk menjalankan proyek di komputer lokal:
-
-### 1. Prasyarat Sistem
-* Pastikan komputer sudah terinstall **[Node.js](https://nodejs.org/)** (disarankan versi 18.x atau 20.x ke atas)
-* Git terpasang di sistem
+### 1. Prasyarat
+- Node.js (versi 18 ke atas)
+- Git
 
 ### 2. Clone Repository
 ```bash
@@ -88,84 +78,51 @@ git clone https://github.com/fadhilr2/TUBES_PENGWEB_KELOMPOK_1.git
 cd TUBES_PENGWEB_KELOMPOK_1
 ```
 
-### 3. Pindah ke Branch Pengerjaan (Opsional)
+### 3. Pindah Branch (Opsional)
 ```bash
 git checkout deva
 ```
 
 ### 4. Install Dependensi
-Unduh seluruh library yang dibutuhkan project (React, Bootstrap, Vite, dll.):
 ```bash
 npm install
 ```
 
-### 5. Jalankan Development Server
+### 5. Jalankan Server Lokal
 ```bash
 npm run dev
 ```
-Setelah server menyala, buka browser dan akses URL lokal:
-**`http://localhost:5173/`**
+Akses aplikasi melalui browser di `http://localhost:5173/`.
 
-### 6. Perintah Tambahan
-* **Mengecek Linter & Kualitas Kode:**
+### 6. Perintah Lainnya
+- Menjalankan linter:
   ```bash
   npm run lint
   ```
-* **Membangun Bundle Produksi (Build Test):**
+- Build untuk produksi:
   ```bash
   npm run build
   ```
-* **Pratinjau Hasil Build Produksi:**
-  ```bash
-  npm run preview
-  ```
 
 ---
 
-## Struktur Direktori Proyek
+## Struktur Folder
 
 ```text
 TUBES_PENGWEB_KELOMPOK_1/
-├── public/                       # Static assets publik
-│   ├── assets/
-│   │   └── icons/                # Icon SVG statis
-│   ├── data/                     # Mock API JSON (Data dinamis)
-│   ├── favicon.svg               # Favicon website
-│   └── icons.svg                 # SVG sprite
-├── src/                          # Source code aplikasi React
-│   ├── components/               # Komponen UI Reusable
-│   │   ├── Header.jsx            # Navbar navigasi responsif
-│   │   ├── Footer.jsx            # Footer website
-│   │   └── ScrollToTop.jsx       # Reset scroll saat pindah halaman
-│   ├── pages/                    # Halaman-halaman utama
-│   │   ├── HomePage.jsx          # Beranda
-│   │   ├── KatalogPage.jsx       # Katalog & Pencarian Jasa
-│   │   ├── DetailJasaPage.jsx    # Profil & Detail Paket Jasa
-│   │   ├── TambahJasaPage.jsx    # Form Pendaftaran Jasa
-│   │   └── OrderPage.jsx         # Form & Konfirmasi Pemesanan
-│   ├── App.jsx                   # Konfigurasi Routing (React Router)
-│   ├── main.jsx                  # Entry point React DOM & Bootstrap CSS
-│   └── index.css                 # Custom CSS pendukung
-├── index.html                    # Root HTML document
-├── package.json                  # Konfigurasi dependensi & npm scripts
-├── vite.config.js                # Konfigurasi Vite bundler
-└── README.md                     # Dokumentasi resmi proyek
+├── public/
+│   ├── assets/icons/             # Icon SVG
+│   ├── data/                     # Data mock JSON
+│   ├── favicon.svg               # Favicon
+│   └── icons.svg                 # Sprite SVG
+├── src/
+│   ├── components/               # Komponen antarmuka (Header, Footer, ScrollToTop)
+│   ├── pages/                    # Halaman aplikasi (Home, Katalog, Detail, Tambah, Order)
+│   ├── App.jsx                   # Konfigurasi routing
+│   ├── main.jsx                  # Entry point aplikasi
+│   └── index.css                 # Custom CSS
+├── index.html                    # Dokumen HTML utama
+├── package.json                  # Konfigurasi dependensi dan script npm
+├── vite.config.js                # Konfigurasi bundler Vite
+└── README.md                     # Dokumentasi proyek
 ```
-
----
-
-## Pemenuhan Rubrik Penilaian Tugas Besar
-
-| No | Kriteria Rubrik | Implementasi pada Proyek |
-|:--:|:---|:---|
-| 1 | **Minimal 5–7 Halaman Terhubung** | Memiliki 5 halaman utama yang saling terhubung dengan navigasi SPA yang mulus. |
-| 2 | **Framework Modern** | Menggunakan React 19 + Vite 8 dengan komponen fungsional modern. |
-| 3 | **Styling & Responsiveness** | Menerapkan Bootstrap 5 Grid System (`col-*`, Flexbox, Breakpoints) yang responsif di Mobile, Tablet, dan Desktop. |
-| 4 | **Semantic HTML & Accessibility** | Memakai tag `<header>`, `<main>`, `<section>`, `<article>`, `<fieldset>`, `<legend>`, serta atribut W3C `aria-labelledby`, `aria-expanded`, dan `aria-label`. |
-| 5 | **Form Validation** | Terdapat validasi input sisi klien pada form pendaftaran jasa dan pemesanan. |
-| 6 | **Data Source & API Fetching** | Penyajian data dinamis dari file JSON mock API melalui Fetch API dengan penanganan loading & error state. |
-| 7 | **Code Quality & Git** | Commit deskriptif, pemisahan branch, serta zero console error / ESLint warning. |
-
----
-
-*Dibuat untuk evaluasi Tugas Besar I (UTS) Praktik Perancangan dan Pemrograman Web.*
