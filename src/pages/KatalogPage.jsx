@@ -1,94 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const TALENTS = [
-  {
-    id: 1,
-    name: 'Rizky Aditya',
-    skill: 'Edit Video Pendek (Reels/TikTok)',
-    category: 'video',
-    price: 50000,
-    priceFormatted: 'Rp 50.000',
-    rating: 4.9,
-    reviews: 120,
-    orders: '320 order',
-    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80',
-    tableAvatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80',
-    link: '/detail-jasa'
-  },
-  {
-    id: 2,
-    name: 'Sari Dewi',
-    skill: 'Desain Thumbnail YouTube',
-    category: 'desain',
-    price: 35000,
-    priceFormatted: 'Rp 35.000',
-    rating: 4.8,
-    reviews: 88,
-    orders: '210 order',
-    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80',
-    tableAvatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80',
-    link: '/detail-jasa'
-  },
-  {
-    id: 3,
-    name: 'Budi Santoso',
-    skill: 'Tutor Koding (Python & Web)',
-    category: 'koding',
-    price: 75000,
-    priceFormatted: 'Rp 75.000',
-    rating: 4.7,
-    reviews: 65,
-    orders: '150 order',
-    avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=80',
-    tableAvatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=200&q=80',
-    link: '/detail-jasa'
-  },
-  {
-    id: 4,
-    name: 'Maya Putri',
-    skill: 'Penulisan Konten & Artikel SEO',
-    category: 'konten',
-    price: 40000,
-    priceFormatted: 'Rp 40.000',
-    rating: 4.6,
-    reviews: 54,
-    orders: '130 order',
-    avatar: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=600&q=80',
-    tableAvatar: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=200&q=80',
-    link: '/detail-jasa'
-  },
-  {
-    id: 5,
-    name: 'Andi Wijaya',
-    skill: 'Editing Foto Produk / E-commerce',
-    category: 'foto',
-    price: 45000,
-    priceFormatted: 'Rp 45.000',
-    rating: 4.8,
-    reviews: 76,
-    orders: '180 order',
-    avatar: 'https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=600&q=80',
-    tableAvatar: 'https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=200&q=80',
-    link: '/detail-jasa'
-  },
-  {
-    id: 6,
-    name: 'Lestari',
-    skill: 'Desain Brand Kit & Logo',
-    category: 'desain',
-    price: 90000,
-    priceFormatted: 'Rp 90.000',
-    rating: 4.9,
-    reviews: 93,
-    orders: '240 order',
-    avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=80',
-    tableAvatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80',
-    link: '/detail-jasa'
-  }
-];
-
 export default function KatalogPage() {
+  const [talents, setTalents] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [category, setCategory] = useState('');
   const [maxPrice, setMaxPrice] = useState('');
@@ -96,6 +12,29 @@ export default function KatalogPage() {
 
   useEffect(() => {
     document.title = 'Katalog Jasa & Talent SewaSkill';
+
+    let isMounted = true;
+    fetch('/data/talents.json')
+      .then((res) => {
+        if (!res.ok) throw new Error('Gagal memuat data talent');
+        return res.json();
+      })
+      .then((data) => {
+        if (isMounted) {
+          setTalents(data);
+          setLoading(false);
+        }
+      })
+      .catch((err) => {
+        if (isMounted) {
+          setError(err.message);
+          setLoading(false);
+        }
+      });
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   const handleReset = () => {
@@ -105,7 +44,42 @@ export default function KatalogPage() {
     setSortBy('rating');
   };
 
-  const filteredTalents = TALENTS.filter((talent) => {
+  if (loading) {
+    return (
+      <main>
+        <div className="bg-primary text-white py-5">
+          <div className="container py-3">
+            <h1 className="fw-bold display-6 mb-2">Katalog Jasa &amp; Talent SewaSkill</h1>
+          </div>
+        </div>
+        <div className="container py-5 text-center">
+          <div className="spinner-border text-primary" role="status">
+            <span className="visually-hidden">Memuat...</span>
+          </div>
+          <p className="mt-3 text-muted">Memuat data talent...</p>
+        </div>
+      </main>
+    );
+  }
+
+  if (error) {
+    return (
+      <main>
+        <div className="bg-primary text-white py-5">
+          <div className="container py-3">
+            <h1 className="fw-bold display-6 mb-2">Katalog Jasa &amp; Talent SewaSkill</h1>
+          </div>
+        </div>
+        <div className="container py-5">
+          <div className="alert alert-danger" role="alert">
+            <strong>Terjadi kesalahan:</strong> {error}
+          </div>
+        </div>
+      </main>
+    );
+  }
+
+  const filteredTalents = talents.filter((talent) => {
     const matchesSearch =
       talent.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       talent.skill.toLowerCase().includes(searchTerm.toLowerCase());
@@ -216,7 +190,7 @@ export default function KatalogPage() {
         <section id="tabel-talent" className="mb-5" aria-labelledby="judul-tabel">
           <h2 id="judul-tabel" className="h5 fw-semibold mb-1">Daftar Talent Tersedia</h2>
           <p className="text-muted small mb-3">
-            Menampilkan <strong>{filteredTalents.length}</strong> dari {TALENTS.length} talent terdaftar.
+            Menampilkan <strong>{filteredTalents.length}</strong> dari {talents.length} talent terdaftar.
           </p>
           <div className="table-responsive">
             <table className="table table-hover align-middle border">
