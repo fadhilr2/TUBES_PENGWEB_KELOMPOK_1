@@ -21,7 +21,7 @@ Proyek ini dikembangkan menggunakan React 19 dan Bootstrap 5 dengan arsitektur S
 |  2  | **I Putu Gede Deva Gundhala** |    `@theepar`    |
 |  3  | **Adita R.**                  |   `@aditarhm`    |
 |  4  | **Jeni**                      | `@ejeniamutiara` |
-|  5  | **Arsal**                     |  `@JustAHermit`  |
+|  5  | **Abdurrahman Saleh**         |  `@JustAHermit`  |
 
 ---
 
