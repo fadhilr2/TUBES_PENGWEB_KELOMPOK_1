@@ -8,7 +8,7 @@ export default function HomePage() {
 
   return (
     <main>
-      <section id="hero" className="hero-section text-white py-5" aria-labelledby="judul-utama">
+      <section id="hero" className="text-white py-5  bg-primary" aria-labelledby="judul-utama">
         <div className="container py-4">
           <div className="row align-items-center gy-5">
             <div className="col-lg-6">
@@ -86,7 +86,12 @@ export default function HomePage() {
             ].map((cat) => (
               <div key={cat.title} className="col-sm-6 col-lg-3">
                 <div className="card h-100 border-0 shadow-sm">
-                  <img src={cat.img} alt={cat.alt} className="card-img-top img-cover" />
+                  <img
+                    src={cat.img}
+                    alt={cat.alt}
+                    className="card-img-top object-fit-cover"
+                    style={{ height: '220px' }}
+                  />
                   <div className="card-body d-flex flex-column">
                     <h3 className="card-title h5 fw-semibold">{cat.title}</h3>
                     <p className="card-text text-muted small flex-grow-1">{cat.desc}</p>
