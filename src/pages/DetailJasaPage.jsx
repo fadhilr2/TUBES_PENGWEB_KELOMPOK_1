@@ -3,30 +3,23 @@ import { Link } from 'react-router-dom';
 
 export default function DetailJasaPage() {
   useEffect(() => {
-    document.title = 'Rizky Aditya — Edit Video | SewaSkill';
+    document.title = 'Rizky Aditya - Edit Video | SewaSkill';
   }, []);
 
   return (
     <main className="py-5">
       <div className="container">
-
-        {/* ── BREADCRUMB ──────────────────────────────── */}
         <nav aria-label="Breadcrumb" className="mb-4">
           <ol className="breadcrumb">
             <li className="breadcrumb-item"><Link to="/">Beranda</Link></li>
             <li className="breadcrumb-item"><Link to="/katalog">Katalog Jasa</Link></li>
-            <li className="breadcrumb-item active" aria-current="page">Rizky Aditya — Edit Video</li>
+            <li className="breadcrumb-item active" aria-current="page">Rizky Aditya - Edit Video</li>
           </ol>
         </nav>
 
-        {/* ── PROFIL HERO ─────────────────────────────── */}
         <article id="profil-talent">
           <div className="row gy-4">
-
-            {/* LEFT: Profile detail */}
             <div className="col-lg-8">
-
-              {/* Header card */}
               <div className="card border-0 shadow-sm mb-4">
                 <div className="card-body p-4">
                   <div className="d-flex align-items-start gap-4 flex-wrap">
@@ -39,7 +32,7 @@ export default function DetailJasaPage() {
                     />
                     <div className="flex-grow-1">
                       <div className="d-flex flex-wrap gap-2 mb-2">
-                        <span className="badge bg-success">✓ Tersedia — Siap menerima order</span>
+                        <span className="badge bg-success">✓ Tersedia - Siap menerima order</span>
                         <span className="badge bg-warning text-dark">⭐ 4.9 / 5.0 (120 ulasan)</span>
                       </div>
                       <h1 className="h3 fw-bold mb-1">Rizky Aditya</h1>
@@ -49,7 +42,6 @@ export default function DetailJasaPage() {
                 </div>
               </div>
 
-              {/* Meta info */}
               <div className="card border-0 shadow-sm mb-4">
                 <div className="card-body p-4">
                   <div className="row g-3">
@@ -59,7 +51,7 @@ export default function DetailJasaPage() {
                       { icon: '🕐', label: 'Bergabung Sejak', val: 'Januari 2024' },
                       { icon: '📦', label: 'Total Order Selesai', val: '320 order' },
                       { icon: '⭐', label: 'Rating', val: '4.9 / 5.0 (berdasarkan 120 ulasan)' },
-                      { icon: '✅', label: 'Status', val: 'Tersedia — Siap menerima order' },
+                      { icon: '✅', label: 'Status', val: 'Tersedia - Siap menerima order' },
                     ].map((item) => (
                       <div key={item.label} className="col-sm-6">
                         <div className="d-flex gap-2 align-items-start">
@@ -75,7 +67,6 @@ export default function DetailJasaPage() {
                 </div>
               </div>
 
-              {/* Bio */}
               <div className="card border-0 shadow-sm mb-4">
                 <div className="card-body p-4">
                   <h2 className="h5 fw-semibold mb-3">Tentang Saya</h2>
@@ -87,7 +78,6 @@ export default function DetailJasaPage() {
                 </div>
               </div>
 
-              {/* Skills */}
               <div className="card border-0 shadow-sm mb-4">
                 <div className="card-body p-4">
                   <h3 className="h6 fw-semibold mb-3">Keahlian &amp; Software</h3>
@@ -114,7 +104,6 @@ export default function DetailJasaPage() {
               </div>
             </div>
 
-            {/* RIGHT: Order sidebar */}
             <div className="col-lg-4">
               <aside className="card border-0 shadow-sm sticky-top" style={{ top: '80px' }}>
                 <div className="card-body p-4">
@@ -124,7 +113,7 @@ export default function DetailJasaPage() {
                     <p className="fw-bold fs-4 text-primary mb-0">Rp 50.000</p>
                   </div>
                   <p className="small text-muted mb-4">
-                    🕐 <strong>Waktu Pengerjaan:</strong> 2–3 hari kerja
+                    🕐 <strong>Waktu Pengerjaan:</strong> 2-3 hari kerja
                   </p>
                   <div className="d-grid gap-2">
                     <Link className="btn btn-primary" to="/order">
@@ -143,17 +132,16 @@ export default function DetailJasaPage() {
           </div>
         </article>
 
-        {/* ── PORTOFOLIO ──────────────────────────────── */}
         <section id="portofolio" className="mt-5">
           <h2 className="h5 fw-semibold mb-1">Sampel Karya &amp; Portofolio</h2>
           <p className="text-muted small mb-4">Berikut adalah contoh karya yang pernah saya buat untuk klien:</p>
 
           <div className="row g-4">
             {[
-              { src: 'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=800&q=80', caption: 'Edit Video Reels — Brand Fashion Lokal "StyleIn" (Januari 2025)' },
-              { src: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80', caption: 'Edit Video TikTok — Akun Kuliner @makanankece (Februari 2025)' },
-              { src: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=800&q=80', caption: 'Video Promosi Produk — Skincare Brand "GlowUp" (Maret 2025)' },
-              { src: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80', caption: 'Thumbnail YouTube — Konten Teknologi "Review Laptop Baru" (April 2025)' },
+              { src: 'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=800&q=80', caption: 'Edit Video Reels - Brand Fashion Lokal "StyleIn" (Januari 2025)' },
+              { src: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80', caption: 'Edit Video TikTok - Akun Kuliner @makanankece (Februari 2025)' },
+              { src: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=800&q=80', caption: 'Video Promosi Produk - Skincare Brand "GlowUp" (Maret 2025)' },
+              { src: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80', caption: 'Thumbnail YouTube - Konten Teknologi "Review Laptop Baru" (April 2025)' },
             ].map((item) => (
               <div key={item.caption} className="col-sm-6 col-lg-3">
                 <figure className="mb-0">
@@ -170,7 +158,6 @@ export default function DetailJasaPage() {
           </div>
         </section>
 
-        {/* ── PAKET LAYANAN ───────────────────────────── */}
         <section id="paket-layanan" className="mt-5">
           <h2 className="h5 fw-semibold mb-1">Paket Layanan &amp; Harga</h2>
           <p className="text-muted small mb-4">Perbandingan lengkap cakupan layanan untuk memilih paket yang paling tepat.</p>
@@ -210,7 +197,6 @@ export default function DetailJasaPage() {
           </div>
         </section>
 
-        {/* ── ULASAN KLIEN ────────────────────────────── */}
         <section id="ulasan-klien" className="mt-5">
           <h2 className="h5 fw-semibold mb-1">Ulasan Klien (120 Ulasan)</h2>
           <p className="text-muted small mb-4">Kepuasan dan pengalaman langsung dari para klien yang telah bekerja sama.</p>
@@ -230,7 +216,7 @@ export default function DetailJasaPage() {
                   <blockquote className="mb-2">
                     <p className="fst-italic text-muted small">{r.quote}</p>
                   </blockquote>
-                  <cite className="fw-semibold small d-block">— {r.cite}</cite>
+                  <cite className="fw-semibold small d-block">- {r.cite}</cite>
                   <p className="text-muted small mb-0 mt-1">{r.meta}</p>
                 </div>
               </div>
@@ -238,17 +224,15 @@ export default function DetailJasaPage() {
           </div>
         </section>
 
-        {/* ── CTA ─────────────────────────────────────── */}
         <section id="cta-order" className="mt-5">
           <div className="bg-primary text-white rounded-4 p-5 text-center">
             <h2 className="fw-bold mb-2">Tertarik dengan Jasa Ini?</h2>
             <p className="text-white-50 mb-4">Segera pesan sebelum slot penuh! Rizky saat ini hanya menerima maksimal 5 order aktif.</p>
             <Link className="btn btn-light btn-lg fw-semibold px-4" to="/order">
-              Pesan Sekarang — Mulai Rp 50.000
+              Pesan Sekarang - Mulai Rp 50.000
             </Link>
           </div>
         </section>
-
       </div>
     </main>
   );

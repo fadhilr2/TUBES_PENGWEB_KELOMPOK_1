@@ -49,7 +49,7 @@ export default function OrderPage() {
   const [orderPlaced, setOrderPlaced] = useState(false);
 
   useEffect(() => {
-    document.title = 'Konfirmasi & Pesan Jasa — SewaSkill';
+    document.title = 'Konfirmasi & Pesan Jasa - SewaSkill';
   }, []);
 
   const pkg = PACKAGES[selectedPackage] || PACKAGES.standard;
@@ -75,8 +75,6 @@ export default function OrderPage() {
   return (
     <main className="py-5">
       <div className="container">
-
-        {/* ── BREADCRUMB ───────────────────────────────── */}
         <nav className="mb-4" aria-label="Breadcrumb">
           <ol className="breadcrumb">
             <li className="breadcrumb-item"><Link to="/">Beranda</Link></li>
@@ -88,7 +86,6 @@ export default function OrderPage() {
 
         <h1 className="fw-bold mb-5">Konfirmasi &amp; Pesan Jasa</h1>
 
-        {/* ── SUCCESS ALERT ────────────────────────────── */}
         {orderPlaced && (
           <div className="alert alert-success alert-dismissible mb-4" role="alert">
             <h4 className="alert-heading">Pesanan Berhasil Dibuat! 🎉</h4>
@@ -101,15 +98,11 @@ export default function OrderPage() {
         )}
 
         <div className="row gy-4">
-
-          {/* ── LEFT: Form Pemesanan ────────────────────── */}
           <div className="col-lg-8">
             <section id="form-pemesanan">
               <h2 className="h5 fw-semibold mb-4">Isi Data Pemesanan</h2>
 
               <form onSubmit={handleSubmit}>
-
-                {/* Fieldset 1: Data Diri */}
                 <fieldset className="card border-0 shadow-sm mb-4">
                   <div className="card-body p-4">
                     <legend className="h6 fw-semibold border-bottom pb-2 mb-4">Data Diri Pemesan</legend>
@@ -157,7 +150,6 @@ export default function OrderPage() {
                   </div>
                 </fieldset>
 
-                {/* Fieldset 2: Detail Pesanan */}
                 <fieldset className="card border-0 shadow-sm mb-4">
                   <div className="card-body p-4">
                     <legend className="h6 fw-semibold border-bottom pb-2 mb-4">Detail Pesanan</legend>
@@ -172,9 +164,9 @@ export default function OrderPage() {
                           onChange={handleChange}
                           required
                         >
-                          <option value="basic">Paket Basic — Rp 50.000 (Maks. 30 detik, 1x revisi)</option>
-                          <option value="standard">Paket Standard — Rp 100.000 (Maks. 60 detik, 3x revisi)</option>
-                          <option value="premium">Paket Premium — Rp 200.000 (Maks. 3 menit, revisi tak terbatas)</option>
+                          <option value="basic">Paket Basic - Rp 50.000 (Maks. 30 detik, 1x revisi)</option>
+                          <option value="standard">Paket Standard - Rp 100.000 (Maks. 60 detik, 3x revisi)</option>
+                          <option value="premium">Paket Premium - Rp 200.000 (Maks. 3 menit, revisi tak terbatas)</option>
                         </select>
                       </div>
                       <div className="col-md-6">
@@ -187,7 +179,7 @@ export default function OrderPage() {
                           value={formData.deadline}
                           onChange={handleChange}
                         />
-                        <div className="form-text">Opsional. Pengerjaan standar 2–3 hari kerja.</div>
+                        <div className="form-text">Opsional. Pengerjaan standar 2-3 hari kerja.</div>
                       </div>
                       <div className="col-12">
                         <label htmlFor="brief-proyek" className="form-label fw-semibold">Brief Proyek / Catatan untuk Talent *</label>
@@ -218,7 +210,6 @@ export default function OrderPage() {
                   </div>
                 </fieldset>
 
-                {/* Fieldset 3: Metode Pembayaran */}
                 <fieldset className="card border-0 shadow-sm mb-4">
                   <div className="card-body p-4">
                     <legend className="h6 fw-semibold border-bottom pb-2 mb-4">Metode Pembayaran</legend>
@@ -249,7 +240,6 @@ export default function OrderPage() {
                   </div>
                 </fieldset>
 
-                {/* Fieldset 4: Konfirmasi */}
                 <fieldset className="card border-0 shadow-sm mb-4">
                   <div className="card-body p-4">
                     <legend className="h6 fw-semibold border-bottom pb-2 mb-4">Konfirmasi Pesanan</legend>
@@ -286,7 +276,6 @@ export default function OrderPage() {
                   </div>
                 </fieldset>
 
-                {/* Submit */}
                 <div className="d-flex flex-wrap gap-3 align-items-center">
                   <p className="mb-0 fw-semibold">Total: <span className="text-primary fs-5">{pkg.totalFormatted}</span></p>
                   <button className="btn btn-primary btn-lg px-4" type="submit">
@@ -300,13 +289,11 @@ export default function OrderPage() {
             </section>
           </div>
 
-          {/* ── RIGHT: Ringkasan Pesanan ─────────────────── */}
           <div className="col-lg-4">
             <aside id="ringkasan-order" className="card border-0 shadow-sm sticky-top" style={{ top: '80px' }}>
               <div className="card-body p-4">
                 <h2 className="h5 fw-semibold mb-4">Ringkasan Pesanan</h2>
 
-                {/* Talent info */}
                 <div className="d-flex align-items-center gap-3 mb-4">
                   <img
                     src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80"
@@ -317,11 +304,10 @@ export default function OrderPage() {
                   />
                   <div>
                     <p className="mb-0 fw-semibold small">Rizky Aditya</p>
-                    <p className="mb-0 text-muted small">Edit Video Pendek — {pkg.name}</p>
+                    <p className="mb-0 text-muted small">Edit Video Pendek - {pkg.name}</p>
                   </div>
                 </div>
 
-                {/* Price table */}
                 <div className="table-responsive mb-3">
                   <table className="table table-sm table-bordered">
                     <caption className="visually-hidden">Rincian biaya pesanan</caption>
@@ -333,7 +319,7 @@ export default function OrderPage() {
                     </thead>
                     <tbody>
                       <tr>
-                        <td className="small">Jasa Edit Video — {pkg.name}<br /><span className="text-muted">{pkg.desc}</span></td>
+                        <td className="small">Jasa Edit Video - {pkg.name}<br /><span className="text-muted">{pkg.desc}</span></td>
                         <td className="small fw-semibold">{pkg.priceFormatted}</td>
                       </tr>
                       <tr>
@@ -360,7 +346,6 @@ export default function OrderPage() {
               </div>
             </aside>
           </div>
-
         </div>
       </div>
     </main>

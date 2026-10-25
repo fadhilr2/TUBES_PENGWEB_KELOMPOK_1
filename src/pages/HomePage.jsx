@@ -3,13 +3,12 @@ import { Link } from 'react-router-dom';
 
 export default function HomePage() {
   useEffect(() => {
-    document.title = 'SewaSkill — Temukan Talent Terbaik untuk Proyekmu';
+    document.title = 'SewaSkill - Temukan Talent Terbaik untuk Proyekmu';
   }, []);
 
   return (
     <main>
-      {/* ── HERO ─────────────────────────────────────────── */}
-      <section id="hero" className="hero-section text-white py-5" aria-labelledby="judul-utama">
+      <section id="hero" className="text-white py-5  bg-primary" aria-labelledby="judul-utama">
         <div className="container py-4">
           <div className="row align-items-center gy-5">
             <div className="col-lg-6">
@@ -25,10 +24,10 @@ export default function HomePage() {
               </p>
               <div className="d-flex flex-wrap gap-3">
                 <Link className="btn btn-light btn-lg fw-semibold" to="/katalog">
-                  🔍 Cari Talent
+                  Cari Talent
                 </Link>
                 <Link className="btn btn-outline-light btn-lg" to="/tambah-jasa">
-                  💼 Daftar Jasa
+                  Daftar Jasa
                 </Link>
               </div>
             </div>
@@ -40,17 +39,11 @@ export default function HomePage() {
                 width="800"
                 height="533"
               />
-              <div className="position-absolute bottom-0 start-50 translate-middle-x mb-n3">
-                <span className="badge bg-white text-dark shadow px-3 py-2 fs-6">
-                  ⭐ <strong>500+</strong> Talent siap membantu
-                </span>
-              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── KATEGORI POPULER ─────────────────────────────── */}
       <section id="kategori-populer" className="py-5 bg-light" aria-labelledby="judul-kategori">
         <div className="container">
           <div className="text-center mb-5">
@@ -88,7 +81,12 @@ export default function HomePage() {
             ].map((cat) => (
               <div key={cat.title} className="col-sm-6 col-lg-3">
                 <div className="card h-100 border-0 shadow-sm">
-                  <img src={cat.img} alt={cat.alt} className="card-img-top img-cover" />
+                  <img
+                    src={cat.img}
+                    alt={cat.alt}
+                    className="card-img-top object-fit-cover"
+                    style={{ height: '220px' }}
+                  />
                   <div className="card-body d-flex flex-column">
                     <h3 className="card-title h5 fw-semibold">{cat.title}</h3>
                     <p className="card-text text-muted small flex-grow-1">{cat.desc}</p>
@@ -103,7 +101,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── KEUNGGULAN ───────────────────────────────────── */}
       <section id="keunggulan" className="py-5 bg-primary text-white" aria-labelledby="judul-keunggulan">
         <div className="container">
           <div className="text-center mb-5">
@@ -130,7 +127,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── TESTIMONI ────────────────────────────────────── */}
       <section id="testimoni" className="py-5" aria-labelledby="judul-testimoni">
         <div className="container">
           <div className="text-center mb-5">
@@ -163,7 +159,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── CTA ──────────────────────────────────────────── */}
       <section className="py-5 bg-light">
         <div className="container text-center py-3">
           <h2 className="fw-bold mb-3">Siap Menemukan Talent Terbaikmu?</h2>

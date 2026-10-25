@@ -121,7 +121,6 @@ export default function KatalogPage() {
 
   return (
     <main>
-      {/* ── HERO BANNER ──────────────────────────────────── */}
       <div className="hero-section text-white py-5">
         <div className="container py-3">
           <p className="text-white-50 fw-semibold text-uppercase small" style={{ letterSpacing: '.08em' }}>
@@ -138,7 +137,6 @@ export default function KatalogPage() {
       </div>
 
       <div className="container py-5">
-        {/* ── FILTER PANEL ─────────────────────────────── */}
         <section id="filter-pencarian" className="card border-0 shadow-sm mb-5" aria-labelledby="judul-filter">
           <div className="card-body p-4">
             <h2 id="judul-filter" className="h5 fw-semibold mb-4">Filter &amp; Pencarian</h2>
@@ -215,7 +213,6 @@ export default function KatalogPage() {
           </div>
         </section>
 
-        {/* ── TABEL TALENT ─────────────────────────────── */}
         <section id="tabel-talent" className="mb-5" aria-labelledby="judul-tabel">
           <h2 id="judul-tabel" className="h5 fw-semibold mb-1">Daftar Talent Tersedia</h2>
           <p className="text-muted small mb-3">
@@ -273,7 +270,6 @@ export default function KatalogPage() {
           </div>
         </section>
 
-        {/* ── KARTU TALENT ─────────────────────────────── */}
         <section id="kartu-talent" aria-labelledby="judul-kartu">
           <h2 id="judul-kartu" className="h5 fw-semibold mb-1">Jelajahi Talent</h2>
           <p className="text-muted small mb-4">Temukan talent pilihan terbaik berdasarkan bidang dan kebutuhan proyekmu.</p>

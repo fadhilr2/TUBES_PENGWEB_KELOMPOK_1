@@ -19,7 +19,7 @@ export default function TambahJasaPage() {
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
-    document.title = 'Daftarkan Jasamu — SewaSkill Platform Jasa Freelance Mikro';
+    document.title = 'Daftarkan Jasamu - SewaSkill Platform Jasa Freelance Mikro';
   }, []);
 
   const handleChange = (e) => {
@@ -57,8 +57,6 @@ export default function TambahJasaPage() {
   return (
     <main className="py-5">
       <div className="container">
-
-        {/* ── BREADCRUMB ───────────────────────────────── */}
         <nav className="mb-4" aria-label="Breadcrumb">
           <ol className="breadcrumb">
             <li className="breadcrumb-item"><Link to="/">Beranda</Link></li>
@@ -66,7 +64,6 @@ export default function TambahJasaPage() {
           </ol>
         </nav>
 
-        {/* ── PAGE INTRO ───────────────────────────────── */}
         <div className="mb-5">
           <p className="text-primary fw-semibold text-uppercase small" style={{ letterSpacing: '.08em' }}>Jalur Talent &amp; Penjual</p>
           <h1 className="fw-bold display-6 mb-2">Daftarkan Jasa &amp; Keahlianmu</h1>
@@ -76,7 +73,6 @@ export default function TambahJasaPage() {
           </p>
         </div>
 
-        {/* ── SUCCESS ALERT ────────────────────────────── */}
         {submitted && (
           <div className="alert alert-success alert-dismissible" role="alert">
             <strong>Pendaftaran Berhasil Terkirim!</strong> Tim SewaSkill akan meninjau pengajuan profil jasa Anda dalam 1x24 jam.
@@ -84,12 +80,9 @@ export default function TambahJasaPage() {
           </div>
         )}
 
-        {/* ── FORM CARD ────────────────────────────────── */}
         <div className="card border-0 shadow-sm">
           <div className="card-body p-4 p-md-5">
             <form onSubmit={handleSubmit} onReset={handleReset}>
-
-              {/* Fieldset 1: Data Pribadi */}
               <fieldset className="mb-4">
                 <legend className="h6 fw-semibold border-bottom pb-2 mb-4">Data Pribadi Talent</legend>
 
@@ -173,7 +166,6 @@ export default function TambahJasaPage() {
                 </div>
               </fieldset>
 
-              {/* Fieldset 2: Detail Jasa */}
               <fieldset className="mb-4">
                 <legend className="h6 fw-semibold border-bottom pb-2 mb-4">Detail Jasa yang Ditawarkan</legend>
 
@@ -289,7 +281,6 @@ export default function TambahJasaPage() {
                 </div>
               </fieldset>
 
-              {/* Fieldset 3: Status */}
               <fieldset className="mb-4">
                 <legend className="h6 fw-semibold border-bottom pb-2 mb-4">Status Ketersediaan Saat Ini</legend>
                 <div className="form-check mb-2">
@@ -318,7 +309,6 @@ export default function TambahJasaPage() {
                 </div>
               </fieldset>
 
-              {/* Fieldset 4: Persetujuan */}
               <fieldset className="mb-4">
                 <legend className="h6 fw-semibold border-bottom pb-2 mb-4">Persetujuan &amp; Ketentuan</legend>
                 <div className="form-check mb-2">
@@ -356,7 +346,6 @@ export default function TambahJasaPage() {
                 </div>
               </fieldset>
 
-              {/* Actions */}
               <div className="d-flex flex-wrap gap-2">
                 <button className="btn btn-primary px-4" type="submit">Daftarkan Jasa Saya</button>
                 <button className="btn btn-outline-secondary" type="reset">Bersihkan Form</button>
@@ -369,7 +358,6 @@ export default function TambahJasaPage() {
           </div>
         </div>
 
-        {/* ── SYARAT & KETENTUAN ───────────────────────── */}
         <section id="syarat-ketentuan" className="mt-5">
           <div className="card border-0 bg-light">
             <div className="card-body p-4">
@@ -384,7 +372,6 @@ export default function TambahJasaPage() {
             </div>
           </div>
         </section>
-
       </div>
     </main>
   );

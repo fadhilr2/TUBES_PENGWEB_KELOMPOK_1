@@ -8,7 +8,7 @@ export default function Footer() {
           <div className="col-md-5">
             <Link className="text-white text-decoration-none fw-bold fs-5 d-flex align-items-center gap-2 mb-2" to="/">
               <img
-                src="https://placehold.co/30x30/0d6efd/FFFFFF?text=SS"
+                src="/favicon.svg"
                 alt="Logo SewaSkill"
                 width="30"
                 height="30"
