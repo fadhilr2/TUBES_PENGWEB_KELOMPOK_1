@@ -1,6 +1,5 @@
-﻿import { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import './DetailJasaPage.css';
 
 export default function DetailJasaPage() {
   useEffect(() => {
@@ -8,343 +7,248 @@ export default function DetailJasaPage() {
   }, []);
 
   return (
-    <main>
+    <main className="py-5">
       <div className="container">
-        <nav className="breadcrumb" aria-label="Breadcrumb">
-          <ol className="breadcrumb__list">
-            <li className="breadcrumb__item">
-              <Link to="/">Beranda</Link>
-            </li>
-            <li className="breadcrumb__item">
-              <Link to="/katalog">Katalog Jasa</Link>
-            </li>
-            <li className="breadcrumb__item" aria-current="page">
-              Rizky Aditya — Edit Video
-            </li>
+
+        {/* ── BREADCRUMB ──────────────────────────────── */}
+        <nav aria-label="Breadcrumb" className="mb-4">
+          <ol className="breadcrumb">
+            <li className="breadcrumb-item"><Link to="/">Beranda</Link></li>
+            <li className="breadcrumb-item"><Link to="/katalog">Katalog Jasa</Link></li>
+            <li className="breadcrumb-item active" aria-current="page">Rizky Aditya — Edit Video</li>
           </ol>
         </nav>
 
-        <article id="profil-talent" className="profile-hero">
-          <div className="profile-main">
-            <div className="profile-header-card">
-              <div className="profile-avatar-wrap">
-                <img
-                  className="profile-avatar"
-                  src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&amp;fit=crop&amp;w=400&amp;q=80"
-                  alt="Foto profil Rizky Aditya, editor video profesional spesialis Reels dan TikTok dengan pengalaman 3 tahun"
-                  width="180"
-                  height="180"
-                />
-              </div>
+        {/* ── PROFIL HERO ─────────────────────────────── */}
+        <article id="profil-talent">
+          <div className="row gy-4">
 
-              <div className="profile-header-info">
-                <div className="profile-status-wrap">
-                  <span className="badge badge--success">
-                    <img className="badge__icon" src="/assets/icons/check.svg" alt="" aria-hidden="true" />
-                    <span>Tersedia — Siap menerima order</span>
-                  </span>
-                  <span className="rating">
-                    <img className="rating__icon" src="/assets/icons/star.svg" alt="" aria-hidden="true" />
-                    <span>4.9 / 5.0 (120 ulasan)</span>
-                  </span>
+            {/* LEFT: Profile detail */}
+            <div className="col-lg-8">
+
+              {/* Header card */}
+              <div className="card border-0 shadow-sm mb-4">
+                <div className="card-body p-4">
+                  <div className="d-flex align-items-start gap-4 flex-wrap">
+                    <img
+                      src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80"
+                      alt="Foto profil Rizky Aditya, editor video profesional"
+                      className="avatar-lg flex-shrink-0"
+                      width="130"
+                      height="130"
+                    />
+                    <div className="flex-grow-1">
+                      <div className="d-flex flex-wrap gap-2 mb-2">
+                        <span className="badge bg-success">✓ Tersedia — Siap menerima order</span>
+                        <span className="badge bg-warning text-dark">⭐ 4.9 / 5.0 (120 ulasan)</span>
+                      </div>
+                      <h1 className="h3 fw-bold mb-1">Rizky Aditya</h1>
+                      <p className="text-muted mb-0">Spesialis Edit Video Pendek Media Sosial</p>
+                    </div>
+                  </div>
                 </div>
-                <h1>Rizky Aditya</h1>
-                <p className="profile-role">Spesialis Edit Video Pendek Media Sosial</p>
+              </div>
+
+              {/* Meta info */}
+              <div className="card border-0 shadow-sm mb-4">
+                <div className="card-body p-4">
+                  <div className="row g-3">
+                    {[
+                      { icon: '💼', label: 'Bidang Keahlian', val: 'Edit Video Pendek (Reels / TikTok / YouTube Shorts)' },
+                      { icon: '📍', label: 'Lokasi', val: 'Bandung, Jawa Barat' },
+                      { icon: '🕐', label: 'Bergabung Sejak', val: 'Januari 2024' },
+                      { icon: '📦', label: 'Total Order Selesai', val: '320 order' },
+                      { icon: '⭐', label: 'Rating', val: '4.9 / 5.0 (berdasarkan 120 ulasan)' },
+                      { icon: '✅', label: 'Status', val: 'Tersedia — Siap menerima order' },
+                    ].map((item) => (
+                      <div key={item.label} className="col-sm-6">
+                        <div className="d-flex gap-2 align-items-start">
+                          <span>{item.icon}</span>
+                          <div>
+                            <div className="text-muted small">{item.label}</div>
+                            <div className="fw-semibold small">{item.val}</div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Bio */}
+              <div className="card border-0 shadow-sm mb-4">
+                <div className="card-body p-4">
+                  <h2 className="h5 fw-semibold mb-3">Tentang Saya</h2>
+                  <p className="text-muted mb-0">
+                    Halo! Saya Rizky, seorang video editor berpengalaman 3 tahun yang berspesialisasi dalam konten media sosial berdurasi pendek.
+                    Saya telah membantu lebih dari 50 kreator konten dan brand lokal meningkatkan engagement mereka melalui video yang engaging dan profesional.
+                    Tools yang saya kuasai: Adobe Premiere Pro, CapCut Pro, dan DaVinci Resolve.
+                  </p>
+                </div>
+              </div>
+
+              {/* Skills */}
+              <div className="card border-0 shadow-sm mb-4">
+                <div className="card-body p-4">
+                  <h3 className="h6 fw-semibold mb-3">Keahlian &amp; Software</h3>
+                  <div className="mb-3">
+                    {['Adobe Premiere Pro', 'CapCut Pro', 'DaVinci Resolve', 'Color Grading', 'Dynamic Subtitles', 'Sound Design'].map((s) => (
+                      <span key={s} className="skill-pill">{s}</span>
+                    ))}
+                  </div>
+
+                  <h3 className="h6 fw-semibold mb-3">Keunggulan Layanan</h3>
+                  <ul className="list-unstyled mb-0">
+                    {[
+                      'Pengerjaan tepat waktu dengan standar ekspor resolusi tinggi',
+                      'Rasio aspek disesuaikan khusus untuk Reels, TikTok, dan Shorts (9:16)',
+                      'Konsultasi konsep dan alur video sebelum proses editing dimulai',
+                    ].map((feat) => (
+                      <li key={feat} className="d-flex gap-2 mb-2">
+                        <span className="text-success fw-bold">✓</span>
+                        <span className="text-muted small">{feat}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
 
-            <div className="profile-meta">
-              <div className="profile-meta__item">
-                <img className="profile-meta__icon" src="/assets/icons/briefcase.svg" alt="" aria-hidden="true" />
-                <p>
-                  <strong>Bidang Keahlian:</strong> Edit Video Pendek (Reels / TikTok / YouTube Shorts)
-                </p>
-              </div>
-              <div className="profile-meta__item">
-                <img className="profile-meta__icon" src="/assets/icons/map-pin.svg" alt="" aria-hidden="true" />
-                <p>
-                  <strong>Lokasi:</strong> Bandung, Jawa Barat
-                </p>
-              </div>
-              <div className="profile-meta__item">
-                <img className="profile-meta__icon" src="/assets/icons/clock.svg" alt="" aria-hidden="true" />
-                <p>
-                  <strong>Bergabung Sejak:</strong> Januari 2024
-                </p>
-              </div>
-              <div className="profile-meta__item">
-                <img className="profile-meta__icon" src="/assets/icons/users.svg" alt="" aria-hidden="true" />
-                <p>
-                  <strong>Total Order Selesai:</strong> 320 order
-                </p>
-              </div>
-              <div className="profile-meta__item">
-                <img className="profile-meta__icon" src="/assets/icons/star.svg" alt="" aria-hidden="true" />
-                <p>
-                  <strong>Rating:</strong> 4.9 / 5.0 (berdasarkan 120 ulasan)
-                </p>
-              </div>
-              <div className="profile-meta__item">
-                <img className="profile-meta__icon" src="/assets/icons/check.svg" alt="" aria-hidden="true" />
-                <p>
-                  <strong>Status:</strong> Tersedia — Siap menerima order
-                </p>
-              </div>
-            </div>
-
-            <div className="profile-bio">
-              <h2>Tentang Saya</h2>
-              <p>
-                Halo! Saya Rizky, seorang video editor berpengalaman 3 tahun yang berspesialisasi dalam konten media sosial berdurasi pendek.
-                Saya telah membantu lebih dari 50 kreator konten dan brand lokal meningkatkan engagement mereka melalui video yang engaging dan profesional.
-                Tools yang saya kuasai: Adobe Premiere Pro, CapCut Pro, dan DaVinci Resolve.
-              </p>
-            </div>
-
-            <div className="profile-skills">
-              <h3>Keahlian &amp; Software</h3>
-              <ul className="skills-list">
-                <li><span className="skill-tag">Adobe Premiere Pro</span></li>
-                <li><span className="skill-tag">CapCut Pro</span></li>
-                <li><span className="skill-tag">DaVinci Resolve</span></li>
-                <li><span className="skill-tag">Color Grading</span></li>
-                <li><span className="skill-tag">Dynamic Subtitles</span></li>
-                <li><span className="skill-tag">Sound Design</span></li>
-              </ul>
-
-              <h3>Keunggulan Layanan</h3>
-              <ul className="features-list">
-                <li>
-                  <img className="features-list__icon" src="/assets/icons/check.svg" alt="" aria-hidden="true" />
-                  <span>Pengerjaan tepat waktu dengan standar ekspor resolusi tinggi</span>
-                </li>
-                <li>
-                  <img className="features-list__icon" src="/assets/icons/check.svg" alt="" aria-hidden="true" />
-                  <span>Rasio aspek disesuaikan khusus untuk platform Reels, TikTok, dan Shorts (9:16)</span>
-                </li>
-                <li>
-                  <img className="features-list__icon" src="/assets/icons/check.svg" alt="" aria-hidden="true" />
-                  <span>Konsultasi konsep dan alur video sebelum proses editing dimulai</span>
-                </li>
-              </ul>
+            {/* RIGHT: Order sidebar */}
+            <div className="col-lg-4">
+              <aside className="card border-0 shadow-sm sticky-top" style={{ top: '80px' }}>
+                <div className="card-body p-4">
+                  <h2 className="h5 fw-semibold mb-3">Pesan Jasa Ini</h2>
+                  <div className="bg-light rounded p-3 mb-3">
+                    <p className="text-muted small mb-1">Harga Mulai</p>
+                    <p className="fw-bold fs-4 text-primary mb-0">Rp 50.000</p>
+                  </div>
+                  <p className="small text-muted mb-4">
+                    🕐 <strong>Waktu Pengerjaan:</strong> 2–3 hari kerja
+                  </p>
+                  <div className="d-grid gap-2">
+                    <Link className="btn btn-primary" to="/order">
+                      Pesan Sekarang
+                    </Link>
+                    <Link className="btn btn-outline-secondary" to="/katalog">
+                      Kembali ke Katalog
+                    </Link>
+                  </div>
+                  <p className="text-muted small mt-3 mb-0 text-center">
+                    🔒 Garansi revisi dan perlindungan pembayaran transaksi aman.
+                  </p>
+                </div>
+              </aside>
             </div>
           </div>
-
-          <aside className="profile-summary profile-card">
-            <h2>Pesan Jasa Ini</h2>
-            <div className="profile-card__price-box">
-              <p className="profile-card__label">Harga Mulai</p>
-              <p className="profile-card__amount">
-                <strong>Mulai dari:</strong> Rp 50.000
-              </p>
-            </div>
-            <div className="profile-card__delivery">
-              <img className="profile-card__icon" src="/assets/icons/clock.svg" alt="" aria-hidden="true" />
-              <p>
-                <strong>Waktu Pengerjaan:</strong> 2–3 hari kerja
-              </p>
-            </div>
-            <div className="profile-card__actions cta-actions">
-              <Link className="button button--primary" to="/order">
-                <img className="button__icon" src="/assets/icons/arrow-right-white.svg" alt="" aria-hidden="true" />
-                <span>Pesan Sekarang</span>
-              </Link>
-              <Link className="button button--secondary" to="/katalog">
-                <span>Kembali ke Katalog</span>
-              </Link>
-            </div>
-            <div className="profile-card__guarantee">
-              <p>Garansi revisi dan perlindungan pembayaran transaksi aman.</p>
-            </div>
-          </aside>
         </article>
 
-        <section id="portofolio" className="section section--portfolio">
-          <div className="section-heading">
-            <h2>Sampel Karya &amp; Portofolio</h2>
-            <p>Berikut adalah contoh karya yang pernah saya buat untuk klien:</p>
-          </div>
+        {/* ── PORTOFOLIO ──────────────────────────────── */}
+        <section id="portofolio" className="mt-5">
+          <h2 className="h5 fw-semibold mb-1">Sampel Karya &amp; Portofolio</h2>
+          <p className="text-muted small mb-4">Berikut adalah contoh karya yang pernah saya buat untuk klien:</p>
 
-          <div className="portfolio-grid">
-            <figure className="portfolio-item">
-              <img
-                src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&amp;fit=crop&amp;w=800&amp;q=80"
-                alt="Sampel edit video Reels Instagram untuk brand fashion lokal dengan transisi dinamis dan teks animasi berwarna putih"
-                width="300"
-                height="200"
-                loading="lazy"
-              />
-              <figcaption>Edit Video Reels — Brand Fashion Lokal &quot;StyleIn&quot; (Januari 2025)</figcaption>
-            </figure>
-
-            <figure className="portfolio-item">
-              <img
-                src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&amp;fit=crop&amp;w=800&amp;q=80"
-                alt="Sampel edit video TikTok untuk akun kuliner dengan efek slow motion dan musik trending"
-                width="300"
-                height="200"
-                loading="lazy"
-              />
-              <figcaption>Edit Video TikTok — Akun Kuliner @makanankece (Februari 2025)</figcaption>
-            </figure>
-
-            <figure className="portfolio-item">
-              <img
-                src="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&amp;fit=crop&amp;w=800&amp;q=80"
-                alt="Sampel video promosi produk skincare berdurasi 30 detik dengan warna pastel dan teks produk"
-                width="300"
-                height="200"
-                loading="lazy"
-              />
-              <figcaption>Video Promosi Produk — Skincare Brand &quot;GlowUp&quot; (Maret 2025)</figcaption>
-            </figure>
-
-            <figure className="portfolio-item">
-              <img
-                src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&amp;fit=crop&amp;w=800&amp;q=80"
-                alt="Sampel thumbnail YouTube bertema teknologi dengan warna biru dan grafis laptop yang modern"
-                width="300"
-                height="200"
-                loading="lazy"
-              />
-              <figcaption>Thumbnail YouTube — Konten Teknologi &quot;Review Laptop Baru&quot; (April 2025)</figcaption>
-            </figure>
+          <div className="row g-4">
+            {[
+              { src: 'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=800&q=80', caption: 'Edit Video Reels — Brand Fashion Lokal "StyleIn" (Januari 2025)' },
+              { src: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80', caption: 'Edit Video TikTok — Akun Kuliner @makanankece (Februari 2025)' },
+              { src: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=800&q=80', caption: 'Video Promosi Produk — Skincare Brand "GlowUp" (Maret 2025)' },
+              { src: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80', caption: 'Thumbnail YouTube — Konten Teknologi "Review Laptop Baru" (April 2025)' },
+            ].map((item) => (
+              <div key={item.caption} className="col-sm-6 col-lg-3">
+                <figure className="mb-0">
+                  <img
+                    src={item.src}
+                    alt={item.caption}
+                    className="portfolio-img rounded shadow-sm w-100"
+                    loading="lazy"
+                  />
+                  <figcaption className="text-muted small mt-2">{item.caption}</figcaption>
+                </figure>
+              </div>
+            ))}
           </div>
         </section>
 
-        <section id="paket-layanan" className="section section--packages">
-          <div className="section-heading">
-            <h2>Paket Layanan &amp; Harga</h2>
-            <p>Perbandingan lengkap cakupan layanan untuk memilih paket yang paling tepat bagi kebutuhan kontenmu.</p>
-          </div>
+        {/* ── PAKET LAYANAN ───────────────────────────── */}
+        <section id="paket-layanan" className="mt-5">
+          <h2 className="h5 fw-semibold mb-1">Paket Layanan &amp; Harga</h2>
+          <p className="text-muted small mb-4">Perbandingan lengkap cakupan layanan untuk memilih paket yang paling tepat.</p>
 
-          <div className="table-wrapper">
-            <table>
-              <caption>Perbandingan paket layanan edit video oleh Rizky Aditya</caption>
-              <thead>
+          <div className="table-responsive">
+            <table className="table table-bordered align-middle">
+              <caption className="visually-hidden">Perbandingan paket layanan edit video oleh Rizky Aditya</caption>
+              <thead className="table-primary">
                 <tr>
                   <th scope="col">Fitur</th>
                   <th scope="col">Paket Basic</th>
-                  <th scope="col" className="is-recommended">
-                    Paket Standard <span className="badge badge--recommended">Populer</span>
+                  <th scope="col" className="table-warning">
+                    Paket Standard <span className="badge bg-warning text-dark ms-1">Populer</span>
                   </th>
                   <th scope="col">Paket Premium</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">Harga</th>
-                  <td>Rp 50.000</td>
-                  <td className="is-recommended">Rp 100.000</td>
-                  <td>Rp 200.000</td>
-                </tr>
-                <tr>
-                  <th scope="row">Durasi Video</th>
-                  <td>Maks. 30 detik</td>
-                  <td className="is-recommended">Maks. 60 detik</td>
-                  <td>Maks. 3 menit</td>
-                </tr>
-                <tr>
-                  <th scope="row">Jumlah Revisi</th>
-                  <td>1x revisi</td>
-                  <td className="is-recommended">3x revisi</td>
-                  <td>Revisi tidak terbatas</td>
-                </tr>
-                <tr>
-                  <th scope="row">Subtitel / Caption</th>
-                  <td>Tidak</td>
-                  <td className="is-recommended">Ya</td>
-                  <td>Ya</td>
-                </tr>
-                <tr>
-                  <th scope="row">Tambah Musik</th>
-                  <td>Tidak</td>
-                  <td className="is-recommended">Ya</td>
-                  <td>Ya (custom)</td>
-                </tr>
-                <tr>
-                  <th scope="row">Waktu Pengerjaan</th>
-                  <td>3 hari</td>
-                  <td className="is-recommended">2 hari</td>
-                  <td>1 hari (prioritas)</td>
-                </tr>
-                <tr>
-                  <th scope="row">Format Output</th>
-                  <td>MP4 720p</td>
-                  <td className="is-recommended">MP4 1080p</td>
-                  <td>MP4 4K + RAW file</td>
-                </tr>
+                {[
+                  ['Harga', 'Rp 50.000', 'Rp 100.000', 'Rp 200.000'],
+                  ['Durasi Video', 'Maks. 30 detik', 'Maks. 60 detik', 'Maks. 3 menit'],
+                  ['Jumlah Revisi', '1x revisi', '3x revisi', 'Revisi tidak terbatas'],
+                  ['Subtitel / Caption', 'Tidak', 'Ya', 'Ya'],
+                  ['Tambah Musik', 'Tidak', 'Ya', 'Ya (custom)'],
+                  ['Waktu Pengerjaan', '3 hari', '2 hari', '1 hari (prioritas)'],
+                  ['Format Output', 'MP4 720p', 'MP4 1080p', 'MP4 4K + RAW file'],
+                ].map(([feat, basic, std, prem]) => (
+                  <tr key={feat}>
+                    <th scope="row" className="fw-semibold">{feat}</th>
+                    <td>{basic}</td>
+                    <td className="table-warning fw-semibold">{std}</td>
+                    <td>{prem}</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
         </section>
 
-        <section id="ulasan-klien" className="section section--reviews">
-          <div className="section-heading">
-            <h2>Ulasan Klien (120 Ulasan)</h2>
-            <p>Kepuasan dan pengalaman langsung dari para klien yang telah bekerja sama dengan Rizky Aditya.</p>
-          </div>
+        {/* ── ULASAN KLIEN ────────────────────────────── */}
+        <section id="ulasan-klien" className="mt-5">
+          <h2 className="h5 fw-semibold mb-1">Ulasan Klien (120 Ulasan)</h2>
+          <p className="text-muted small mb-4">Kepuasan dan pengalaman langsung dari para klien yang telah bekerja sama.</p>
 
-          <div className="reviews-grid">
-            <article className="review-card">
-              <div className="review-card__header">
-                <span className="rating">
-                  <img className="rating__icon" src="/assets/icons/star.svg" alt="" aria-hidden="true" />
-                  <span>5/5</span>
-                </span>
-                <span className="badge badge--soft">Paket Standard</span>
+          <div className="row g-4">
+            {[
+              { rating: '5/5', paket: 'Paket Standard', quote: '"Rizky sangat profesional dan hasilnya melebihi ekspektasi saya! Video Reels-nya langsung viral dengan 50K tayangan dalam 24 jam. Pasti akan repeat order!"', cite: 'Dinda R., pemilik brand @styleinclo', meta: 'Februari 2025' },
+              { rating: '5/5', paket: 'Paket Basic', quote: '"Cepat, responsif, dan hasilnya kece banget. Revisi dilayani dengan sabar tanpa protes. Rekomen banget buat yang butuh edit video cepat!"', cite: 'Andi K., kreator konten kuliner', meta: 'Maret 2025' },
+              { rating: '4/5', paket: 'Paket Standard', quote: '"Hasil editannya smooth dan on-trend. Suka banget sama transisi yang dia pakai. Harga terjangkau untuk kualitas sebagus ini."', cite: 'Lestari M., kreator lifestyle', meta: 'April 2025' },
+            ].map((r) => (
+              <div key={r.cite} className="col-md-4">
+                <div className="card border-0 shadow-sm h-100 p-4">
+                  <div className="d-flex justify-content-between align-items-center mb-3">
+                    <span className="badge bg-warning text-dark">⭐ {r.rating}</span>
+                    <span className="badge bg-light text-dark border">{r.paket}</span>
+                  </div>
+                  <blockquote className="mb-2">
+                    <p className="fst-italic text-muted small">{r.quote}</p>
+                  </blockquote>
+                  <cite className="fw-semibold small d-block">— {r.cite}</cite>
+                  <p className="text-muted small mb-0 mt-1">{r.meta}</p>
+                </div>
               </div>
-              <blockquote>
-                <p>&quot;Rizky sangat profesional dan hasilnya melebihi ekspektasi saya! Video Reels-nya langsung viral dengan 50K tayangan dalam 24 jam. Pasti akan repeat order!&quot;</p>
-              </blockquote>
-              <cite>— Dinda R., pemilik brand @styleinclo</cite>
-              <p className="review-card__meta">Rating: 5/5 | Dipesan: Paket Standard | Februari 2025</p>
-            </article>
-
-            <article className="review-card">
-              <div className="review-card__header">
-                <span className="rating">
-                  <img className="rating__icon" src="/assets/icons/star.svg" alt="" aria-hidden="true" />
-                  <span>5/5</span>
-                </span>
-                <span className="badge badge--soft">Paket Basic</span>
-              </div>
-              <blockquote>
-                <p>&quot;Cepat, responsif, dan hasilnya kece banget. Revisi dilayani dengan sabar tanpa protes. Rekomen banget buat yang butuh edit video cepat!&quot;</p>
-              </blockquote>
-              <cite>— Andi K., kreator konten kuliner</cite>
-              <p className="review-card__meta">Rating: 5/5 | Dipesan: Paket Basic | Maret 2025</p>
-            </article>
-
-            <article className="review-card">
-              <div className="review-card__header">
-                <span className="rating">
-                  <img className="rating__icon" src="/assets/icons/star.svg" alt="" aria-hidden="true" />
-                  <span>4/5</span>
-                </span>
-                <span className="badge badge--soft">Paket Standard</span>
-              </div>
-              <blockquote>
-                <p>&quot;Hasil editannya smooth dan on-trend. Suka banget sama transisi yang dia pakai. Harga terjangkau untuk kualitas sebagus ini.&quot;</p>
-              </blockquote>
-              <cite>— Lestari M., kreator lifestyle</cite>
-              <p className="review-card__meta">Rating: 4/5 | Dipesan: Paket Standard | April 2025</p>
-            </article>
+            ))}
           </div>
         </section>
 
-        <section id="cta-order" className="section section--cta">
-          <div className="cta-box">
-            <h2>Tertarik dengan Jasa Ini?</h2>
-            <p>Segera pesan sebelum slot penuh! Rizky saat ini hanya menerima maksimal 5 order aktif secara bersamaan.</p>
-            <div className="cta-actions">
-              <Link className="button button--primary" to="/order">
-                <img className="button__icon" src="/assets/icons/arrow-right-white.svg" alt="" aria-hidden="true" />
-                <span>Pesan Sekarang — Mulai Rp 50.000</span>
-              </Link>
-            </div>
+        {/* ── CTA ─────────────────────────────────────── */}
+        <section id="cta-order" className="mt-5">
+          <div className="bg-primary text-white rounded-4 p-5 text-center">
+            <h2 className="fw-bold mb-2">Tertarik dengan Jasa Ini?</h2>
+            <p className="text-white-50 mb-4">Segera pesan sebelum slot penuh! Rizky saat ini hanya menerima maksimal 5 order aktif.</p>
+            <Link className="btn btn-light btn-lg fw-semibold px-4" to="/order">
+              Pesan Sekarang — Mulai Rp 50.000
+            </Link>
           </div>
         </section>
+
       </div>
     </main>
   );

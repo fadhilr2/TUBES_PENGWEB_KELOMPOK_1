@@ -1,6 +1,5 @@
-﻿import { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import './HomePage.css';
 
 export default function HomePage() {
   useEffect(() => {
@@ -9,167 +8,169 @@ export default function HomePage() {
 
   return (
     <main>
-      <section id="hero" className="hero" aria-labelledby="judul-utama">
-        <div className="container hero__layout">
-          <div className="hero__content">
-            <p className="eyebrow">Jasa digital tepercaya dalam satu tempat</p>
-            <h1 id="judul-utama">Temukan Ahlinya, Selesaikan Proyekmu</h1>
-            <p className="hero__lead">
-              SewaSkill mempertemukanmu dengan talent digital untuk berbagai kebutuhan,
-              mulai dari desain hingga pemrograman. Temukan jasa yang sesuai dengan
-              kebutuhan dan anggaran proyekmu dengan lebih mudah.
-            </p>
-            <div className="hero__actions">
-              <Link className="button button--primary" to="/katalog">
-                <img className="button__icon" src="/assets/icons/search.svg" alt="" aria-hidden="true" />
-                <span>Cari Talent</span>
-              </Link>
-              <Link className="button button--secondary" to="/tambah-jasa">
-                <img className="button__icon" src="/assets/icons/briefcase.svg" alt="" aria-hidden="true" />
-                <span>Daftar Jasa</span>
-              </Link>
+      {/* ── HERO ─────────────────────────────────────────── */}
+      <section id="hero" className="hero-section text-white py-5" aria-labelledby="judul-utama">
+        <div className="container py-4">
+          <div className="row align-items-center gy-5">
+            <div className="col-lg-6">
+              <p className="text-white-50 fw-semibold text-uppercase small mb-2" style={{ letterSpacing: '.08em' }}>
+                Jasa digital tepercaya dalam satu tempat
+              </p>
+              <h1 id="judul-utama" className="display-5 fw-bold mb-3">
+                Temukan Ahlinya, Selesaikan Proyekmu
+              </h1>
+              <p className="lead text-white-50 mb-4">
+                SewaSkill mempertemukanmu dengan talent digital untuk berbagai kebutuhan,
+                mulai dari desain hingga pemrograman.
+              </p>
+              <div className="d-flex flex-wrap gap-3">
+                <Link className="btn btn-light btn-lg fw-semibold" to="/katalog">
+                  🔍 Cari Talent
+                </Link>
+                <Link className="btn btn-outline-light btn-lg" to="/tambah-jasa">
+                  💼 Daftar Jasa
+                </Link>
+              </div>
+            </div>
+            <div className="col-lg-6 position-relative text-center">
+              <img
+                src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=800&q=80"
+                alt="Tim talent digital berdiskusi bersama"
+                className="img-fluid rounded-4 shadow-lg"
+                width="800"
+                height="533"
+              />
+              <div className="position-absolute bottom-0 start-50 translate-middle-x mb-n3">
+                <span className="badge bg-white text-dark shadow px-3 py-2 fs-6">
+                  ⭐ <strong>500+</strong> Talent siap membantu
+                </span>
+              </div>
             </div>
           </div>
-          <div className="hero__media">
-            <img
-              src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&amp;fit=crop&amp;w=1200&amp;q=80"
-              alt="Sekelompok talent digital berdiskusi dan bekerja bersama menggunakan laptop"
-              width="1200"
-              height="800"
-            />
-            <div className="hero__proof">
-              <span className="hero__proof-number">500+</span>
-              <span>Talent siap membantu</span>
+        </div>
+      </section>
+
+      {/* ── KATEGORI POPULER ─────────────────────────────── */}
+      <section id="kategori-populer" className="py-5 bg-light" aria-labelledby="judul-kategori">
+        <div className="container">
+          <div className="text-center mb-5">
+            <p className="text-primary fw-semibold text-uppercase small" style={{ letterSpacing: '.08em' }}>Pilihan terpopuler</p>
+            <h2 id="judul-kategori" className="fw-bold">Kategori Jasa Populer</h2>
+            <p className="text-muted">Pilih kategori yang paling sesuai untuk proyekmu.</p>
+          </div>
+
+          <div className="row g-4">
+            {[
+              {
+                img: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=600&q=80',
+                alt: 'Editor video',
+                title: 'Edit Video',
+                desc: 'Jadikan rekamanmu lebih menarik untuk konten media sosial, promosi, maupun dokumentasi.',
+              },
+              {
+                img: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=600&q=80',
+                alt: 'Desainer grafis',
+                title: 'Desain Thumbnail',
+                desc: 'Dapatkan thumbnail kreatif yang membantu kontenmu tampil lebih menonjol dan profesional.',
+              },
+              {
+                img: 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=600&q=80',
+                alt: 'Programmer',
+                title: 'Tutor Koding',
+                desc: 'Pelajari dasar pemrograman atau tingkatkan skill koding bersama tutor pilihanmu.',
+              },
+              {
+                img: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=600&q=80',
+                alt: 'Penulis konten',
+                title: 'Penulisan Konten',
+                desc: 'Bangun komunikasi yang lebih kuat melalui artikel, caption, dan naskah profesional.',
+              },
+            ].map((cat) => (
+              <div key={cat.title} className="col-sm-6 col-lg-3">
+                <div className="card h-100 border-0 shadow-sm">
+                  <img src={cat.img} alt={cat.alt} className="card-img-top img-cover" />
+                  <div className="card-body d-flex flex-column">
+                    <h3 className="card-title h5 fw-semibold">{cat.title}</h3>
+                    <p className="card-text text-muted small flex-grow-1">{cat.desc}</p>
+                    <Link to="/katalog" className="btn btn-outline-primary btn-sm mt-2" aria-label={`Lihat jasa ${cat.title}`}>
+                      Lihat Jasa →
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── KEUNGGULAN ───────────────────────────────────── */}
+      <section id="keunggulan" className="py-5 bg-primary text-white" aria-labelledby="judul-keunggulan">
+        <div className="container">
+          <div className="text-center mb-5">
+            <p className="text-white-50 fw-semibold text-uppercase small" style={{ letterSpacing: '.08em' }}>Lebih tenang saat memesan</p>
+            <h2 id="judul-keunggulan" className="fw-bold">Mengapa SewaSkill?</h2>
+            <p className="text-white-50">Platform yang dirancang agar proses mencari jasa terasa sederhana.</p>
+          </div>
+
+          <div className="row g-4 justify-content-center">
+            {[
+              { icon: '👥', text: 'Lebih dari 500 talent siap membantu berbagai kebutuhan digital' },
+              { icon: '⭐', text: 'Rating dan ulasan ditampilkan secara transparan' },
+              { icon: '💸', text: 'Pilihan harga terjangkau, mulai dari Rp25.000' },
+              { icon: '⚡', text: 'Proses pemesanan jasa mudah dan cepat' },
+            ].map((item) => (
+              <div key={item.text} className="col-sm-6 col-lg-3">
+                <div className="text-center p-3">
+                  <div className="fs-1 mb-2">{item.icon}</div>
+                  <p className="mb-0 text-white-75">{item.text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── TESTIMONI ────────────────────────────────────── */}
+      <section id="testimoni" className="py-5" aria-labelledby="judul-testimoni">
+        <div className="container">
+          <div className="text-center mb-5">
+            <p className="text-primary fw-semibold text-uppercase small" style={{ letterSpacing: '.08em' }}>Cerita pengguna</p>
+            <h2 id="judul-testimoni" className="fw-bold">Apa Kata Mereka?</h2>
+          </div>
+
+          <div className="row g-4 justify-content-center">
+            <div className="col-md-6">
+              <blockquote className="card border-0 shadow-sm p-4 h-100">
+                <p className="card-text fst-italic">
+                  "Saya bisa menemukan editor video yang memahami gaya konten usaha saya. Komunikasinya jelas dan hasilnya sesuai kebutuhan."
+                </p>
+                <footer className="blockquote-footer mt-2">
+                  <cite>Rina, pemilik usaha kuliner</cite>
+                </footer>
+              </blockquote>
+            </div>
+            <div className="col-md-6">
+              <blockquote className="card border-0 shadow-sm p-4 h-100">
+                <p className="card-text fst-italic">
+                  "Tutor kodingnya sabar menjelaskan dari dasar. Materi yang sebelumnya terasa sulit akhirnya jadi lebih mudah dipahami."
+                </p>
+                <footer className="blockquote-footer mt-2">
+                  <cite>Dimas, mahasiswa</cite>
+                </footer>
+              </blockquote>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="kategori-populer" className="section" aria-labelledby="judul-kategori">
-        <div className="container">
-          <div className="section-heading">
-            <p className="eyebrow">Pilihan terpopuler</p>
-            <h2 id="judul-kategori">Kategori Jasa Populer</h2>
-            <p>Pilih kategori yang paling sesuai untuk membantu menyelesaikan proyekmu.</p>
-          </div>
-
-          <div className="category-grid">
-            <article className="category-card">
-              <img
-                src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&amp;fit=crop&amp;w=600&amp;q=80"
-                alt="Editor video menyusun potongan rekaman pada layar komputer"
-                width="600"
-                height="400"
-              />
-              <div className="category-card__content">
-                <h3>Edit Video</h3>
-                <p>Jadikan rekamanmu lebih menarik untuk konten media sosial, promosi, maupun dokumentasi.</p>
-                <Link to="/katalog" aria-label="Lihat jasa Edit Video">
-                  <span>Lihat Jasa</span>
-                  <img className="category-card__link-icon" src="/assets/icons/arrow-right.svg" alt="" aria-hidden="true" />
-                </Link>
-              </div>
-            </article>
-
-            <article className="category-card">
-              <img
-                src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&amp;fit=crop&amp;w=600&amp;q=80"
-                alt="Desainer grafis membuat ilustrasi berwarna pada meja kerja"
-                width="600"
-                height="400"
-              />
-              <div className="category-card__content">
-                <h3>Desain Thumbnail</h3>
-                <p>Dapatkan thumbnail kreatif yang membantu kontenmu tampil lebih menonjol dan profesional.</p>
-                <Link to="/katalog" aria-label="Lihat jasa Desain Thumbnail">
-                  <span>Lihat Jasa</span>
-                  <img className="category-card__link-icon" src="/assets/icons/arrow-right.svg" alt="" aria-hidden="true" />
-                </Link>
-              </div>
-            </article>
-
-            <article className="category-card">
-              <img
-                src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&amp;fit=crop&amp;w=600&amp;q=80"
-                alt="Programmer menulis kode aplikasi pada laptop"
-                width="600"
-                height="400"
-              />
-              <div className="category-card__content">
-                <h3>Tutor Koding</h3>
-                <p>Pelajari dasar pemrograman atau tingkatkan kemampuan koding bersama tutor pilihanmu.</p>
-                <Link to="/katalog" aria-label="Lihat jasa Tutor Koding">
-                  <span>Lihat Jasa</span>
-                  <img className="category-card__link-icon" src="/assets/icons/arrow-right.svg" alt="" aria-hidden="true" />
-                </Link>
-              </div>
-            </article>
-
-            <article className="category-card">
-              <img
-                src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&amp;fit=crop&amp;w=600&amp;q=80"
-                alt="Penulis menyusun ide konten dalam buku catatan di meja kerja"
-                width="600"
-                height="400"
-              />
-              <div className="category-card__content">
-                <h3>Penulisan Konten</h3>
-                <p>Bangun komunikasi yang lebih kuat melalui artikel, caption, dan naskah yang sesuai kebutuhanmu.</p>
-                <Link to="/katalog" aria-label="Lihat jasa Penulisan Konten">
-                  <span>Lihat Jasa</span>
-                  <img className="category-card__link-icon" src="/assets/icons/arrow-right.svg" alt="" aria-hidden="true" />
-                </Link>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="keunggulan" className="section section--dark" aria-labelledby="judul-keunggulan">
-        <div className="container advantages">
-          <div className="section-heading section-heading--light">
-            <p className="eyebrow">Lebih tenang saat memesan</p>
-            <h2 id="judul-keunggulan">Mengapa SewaSkill?</h2>
-            <p>Platform yang dirancang untuk membuat proses mencari dan memesan jasa terasa sederhana.</p>
-          </div>
-          <ul className="advantage-list">
-            <li>
-              <img className="advantage-list__icon" src="/assets/icons/users.svg" alt="" aria-hidden="true" />
-              <span>Lebih dari 500 talent siap membantu berbagai kebutuhan digital</span>
-            </li>
-            <li>
-              <img className="advantage-list__icon" src="/assets/icons/star.svg" alt="" aria-hidden="true" />
-              <span>Rating dan ulasan ditampilkan secara transparan</span>
-            </li>
-            <li>
-              <img className="advantage-list__icon" src="/assets/icons/wallet.svg" alt="" aria-hidden="true" />
-              <span>Pilihan harga terjangkau, mulai dari Rp25.000</span>
-            </li>
-            <li>
-              <img className="advantage-list__icon" src="/assets/icons/mouse-pointer-click.svg" alt="" aria-hidden="true" />
-              <span>Proses pemesanan jasa mudah dan cepat</span>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <section id="testimoni" className="section" aria-labelledby="judul-testimoni">
-        <div className="container">
-          <div className="section-heading">
-            <p className="eyebrow">Cerita pengguna</p>
-            <h2 id="judul-testimoni">Apa Kata Mereka?</h2>
-          </div>
-
-          <div className="testimonial-grid">
-            <blockquote>
-              <p>“Saya bisa menemukan editor video yang memahami gaya konten usaha saya. Komunikasinya jelas dan hasilnya sesuai kebutuhan.”</p>
-              <footer><cite>Rina, pemilik usaha kuliner</cite></footer>
-            </blockquote>
-
-            <blockquote>
-              <p>“Tutor kodingnya sabar menjelaskan dari dasar. Materi yang sebelumnya terasa sulit akhirnya jadi lebih mudah dipahami.”</p>
-              <footer><cite>Dimas, mahasiswa</cite></footer>
-            </blockquote>
+      {/* ── CTA ──────────────────────────────────────────── */}
+      <section className="py-5 bg-light">
+        <div className="container text-center py-3">
+          <h2 className="fw-bold mb-3">Siap Menemukan Talent Terbaikmu?</h2>
+          <p className="text-muted mb-4">Bergabung bersama ribuan pengguna SewaSkill hari ini.</p>
+          <div className="d-flex justify-content-center gap-3 flex-wrap">
+            <Link className="btn btn-primary btn-lg px-4" to="/katalog">Jelajahi Katalog</Link>
+            <Link className="btn btn-outline-primary btn-lg px-4" to="/tambah-jasa">Daftarkan Jasamu</Link>
           </div>
         </div>
       </section>
