@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default function HomePage() {
   useEffect(() => {
-    document.title = 'SewaSkill — Temukan Talent Terbaik untuk Proyekmu';
+    document.title = 'SewaSkill - Temukan Talent Terbaik untuk Proyekmu';
   }, []);
 
   return (
