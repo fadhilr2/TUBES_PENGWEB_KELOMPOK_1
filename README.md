@@ -1,16 +1,135 @@
-# React + Vite
+# SewaSkill — Platform Freelance Jasa Digital
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> Tugas Besar I (UTS) - Perancangan dan Pemrograman Web  
+> Kelompok 1
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Deskripsi Proyek
 
-## React Compiler
+SewaSkill adalah platform web untuk mencari dan memesan jasa freelance digital skala mikro, seperti edit video, desain grafis, bimbingan koding, dan penulisan konten.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Proyek ini dikembangkan menggunakan React 19 dan Bootstrap 5 dengan arsitektur Single Page Application (SPA), serta memanfaatkan Fetch API untuk mengambil data dari mock JSON lokal.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tim Pengembang
+
+| No  | Nama Anggota                  |      GitHub      | Bagian Pengerjaan                               |
+| :-: | :---------------------------- | :--------------: | :---------------------------------------------- |
+|  1  | **Fadhil R.**                 |   `@fadhilr2`    | Setup project, routing, dan styling Bootstrap   |
+|  2  | **I Putu Gede Deva Gundhala** |    `@theepar`    | Halaman beranda, refactoring, dan struktur data |
+|  3  | **Adita R.**                  |   `@aditarhm`    | Halaman katalog jasa dan filter data            |
+|  4  | **Jeni**                      | `@ejeniamutiara` | Halaman tambah jasa dan form pendaftaran        |
+|  5  | **Arsal**                     |  `@JustAHermit`  | Halaman detail jasa dan pemesanan               |
+
+---
+
+## Tech Stack
+
+- **Framework:** React 19
+- **Build Tool:** Vite 8
+- **Routing:** React Router DOM v7
+- **CSS Framework:** Bootstrap 5.3
+- **Data Source:** Fetch API (Mock JSON)
+- **Linter:** ESLint 10
+
+---
+
+## Halaman dan Fitur
+
+1. **Beranda (`/`)**
+   - Banner pengenalan platform
+   - Kategori jasa populer
+   - Seksi keunggulan layanan
+   - Ulasan pengguna
+
+2. **Katalog Jasa (`/katalog`)**
+   - Pencarian talent berdasarkan nama dan keahlian
+   - Filter kategori dan batas harga maksimum
+   - Pengurutan berdasarkan rating dan harga
+   - Pilihan tampilan kartu (grid) atau tabel
+
+3. **Detail Jasa (`/detail-jasa`)**
+   - Profil talent, status ketersediaan, dan rating
+   - Pilihan paket jasa (Basic, Standard, Premium)
+   - Portofolio karya dan FAQ pemesanan
+
+4. **Tambah Jasa (`/tambah-jasa`)**
+   - Formulir pendaftaran jasa baru
+   - Validasi input form di sisi klien
+
+5. **Pemesanan (`/order`)**
+   - Ringkasan pesanan dan kalkulasi biaya
+   - Formulir data pemesan dan metode pembayaran
+   - Notifikasi konfirmasi pemesanan
+
+---
+
+## Cara Menjalankan Proyek
+
+### 1. Prasyarat
+
+- Node.js (versi 18 ke atas)
+- Git
+
+### 2. Clone Repository
+
+```bash
+git clone https://github.com/fadhilr2/TUBES_PENGWEB_KELOMPOK_1.git
+cd TUBES_PENGWEB_KELOMPOK_1
+```
+
+### 3. Pindah Branch (Opsional)
+
+```bash
+git checkout deva
+```
+
+### 4. Install Dependensi
+
+```bash
+npm install
+```
+
+### 5. Jalankan Server Lokal
+
+```bash
+npm run dev
+```
+
+Akses aplikasi melalui browser di `http://localhost:5173/`.
+
+### 6. Perintah Lainnya
+
+- Menjalankan linter:
+  ```bash
+  npm run lint
+  ```
+- Build untuk produksi:
+  ```bash
+  npm run build
+  ```
+
+---
+
+## Struktur Folder
+
+```text
+TUBES_PENGWEB_KELOMPOK_1/
+├── public/
+│   ├── assets/icons/             # Icon SVG
+│   ├── data/                     # Data mock JSON
+│   ├── favicon.svg               # Favicon
+│   └── icons.svg                 # Sprite SVG
+├── src/
+│   ├── components/               # Komponen antarmuka (Header, Footer, ScrollToTop)
+│   ├── pages/                    # Halaman aplikasi (Home, Katalog, Detail, Tambah, Order)
+│   ├── App.jsx                   # Konfigurasi routing
+│   ├── main.jsx                  # Entry point aplikasi
+│   └── index.css                 # Custom CSS
+├── index.html                    # Dokumen HTML utama
+├── package.json                  # Konfigurasi dependensi dan script npm
+├── vite.config.js                # Konfigurasi bundler Vite
+└── README.md                     # Dokumentasi proyek
+```
