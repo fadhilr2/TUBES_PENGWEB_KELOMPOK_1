@@ -14,13 +14,13 @@ Aplikasi ini dibangun menggunakan arsitektur komponen React modern, penataan tat
 
 ## Tim Pengembang (Kelompok 1)
 
-| No | Nama Anggota | NIM | Peran / Kontribusi Halaman |
+| No | Nama Anggota | GitHub | Peran / Kontribusi Halaman |
 |:--:|:---|:---:|:---|
-| 1 | **Fadhil R.** (`fadhilr2`) | *(Isi NIM)* | Setup Project, Routing, Migrasi Bootstrap |
-| 2 | **Devara P.** (`theepar`) | *(Isi NIM)* | Halaman Beranda, Refactoring & Clean Architecture |
-| 3 | **Adita R.** (`aditarhm`) | *(Isi NIM)* | Halaman Katalog Jasa & Filter |
-| 4 | **Elenia / Jeni** (`ejeniamutiara`) | *(Isi NIM)* | Halaman Tambah Jasa & Form |
-| 5 | **Hermit** (`JustAHermit`) | *(Isi NIM)* | Halaman Detail Jasa & Order |
+| 1 | **Fadhil R.** | `@fadhilr2` | Setup Project, Routing, Migrasi Bootstrap |
+| 2 | **I Putu Gede Deva Gundhala** | `@theepar` | Halaman Beranda, Refactoring & Clean Architecture |
+| 3 | **Adita R.** | `@aditarhm` | Halaman Katalog Jasa & Filter |
+| 4 | **Jeni** | `@ejeniamutiara` | Halaman Tambah Jasa & Form |
+| 5 | **Arsal** | `@JustAHermit` | Halaman Detail Jasa & Order |
 
 ---
 
