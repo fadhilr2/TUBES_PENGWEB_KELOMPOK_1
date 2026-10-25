@@ -4,8 +4,6 @@ export default function OrderPage() {
   const [packages, setPackages] = useState([]);
   const [paymentMethods, setPaymentMethods] = useState([]);
 
-  const [usdRate, setUsdRate] = useState(null);
-
   const [selectedPackageId, setSelectedPackageId] = useState('');
   const [formData, setFormData] = useState({
     nama_pemesan: '',
@@ -16,8 +14,6 @@ export default function OrderPage() {
     metode_bayar: 'bca',
   });
   const [orderResult, setOrderResult] = useState(null);
-
-  const pkg = packages.find((p) => p.id === selectedPackageId) || null;
 
 
   useEffect(() => {
@@ -235,37 +231,6 @@ export default function OrderPage() {
             </form>
           </div>
 
-          <div className="col-lg-4">
-            <aside className="card border-0 shadow-sm sticky-top" style={{ top: '80px' }}>
-              <div className="card-body p-4">
-                <h2 className="h5 fw-semibold mb-3">Ringkasan Pesanan</h2>
-                <table className="table table-sm table-borderless mb-0">
-                  <tbody>
-                    <tr>
-                      <td className="text-muted">Paket</td>
-                      <td className="text-end fw-semibold">{pkg ? pkg.name : '—'}</td>
-                    </tr>
-                    <tr>
-                      <td className="text-muted">Harga</td>
-                      <td className="text-end">{pkg ? formatRupiah(pkg.price) : '—'}</td>
-                    </tr>
-                    <tr>
-                      <td className="text-muted">Biaya Layanan</td>
-                      <td className="text-end">{pkg ? formatRupiah(pkg.fee) : '—'}</td>
-                    </tr>
-                  </tbody>
-                  <tfoot>
-                    <tr className="border-top">
-                      <th scope="row" className="pt-3">Total</th>
-                      <td className="text-end fw-bold text-primary fs-5 pt-3">
-                        {pkg ? formatRupiah(pkg.total) : '—'}
-                      </td>
-                    </tr>
-                  </tfoot>
-                </table>
-              </div>
-            </aside>
-          </div>
         </div>
       </div>
     </main>
