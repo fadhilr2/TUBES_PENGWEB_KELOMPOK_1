@@ -8,14 +8,14 @@ export default function HomePage() {
 
   return (
     <main>
-      <section id="hero" className="text-white py-5  bg-primary" aria-labelledby="judul-utama">
+      <section className="text-white py-5 bg-primary">
         <div className="container py-4">
           <div className="row align-items-center gy-5">
             <div className="col-lg-6">
               <p className="text-white-50 fw-semibold text-uppercase small mb-2" style={{ letterSpacing: '.08em' }}>
                 Jasa digital tepercaya dalam satu tempat
               </p>
-              <h1 id="judul-utama" className="display-5 fw-bold mb-3">
+              <h1 className="display-5 fw-bold mb-3">
                 Temukan Ahlinya, Selesaikan Proyekmu
               </h1>
               <p className="lead text-white-50 mb-4">
@@ -44,11 +44,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="kategori-populer" className="py-5 bg-light" aria-labelledby="judul-kategori">
+      <section className="py-5 bg-light">
         <div className="container">
           <div className="text-center mb-5">
             <p className="text-primary fw-semibold text-uppercase small" style={{ letterSpacing: '.08em' }}>Pilihan terpopuler</p>
-            <h2 id="judul-kategori" className="fw-bold">Kategori Jasa Populer</h2>
+            <h2 className="fw-bold">Kategori Jasa Populer</h2>
             <p className="text-muted">Pilih kategori yang paling sesuai untuk proyekmu.</p>
           </div>
 
@@ -101,11 +101,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="keunggulan" className="py-5 bg-primary text-white" aria-labelledby="judul-keunggulan">
+      <section className="py-5 bg-primary text-white">
         <div className="container">
           <div className="text-center mb-5">
             <p className="text-white-50 fw-semibold text-uppercase small" style={{ letterSpacing: '.08em' }}>Lebih tenang saat memesan</p>
-            <h2 id="judul-keunggulan" className="fw-bold">Mengapa SewaSkill?</h2>
+            <h2 className="fw-bold">Mengapa SewaSkill?</h2>
             <p className="text-white-50">Platform yang dirancang agar proses mencari jasa terasa sederhana.</p>
           </div>
 
@@ -127,11 +127,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="testimoni" className="py-5" aria-labelledby="judul-testimoni">
+      <section className="py-5">
         <div className="container">
           <div className="text-center mb-5">
             <p className="text-primary fw-semibold text-uppercase small" style={{ letterSpacing: '.08em' }}>Cerita pengguna</p>
-            <h2 id="judul-testimoni" className="fw-bold">Apa Kata Mereka?</h2>
+            <h2 className="fw-bold">Apa Kata Mereka?</h2>
           </div>
 
           <div className="row g-4 justify-content-center">
