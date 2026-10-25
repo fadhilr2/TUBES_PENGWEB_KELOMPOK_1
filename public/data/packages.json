@@ -4,32 +4,23 @@
     "name": "Paket Basic",
     "desc": "Maks. 30 detik, 1x revisi",
     "price": 50000,
-    "priceFormatted": "Rp 50.000",
     "fee": 2500,
-    "feeFormatted": "Rp 2.500",
-    "total": 52500,
-    "totalFormatted": "Rp 52.500"
+    "total": 52500
   },
   {
     "id": "standard",
     "name": "Paket Standard",
     "desc": "Maks. 60 detik, 3x revisi, dengan subtitel",
     "price": 100000,
-    "priceFormatted": "Rp 100.000",
     "fee": 5000,
-    "feeFormatted": "Rp 5.000",
-    "total": 105000,
-    "totalFormatted": "Rp 105.000"
+    "total": 105000
   },
   {
     "id": "premium",
     "name": "Paket Premium",
     "desc": "Maks. 3 menit, revisi tak terbatas",
     "price": 200000,
-    "priceFormatted": "Rp 200.000",
     "fee": 10000,
-    "feeFormatted": "Rp 10.000",
-    "total": 210000,
-    "totalFormatted": "Rp 210.000"
+    "total": 210000
   }
 ]

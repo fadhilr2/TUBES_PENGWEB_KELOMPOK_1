@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 
 export default function OrderPage() {
   const [packages, setPackages] = useState([]);
@@ -15,8 +14,6 @@ export default function OrderPage() {
     deadline: '',
     brief: '',
     metode_bayar: 'bca',
-    setuju_sk: false,
-    konfirmasi_data: false,
   });
   const [orderResult, setOrderResult] = useState(null);
 
@@ -43,14 +40,7 @@ export default function OrderPage() {
         if (payData.length > 0)
           setFormData((prev) => ({ ...prev, metode_bayar: payData[0].id }));
       })
-      .catch(() => {});
-  }, []);
-
-  useEffect(() => {
-    fetch('https://open.er-api.com/v6/latest/IDR')
-      .then((res) => res.json())
-      .then((data) => setUsdRate(data?.rates?.USD ?? null))
-      .catch(() => setUsdRate(null));
+      .catch(() => { });
   }, []);
 
   const handleChange = (e) => {
@@ -95,19 +85,18 @@ export default function OrderPage() {
     }
   };
 
-  const toUSD = (idrAmount) => {
-    if (!usdRate || !idrAmount) return null;
-    return (idrAmount * usdRate).toFixed(2);
-  };
+  const formatRupiah = (amount) =>
+    new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(amount);
+
 
   return (
     <main className="py-5">
       <div className="container">
         <nav className="mb-4" aria-label="Breadcrumb">
           <ol className="breadcrumb">
-            <li className="breadcrumb-item"><Link to="/">Beranda</Link></li>
-            <li className="breadcrumb-item"><Link to="/katalog">Katalog</Link></li>
-            <li className="breadcrumb-item"><Link to="/detail-jasa">Rizky Aditya</Link></li>
+            <li className="breadcrumb-item"><a href="/">Beranda</a></li>
+            <li className="breadcrumb-item"><a href="/katalog">Katalog</a></li>
+            <li className="breadcrumb-item"><a href="/detail-jasa">Rizky Aditya</a></li>
             <li className="breadcrumb-item active" aria-current="page">Pesan Jasa</li>
           </ol>
         </nav>
@@ -136,11 +125,9 @@ export default function OrderPage() {
         )}
 
         <div className="row gy-4">
-          {/* Kolom Form */}
           <div className="col-lg-8">
             <form id="form-pemesanan" onSubmit={handleSubmit}>
 
-              {/* Data Diri */}
               <fieldset className="card border-0 shadow-sm mb-4">
                 <div className="card-body p-4">
                   <legend className="h6 fw-semibold border-bottom pb-2 mb-4">Data Diri Pemesan</legend>
@@ -173,7 +160,6 @@ export default function OrderPage() {
                 </div>
               </fieldset>
 
-              {/* Detail Pesanan — data dari (b) Mock API Lokal */}
               <fieldset className="card border-0 shadow-sm mb-4">
                 <div className="card-body p-4">
                   <legend className="h6 fw-semibold border-bottom pb-2 mb-4">Detail Pesanan</legend>
@@ -186,7 +172,7 @@ export default function OrderPage() {
                       >
                         {packages.map((p) => (
                           <option key={p.id} value={p.id}>
-                            {p.name} — {p.priceFormatted} ({p.desc})
+                            {p.name} — {formatRupiah(p.price)} ({p.desc})
                           </option>
                         ))}
                       </select>
@@ -219,7 +205,6 @@ export default function OrderPage() {
                 </div>
               </fieldset>
 
-              {/* Metode Pembayaran — data dari (b) Mock API Lokal */}
               <fieldset className="card border-0 shadow-sm mb-4">
                 <div className="card-body p-4">
                   <legend className="h6 fw-semibold border-bottom pb-2 mb-4">Metode Pembayaran</legend>
@@ -240,122 +225,44 @@ export default function OrderPage() {
                 </div>
               </fieldset>
 
-              {/* Konfirmasi */}
-              <fieldset className="card border-0 shadow-sm mb-4">
-                <div className="card-body p-4">
-                  <legend className="h6 fw-semibold border-bottom pb-2 mb-4">Konfirmasi Pesanan</legend>
-                  <div className="form-check mb-2">
-                    <input
-                      className="form-check-input" type="checkbox"
-                      id="setuju-sk-order" name="setuju_sk"
-                      checked={formData.setuju_sk} onChange={handleChange} required
-                    />
-                    <label className="form-check-label" htmlFor="setuju-sk-order">
-                      Saya menyetujui <Link to="/detail-jasa#syarat">Syarat &amp; Ketentuan</Link> layanan ini *
-                    </label>
-                  </div>
-                  <div className="form-check">
-                    <input
-                      className="form-check-input" type="checkbox"
-                      id="konfirmasi-data" name="konfirmasi_data"
-                      checked={formData.konfirmasi_data} onChange={handleChange} required
-                    />
-                    <label className="form-check-label" htmlFor="konfirmasi-data">
-                      Saya menyatakan aset yang diunggah adalah milik saya dan tidak melanggar hak cipta *
-                    </label>
-                  </div>
-                </div>
-              </fieldset>
 
-              {/* Submit */}
               <div className="d-flex flex-wrap gap-3 align-items-center">
-                <p className="mb-0 fw-semibold">
-                  Total:{' '}
-                  <span className="text-primary fs-5">{pkg ? pkg.totalFormatted : '—'}</span>
-                  {pkg && toUSD(pkg.total) && (
-                    <span className="badge bg-secondary ms-2 fw-normal" title="Kurs via open.er-api.com" style={{ fontSize: '0.75rem' }}>
-                      ≈ ${toUSD(pkg.total)} USD
-                    </span>
-                  )}
-                </p>
                 <button className="btn btn-primary btn-lg px-4" type="submit">
                   Konfirmasi &amp; Bayar Sekarang
                 </button>
-                <Link to="/detail-jasa" className="btn btn-outline-secondary">Kembali ke Halaman Jasa</Link>
+                <a href="/detail-jasa" className="btn btn-outline-secondary">Kembali ke Halaman Jasa</a>
               </div>
             </form>
           </div>
 
-          {/* Kolom Ringkasan */}
           <div className="col-lg-4">
-            <aside id="ringkasan-order" className="card border-0 shadow-sm sticky-top" style={{ top: '80px' }}>
+            <aside className="card border-0 shadow-sm sticky-top" style={{ top: '80px' }}>
               <div className="card-body p-4">
-                <h2 className="h5 fw-semibold mb-4">Ringkasan Pesanan</h2>
-
-                <div className="d-flex align-items-center gap-3 mb-4">
-                  <img
-                    src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80"
-                    alt="Foto profil Rizky Aditya"
-                    className="avatar-sm flex-shrink-0" width="48" height="48"
-                  />
-                  <div>
-                    <p className="mb-0 fw-semibold small">Rizky Aditya</p>
-                    <p className="mb-0 text-muted small">Edit Video Pendek — {pkg ? pkg.name : '—'}</p>
-                  </div>
-                </div>
-
-                <div className="table-responsive mb-3">
-                  <table className="table table-sm table-bordered">
-                    <caption className="visually-hidden">Rincian biaya pesanan</caption>
-                    <thead className="table-light">
-                      <tr>
-                        <th scope="col">Item</th>
-                        <th scope="col">Harga</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td className="small">
-                          Jasa Edit Video — {pkg ? pkg.name : '—'}<br />
-                          <span className="text-muted">{pkg ? pkg.desc : ''}</span>
-                        </td>
-                        <td className="small fw-semibold">{pkg ? pkg.priceFormatted : '—'}</td>
-                      </tr>
-                      <tr>
-                        <td className="small">Biaya Layanan (5%)</td>
-                        <td className="small">{pkg ? pkg.feeFormatted : '—'}</td>
-                      </tr>
-                      <tr>
-                        <td className="small">Biaya Admin</td>
-                        <td className="small">Rp 0</td>
-                      </tr>
-                    </tbody>
-                    <tfoot>
-                      <tr className="table-primary">
-                        <th scope="row" className="small">Total Pembayaran</th>
-                        <td className="fw-bold small">{pkg ? pkg.totalFormatted : '—'}</td>
-                      </tr>
-                    </tfoot>
-                  </table>
-                </div>
-
-                {/* (a) PUBLIC API: Info kurs USD dari open.er-api.com */}
-                <div className="alert alert-light border py-2 px-3 mb-3 small">
-                  <strong>💱 Estimasi dalam USD:</strong>{' '}
-                  {pkg && toUSD(pkg.total)
-                    ? `≈ $${toUSD(pkg.total)} USD`
-                    : 'Kurs tidak tersedia'}
-                  {usdRate && (
-                    <span className="text-muted d-block">
-                      Kurs: 1 IDR = {usdRate.toFixed(8)} USD<br />
-                      <em>Sumber: open.er-api.com</em>
-                    </span>
-                  )}
-                </div>
-
-                <p className="text-muted small mb-0">
-                  ⏱ <strong>Estimasi Selesai:</strong> 2 hari kerja setelah aset diterima
-                </p>
+                <h2 className="h5 fw-semibold mb-3">Ringkasan Pesanan</h2>
+                <table className="table table-sm table-borderless mb-0">
+                  <tbody>
+                    <tr>
+                      <td className="text-muted">Paket</td>
+                      <td className="text-end fw-semibold">{pkg ? pkg.name : '—'}</td>
+                    </tr>
+                    <tr>
+                      <td className="text-muted">Harga</td>
+                      <td className="text-end">{pkg ? formatRupiah(pkg.price) : '—'}</td>
+                    </tr>
+                    <tr>
+                      <td className="text-muted">Biaya Layanan</td>
+                      <td className="text-end">{pkg ? formatRupiah(pkg.fee) : '—'}</td>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                    <tr className="border-top">
+                      <th scope="row" className="pt-3">Total</th>
+                      <td className="text-end fw-bold text-primary fs-5 pt-3">
+                        {pkg ? formatRupiah(pkg.total) : '—'}
+                      </td>
+                    </tr>
+                  </tfoot>
+                </table>
               </div>
             </aside>
           </div>
