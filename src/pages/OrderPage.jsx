@@ -4,11 +4,8 @@ import { Link } from 'react-router-dom';
 export default function OrderPage() {
   const [packages, setPackages] = useState([]);
   const [paymentMethods, setPaymentMethods] = useState([]);
-  const [packagesLoading, setPackagesLoading] = useState(true);
-  const [packagesError, setPackagesError] = useState(null);
 
   const [usdRate, setUsdRate] = useState(null);
-  const [rateLoading, setRateLoading] = useState(true);
 
   const [selectedPackageId, setSelectedPackageId] = useState('');
   const [formData, setFormData] = useState({
@@ -21,7 +18,6 @@ export default function OrderPage() {
     setuju_sk: false,
     konfirmasi_data: false,
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [orderResult, setOrderResult] = useState(null);
 
   const pkg = packages.find((p) => p.id === selectedPackageId) || null;
@@ -47,16 +43,14 @@ export default function OrderPage() {
         if (payData.length > 0)
           setFormData((prev) => ({ ...prev, metode_bayar: payData[0].id }));
       })
-      .catch((err) => setPackagesError(err.message))
-      .finally(() => setPackagesLoading(false));
+      .catch(() => {});
   }, []);
 
   useEffect(() => {
     fetch('https://open.er-api.com/v6/latest/IDR')
       .then((res) => res.json())
       .then((data) => setUsdRate(data?.rates?.USD ?? null))
-      .catch(() => setUsdRate(null))
-      .finally(() => setRateLoading(false));
+      .catch(() => setUsdRate(null));
   }, []);
 
   const handleChange = (e) => {
@@ -73,7 +67,6 @@ export default function OrderPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
     setOrderResult(null);
 
     const payload = {
@@ -99,8 +92,6 @@ export default function OrderPage() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (err) {
       setOrderResult({ success: false, error: err.message });
-    } finally {
-      setIsSubmitting(false);
     }
   };
 
@@ -108,29 +99,6 @@ export default function OrderPage() {
     if (!usdRate || !idrAmount) return null;
     return (idrAmount * usdRate).toFixed(2);
   };
-
-  if (packagesLoading) {
-    return (
-      <main className="py-5">
-        <div className="container d-flex align-items-center gap-3 text-muted">
-          <div className="spinner-border spinner-border-sm" role="status" aria-hidden="true" />
-          <span>Memuat data paket dari server…</span>
-        </div>
-      </main>
-    );
-  }
-
-  if (packagesError) {
-    return (
-      <main className="py-5">
-        <div className="container">
-          <div className="alert alert-danger">
-            <strong>Gagal memuat data:</strong> {packagesError}
-          </div>
-        </div>
-      </main>
-    );
-  }
 
   return (
     <main className="py-5">
@@ -304,24 +272,14 @@ export default function OrderPage() {
                 <p className="mb-0 fw-semibold">
                   Total:{' '}
                   <span className="text-primary fs-5">{pkg ? pkg.totalFormatted : '—'}</span>
-                  {pkg && !rateLoading && toUSD(pkg.total) && (
+                  {pkg && toUSD(pkg.total) && (
                     <span className="badge bg-secondary ms-2 fw-normal" title="Kurs via open.er-api.com" style={{ fontSize: '0.75rem' }}>
                       ≈ ${toUSD(pkg.total)} USD
                     </span>
                   )}
-                  {rateLoading && (
-                    <span className="ms-2 text-muted small">
-                      <span className="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true" />
-                      Memuat kurs…
-                    </span>
-                  )}
                 </p>
-                <button className="btn btn-primary btn-lg px-4" type="submit" disabled={isSubmitting}>
-                  {isSubmitting ? (
-                    <><span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true" />Memproses…</>
-                  ) : (
-                    'Konfirmasi & Bayar Sekarang'
-                  )}
+                <button className="btn btn-primary btn-lg px-4" type="submit">
+                  Konfirmasi &amp; Bayar Sekarang
                 </button>
                 <Link to="/detail-jasa" className="btn btn-outline-secondary">Kembali ke Halaman Jasa</Link>
               </div>
@@ -384,12 +342,10 @@ export default function OrderPage() {
                 {/* (a) PUBLIC API: Info kurs USD dari open.er-api.com */}
                 <div className="alert alert-light border py-2 px-3 mb-3 small">
                   <strong>💱 Estimasi dalam USD:</strong>{' '}
-                  {rateLoading
-                    ? 'Memuat kurs real-time…'
-                    : pkg && toUSD(pkg.total)
-                      ? `≈ $${toUSD(pkg.total)} USD`
-                      : 'Kurs tidak tersedia'}
-                  {!rateLoading && usdRate && (
+                  {pkg && toUSD(pkg.total)
+                    ? `≈ $${toUSD(pkg.total)} USD`
+                    : 'Kurs tidak tersedia'}
+                  {usdRate && (
                     <span className="text-muted d-block">
                       Kurs: 1 IDR = {usdRate.toFixed(8)} USD<br />
                       <em>Sumber: open.er-api.com</em>
