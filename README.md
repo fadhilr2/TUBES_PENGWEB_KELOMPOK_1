@@ -1,6 +1,6 @@
 # SewaSkill — Platform Freelance Jasa Digital
 
-> Tugas Besar I (UTS) — Perancangan dan Pemrograman Web  
+> Tugas Besar I (UTS) - Perancangan dan Pemrograman Web  
 > Kelompok 1
 
 ---
@@ -15,13 +15,13 @@ Proyek ini dikembangkan menggunakan React 19 dan Bootstrap 5 dengan arsitektur S
 
 ## Tim Pengembang
 
-| No | Nama Anggota | GitHub | Bagian Pengerjaan |
-| :-: | :--- | :---: | :--- |
-| 1 | **Fadhil R.** | `@fadhilr2` | Setup project, routing, dan styling Bootstrap |
-| 2 | **I Putu Gede Deva Gundhala** | `@theepar` | Halaman beranda, refactoring, dan struktur data |
-| 3 | **Adita R.** | `@aditarhm` | Halaman katalog jasa dan filter data |
-| 4 | **Jeni** | `@ejeniamutiara` | Halaman tambah jasa dan form pendaftaran |
-| 5 | **Arsal** | `@JustAHermit` | Halaman detail jasa dan pemesanan |
+| No  | Nama Anggota                  |      GitHub      | Bagian Pengerjaan                               |
+| :-: | :---------------------------- | :--------------: | :---------------------------------------------- |
+|  1  | **Fadhil R.**                 |   `@fadhilr2`    | Setup project, routing, dan styling Bootstrap   |
+|  2  | **I Putu Gede Deva Gundhala** |    `@theepar`    | Halaman beranda, refactoring, dan struktur data |
+|  3  | **Adita R.**                  |   `@aditarhm`    | Halaman katalog jasa dan filter data            |
+|  4  | **Jeni**                      | `@ejeniamutiara` | Halaman tambah jasa dan form pendaftaran        |
+|  5  | **Arsal**                     |  `@JustAHermit`  | Halaman detail jasa dan pemesanan               |
 
 ---
 
@@ -69,32 +69,39 @@ Proyek ini dikembangkan menggunakan React 19 dan Bootstrap 5 dengan arsitektur S
 ## Cara Menjalankan Proyek
 
 ### 1. Prasyarat
+
 - Node.js (versi 18 ke atas)
 - Git
 
 ### 2. Clone Repository
+
 ```bash
 git clone https://github.com/fadhilr2/TUBES_PENGWEB_KELOMPOK_1.git
 cd TUBES_PENGWEB_KELOMPOK_1
 ```
 
 ### 3. Pindah Branch (Opsional)
+
 ```bash
 git checkout deva
 ```
 
 ### 4. Install Dependensi
+
 ```bash
 npm install
 ```
 
 ### 5. Jalankan Server Lokal
+
 ```bash
 npm run dev
 ```
+
 Akses aplikasi melalui browser di `http://localhost:5173/`.
 
 ### 6. Perintah Lainnya
+
 - Menjalankan linter:
   ```bash
   npm run lint
