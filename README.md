@@ -1,4 +1,4 @@
-# SewaSkill — Platform Freelance Jasa Digital
+# SewaSkill - Platform Freelance Jasa Digital
 
 > Tugas Besar I (UTS) - Perancangan dan Pemrograman Web  
 > Kelompok 1

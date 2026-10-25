@@ -17,7 +17,7 @@ export default function Header() {
           aria-label="SewaSkill, kembali ke beranda"
         >
           <img
-            src="https://placehold.co/36x36/0d6efd/FFFFFF?text=SS"
+            src="/favicon.svg"
             alt="Logo SewaSkill"
             width="36"
             height="36"
