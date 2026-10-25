@@ -38,10 +38,10 @@ export default function Header() {
         </button>
 
         <div className={`collapse navbar-collapse ${isOpen ? 'show' : ''}`} id="main-nav">
-          <ul className="navbar-nav ms-auto gap-1">
+          <ul className="navbar-nav ms-auto align-items-lg-center gap-1 gap-lg-2">
             <li className="nav-item">
               <NavLink
-                className={({ isActive }) => 'nav-link' + (isActive ? ' active fw-semibold' : '')}
+                className={({ isActive }) => 'nav-link px-3' + (isActive ? ' active fw-semibold' : '')}
                 to="/"
                 end
                 onClick={closeNav}
@@ -51,16 +51,16 @@ export default function Header() {
             </li>
             <li className="nav-item">
               <NavLink
-                className={({ isActive }) => 'nav-link' + (isActive ? ' active fw-semibold' : '')}
+                className={({ isActive }) => 'nav-link px-3' + (isActive ? ' active fw-semibold' : '')}
                 to="/katalog"
                 onClick={closeNav}
               >
                 Katalog
               </NavLink>
             </li>
-            <li className="nav-item">
+            <li className="nav-item ms-lg-2 mt-2 mt-lg-0">
               <NavLink
-                className={({ isActive }) => 'btn btn-primary btn-sm ms-lg-2 mt-2 mt-lg-0 align-self-lg-center' + (isActive ? ' active' : '')}
+                className={({ isActive }) => 'btn btn-primary btn-sm px-3 py-2 fw-medium' + (isActive ? ' active' : '')}
                 to="/tambah-jasa"
                 onClick={closeNav}
               >
