@@ -15,13 +15,13 @@ Proyek ini dikembangkan menggunakan React 19 dan Bootstrap 5 dengan arsitektur S
 
 ## Tim Pengembang
 
-| No  | Nama Anggota                  |      GitHub      | Bagian Pengerjaan                               |
-| :-: | :---------------------------- | :--------------: | :---------------------------------------------- |
-|  1  | **Fadhil R.**                 |   `@fadhilr2`    | Setup project, routing, dan styling Bootstrap   |
-|  2  | **I Putu Gede Deva Gundhala** |    `@theepar`    | Halaman beranda, refactoring, dan struktur data |
-|  3  | **Adita R.**                  |   `@aditarhm`    | Halaman katalog jasa dan filter data            |
-|  4  | **Jeni**                      | `@ejeniamutiara` | Halaman tambah jasa dan form pendaftaran        |
-|  5  | **Arsal**                     |  `@JustAHermit`  | Halaman detail jasa dan pemesanan               |
+| No  | Nama Anggota                  |      GitHub      |
+| :-: | :---------------------------- | :--------------: |
+|  1  | **Fadhil R.**                 |   `@fadhilr2`    |
+|  2  | **I Putu Gede Deva Gundhala** |    `@theepar`    |
+|  3  | **Adita R.**                  |   `@aditarhm`    |
+|  4  | **Jeni**                      | `@ejeniamutiara` |
+|  5  | **Arsal**                     |  `@JustAHermit`  |
 
 ---
 
