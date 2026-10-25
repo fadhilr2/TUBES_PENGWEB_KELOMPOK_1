@@ -1,18 +1,18 @@
-# 🌐 SewaSkill — Platform Freelance Mikro Jasa Digital
+# SewaSkill — Platform Freelance Mikro Jasa Digital
 
 > **Tugas Besar I (UTS) — Perancangan dan Pemrograman Web**  
 > **Kelompok 1** | Frontend Development Web Application
 
 ---
 
-## 📌 Deskripsi Proyek
+## Deskripsi Proyek
 **SewaSkill** adalah aplikasi web berbasis *Single Page Application* (SPA) yang mempertemukan pencari jasa dengan talent digital independen (freelancer) untuk berbagai kebutuhan mikro, seperti *editing video*, *desain thumbnail/logo*, *tutor pemrograman*, hingga *penulisan konten kreatif*.
 
 Aplikasi ini dibangun menggunakan arsitektur komponen React modern, penataan tata letak responsif menggunakan Bootstrap 5, serta integrasi pemanggilan data dinamis (*Mock API*) menggunakan Fetch API.
 
 ---
 
-## 👥 Tim Pengembang (Kelompok 1)
+## Tim Pengembang (Kelompok 1)
 
 | No | Nama Anggota | NIM | Peran / Kontribusi Halaman |
 |:--:|:---|:---:|:---|
@@ -24,7 +24,7 @@ Aplikasi ini dibangun menggunakan arsitektur komponen React modern, penataan tat
 
 ---
 
-## 🛠️ Tech Stack & Teknologi
+## Tech Stack & Teknologi
 
 * **Frontend Library:** [React 19](https://react.dev/) (Komponen fungsional & Hooks: `useState`, `useEffect`)
 * **Build Tool & Dev Server:** [Vite 8](https://vitejs.dev/) (Fast HMR & Optimized Bundler)
@@ -35,38 +35,38 @@ Aplikasi ini dibangun menggunakan arsitektur komponen React modern, penataan tat
 
 ---
 
-## 📱 Daftar Halaman & Fitur Aplikasi
+## Daftar Halaman & Fitur Aplikasi
 
 Aplikasi terdiri dari minimal **5 halaman utama** yang saling terhubung:
 
-1. **🏠 Beranda (`/`)**
+1. **Beranda (`/`)**
    * Hero banner promosi dan pengenalan platform
    * Kategori jasa populer (Video, Desain, Koding, Konten)
    * Nilai keunggulan platform SewaSkill
    * Seksi testimoni pengguna dinamis
    * Aksesibilitas penuh (`aria-labelledby`, semantik HTML5)
 
-2. **🔍 Katalog Jasa (`/katalog`)**
+2. **Katalog Jasa (`/katalog`)**
    * Pencarian langsung berdasarkan kata kunci nama & keahlian
    * Filter multi-kategori (Semua, Desain, Video, Koding, dll.)
    * Filter harga maksimum interaktif
    * Pengurutan (*Sort by*: Rating tertinggi, Harga terendah, Harga tertinggi)
    * Fitur ganti mode tampilan: **Mode Kartu (Grid)** & **Mode Tabel Responsif**
 
-3. **👤 Detail Profil Jasa (`/detail-jasa`)**
+3. **Detail Profil Jasa (`/detail-jasa`)**
    * Navigasi Breadcrumb
    * Profil lengkap talent, status ketersediaan, rating, dan riwayat order
    * Pilihan paket layanan (*Basic*, *Standard*, *Premium*)
    * Portofolio karya dan ulasan klien terdahulu
    * FAQ interaktif seputar pemesanan
 
-4. **💼 Pendaftaran Jasa Baru (`/tambah-jasa`)**
+4. **Pendaftaran Jasa Baru (`/tambah-jasa`)**
    * Formulir pendaftaran talent baru
    * Pengelompokan data semantik menggunakan `<fieldset>` & `<legend>`
    * Validasi formulir sisi klien (*client-side form validation*)
    * Feedback status pengiriman pendaftaran
 
-5. **🛒 Pemesanan Layanan (`/order`)**
+5. **Pemesanan Layanan (`/order`)**
    * Rincian pemesanan dan kalkulasi otomatis harga paket + biaya platform
    * Formulir data diri pemesan dan *briefing* kebutuhan proyek
    * Pilihan metode pembayaran (Transfer Bank & E-Wallet)
@@ -74,7 +74,7 @@ Aplikasi terdiri dari minimal **5 halaman utama** yang saling terhubung:
 
 ---
 
-## 🚀 Panduan Menjalankan Proyek (Setup Instructions)
+## Panduan Menjalankan Proyek (Setup Instructions)
 
 Ikuti langkah-langkah berikut untuk menjalankan proyek di komputer lokal:
 
@@ -104,7 +104,7 @@ npm install
 npm run dev
 ```
 Setelah server menyala, buka browser dan akses URL lokal:
-👉 **`http://localhost:5173/`**
+**`http://localhost:5173/`**
 
 ### 6. Perintah Tambahan
 * **Mengecek Linter & Kualitas Kode:**
@@ -122,7 +122,7 @@ Setelah server menyala, buka browser dan akses URL lokal:
 
 ---
 
-## 📂 Struktur Direktori Proyek
+## Struktur Direktori Proyek
 
 ```text
 TUBES_PENGWEB_KELOMPOK_1/
@@ -154,7 +154,7 @@ TUBES_PENGWEB_KELOMPOK_1/
 
 ---
 
-## 🎯 Pemenuhan Rubrik Penilaian Tugas Besar
+## Pemenuhan Rubrik Penilaian Tugas Besar
 
 | No | Kriteria Rubrik | Implementasi pada Proyek |
 |:--:|:---|:---|
