@@ -223,16 +223,6 @@ export default function DetailJasaPage() {
             ))}
           </div>
         </section>
-
-        <section id="cta-order" className="mt-5">
-          <div className="bg-primary text-white rounded-4 p-5 text-center">
-            <h2 className="fw-bold mb-2">Tertarik dengan Jasa Ini?</h2>
-            <p className="text-white-50 mb-4">Segera pesan sebelum slot penuh! Rizky saat ini hanya menerima maksimal 5 order aktif.</p>
-            <Link className="btn btn-light btn-lg fw-semibold px-4" to="/order">
-              Pesan Sekarang - Mulai Rp 50.000
-            </Link>
-          </div>
-        </section>
       </div>
     </main>
   );
