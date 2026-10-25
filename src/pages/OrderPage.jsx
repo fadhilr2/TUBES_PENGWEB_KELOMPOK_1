@@ -1,41 +1,20 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const PACKAGES = {
-  basic: {
-    name: 'Paket Basic',
-    desc: 'Maks. 30 detik, 1x revisi',
-    price: 50000,
-    priceFormatted: 'Rp 50.000',
-    fee: 2500,
-    feeFormatted: 'Rp 2.500',
-    total: 52500,
-    totalFormatted: 'Rp 52.500'
-  },
-  standard: {
-    name: 'Paket Standard',
-    desc: 'Maks. 60 detik, 3x revisi, dengan subtitel',
-    price: 100000,
-    priceFormatted: 'Rp 100.000',
-    fee: 5000,
-    feeFormatted: 'Rp 5.000',
-    total: 105000,
-    totalFormatted: 'Rp 105.000'
-  },
-  premium: {
-    name: 'Paket Premium',
-    desc: 'Maks. 3 menit, revisi tak terbatas',
-    price: 200000,
-    priceFormatted: 'Rp 200.000',
-    fee: 10000,
-    feeFormatted: 'Rp 10.000',
-    total: 210000,
-    totalFormatted: 'Rp 210.000'
-  }
-};
+const formatRupiah = (num) =>
+  'Rp ' + num.toLocaleString('id-ID');
 
 export default function OrderPage() {
-  const [selectedPackage, setSelectedPackage] = useState('standard');
+  const [packages, setPackages] = useState([]);
+  const [packagesLoading, setPackagesLoading] = useState(true);
+  const [packagesError, setPackagesError] = useState(null);
+
+  const [paymentMethods, setPaymentMethods] = useState([]);
+
+  const [usdRate, setUsdRate] = useState(null);
+  const [rateLoading, setRateLoading] = useState(true);
+
+  const [selectedPackageId, setSelectedPackageId] = useState('standard');
   const [formData, setFormData] = useState({
     nama_pemesan: '',
     email_pemesan: '',
@@ -44,33 +23,130 @@ export default function OrderPage() {
     brief: '',
     metode_bayar: 'bca',
     setuju_sk: false,
-    konfirmasi_data: false
+    konfirmasi_data: false,
   });
-  const [orderPlaced, setOrderPlaced] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [orderResult, setOrderResult] = useState(null); // { success, orderId, error }
+
+  const pkg = packages.find((p) => p.id === selectedPackageId) || null;
+
 
   useEffect(() => {
     document.title = 'Konfirmasi & Pesan Jasa - SewaSkill';
+
+    setPackagesLoading(true);
+
+    Promise.all([
+      fetch('/data/packages.json').then((res) => {
+        if (!res.ok) throw new Error(`Gagal memuat paket (HTTP ${res.status})`);
+        return res.json();
+      }),
+      fetch('/data/payment-methods.json').then((res) => {
+        if (!res.ok) throw new Error(`Gagal memuat metode bayar (HTTP ${res.status})`);
+        return res.json();
+      }),
+    ])
+      .then(([pkgData, payData]) => {
+        setPackages(pkgData);
+        setPaymentMethods(payData);
+        if (pkgData.length > 1) setSelectedPackageId(pkgData[1].id);
+      })
+      .catch((err) => setPackagesError(err.message))
+      .finally(() => setPackagesLoading(false));
   }, []);
 
-  const pkg = PACKAGES[selectedPackage] || PACKAGES.standard;
+  useEffect(() => {
+    setRateLoading(true);
+    fetch('https://open.er-api.com/v6/latest/IDR')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data && data.rates && data.rates.USD) {
+          setUsdRate(data.rates.USD);
+        }
+      })
+      .catch(() => {
+        setUsdRate(null);
+      })
+      .finally(() => setRateLoading(false));
+  }, []);
 
+  // ── Helpers ─────────────────────────────────────────────────
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     if (name === 'paket') {
-      setSelectedPackage(value);
+      setSelectedPackageId(value);
     } else {
       setFormData((prev) => ({
         ...prev,
-        [name]: type === 'checkbox' ? checked : value
+        [name]: type === 'checkbox' ? checked : value,
       }));
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setOrderPlaced(true);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setIsSubmitting(true);
+    setOrderResult(null);
+
+    const payload = {
+      title: `Order SewaSkill - ${pkg?.name ?? 'Paket Tidak Diketahui'}`,
+      body: JSON.stringify({
+        ...formData,
+        paket: selectedPackageId,
+        total: pkg?.total ?? 0,
+        timestamp: new Date().toISOString(),
+      }),
+      userId: 1,
+    };
+
+    try {
+      const res = await fetch('https://jsonplaceholder.typicode.com/posts', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json; charset=UTF-8' },
+        body: JSON.stringify(payload),
+      });
+
+      if (!res.ok) throw new Error(`Server merespons dengan status ${res.status}`);
+
+      const data = await res.json();
+      setOrderResult({ success: true, orderId: data.id });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch (err) {
+      setOrderResult({ success: false, error: err.message });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
+
+  const toUSD = (idrAmount) => {
+    if (!usdRate || !idrAmount) return null;
+    return (idrAmount * usdRate).toFixed(2);
+  };
+
+  if (packagesLoading) {
+    return (
+      <main className="py-5">
+        <div className="container">
+          <div className="d-flex align-items-center gap-3 text-muted">
+            <div className="spinner-border spinner-border-sm" role="status" aria-hidden="true" />
+            <span>Memuat data paket dari server…</span>
+          </div>
+        </div>
+      </main>
+    );
+  }
+
+  if (packagesError) {
+    return (
+      <main className="py-5">
+        <div className="container">
+          <div className="alert alert-danger">
+            <strong>Gagal memuat data paket:</strong> {packagesError}
+          </div>
+        </div>
+      </main>
+    );
+  }
 
   return (
     <main className="py-5">
@@ -86,14 +162,36 @@ export default function OrderPage() {
 
         <h1 className="fw-bold mb-5">Konfirmasi &amp; Pesan Jasa</h1>
 
-        {orderPlaced && (
+        {orderResult?.success && (
           <div className="alert alert-success alert-dismissible mb-4" role="alert">
             <h4 className="alert-heading">Pesanan Berhasil Dibuat! 🎉</h4>
-            <p className="mb-0">
-              Instruksi pembayaran telah dikirimkan ke email <strong>{formData.email_pemesan}</strong> dan
-              WhatsApp <strong>{formData.wa_pemesan}</strong>. Dana Anda aman bersama sistem Escrow SewaSkill.
+            <p className="mb-1">
+              Nomor transaksi Anda: <strong>#{orderResult.orderId}</strong>
             </p>
-            <button type="button" className="btn-close" onClick={() => setOrderPlaced(false)} aria-label="Tutup"></button>
+            <p className="mb-0">
+              Instruksi pembayaran telah dikirimkan ke email{' '}
+              <strong>{formData.email_pemesan}</strong> dan WhatsApp{' '}
+              <strong>{formData.wa_pemesan}</strong>. Dana Anda aman bersama
+              sistem Escrow SewaSkill.
+            </p>
+            <button
+              type="button"
+              className="btn-close"
+              onClick={() => setOrderResult(null)}
+              aria-label="Tutup"
+            />
+          </div>
+        )}
+
+        {orderResult?.success === false && (
+          <div className="alert alert-danger alert-dismissible mb-4" role="alert">
+            <strong>Gagal membuat pesanan.</strong> {orderResult.error}
+            <button
+              type="button"
+              className="btn-close"
+              onClick={() => setOrderResult(null)}
+              aria-label="Tutup"
+            />
           </div>
         )}
 
@@ -105,10 +203,14 @@ export default function OrderPage() {
               <form onSubmit={handleSubmit}>
                 <fieldset className="card border-0 shadow-sm mb-4">
                   <div className="card-body p-4">
-                    <legend className="h6 fw-semibold border-bottom pb-2 mb-4">Data Diri Pemesan</legend>
+                    <legend className="h6 fw-semibold border-bottom pb-2 mb-4">
+                      Data Diri Pemesan
+                    </legend>
                     <div className="row g-3">
                       <div className="col-md-6">
-                        <label htmlFor="nama-pemesan" className="form-label fw-semibold">Nama Lengkap *</label>
+                        <label htmlFor="nama-pemesan" className="form-label fw-semibold">
+                          Nama Lengkap *
+                        </label>
                         <input
                           type="text"
                           id="nama-pemesan"
@@ -121,7 +223,9 @@ export default function OrderPage() {
                         />
                       </div>
                       <div className="col-md-6">
-                        <label htmlFor="email-pemesan" className="form-label fw-semibold">Alamat Email *</label>
+                        <label htmlFor="email-pemesan" className="form-label fw-semibold">
+                          Alamat Email *
+                        </label>
                         <input
                           type="email"
                           id="email-pemesan"
@@ -134,7 +238,9 @@ export default function OrderPage() {
                         />
                       </div>
                       <div className="col-md-6">
-                        <label htmlFor="wa-pemesan" className="form-label fw-semibold">Nomor WhatsApp *</label>
+                        <label htmlFor="wa-pemesan" className="form-label fw-semibold">
+                          Nomor WhatsApp *
+                        </label>
                         <input
                           type="tel"
                           id="wa-pemesan"
@@ -152,25 +258,36 @@ export default function OrderPage() {
 
                 <fieldset className="card border-0 shadow-sm mb-4">
                   <div className="card-body p-4">
-                    <legend className="h6 fw-semibold border-bottom pb-2 mb-4">Detail Pesanan</legend>
+                    <legend className="h6 fw-semibold border-bottom pb-2 mb-4">
+                      Detail Pesanan
+                      <span className="badge bg-info ms-2 fw-normal" style={{ fontSize: '0.7rem' }}>
+                        via Mock JSON lokal
+                      </span>
+                    </legend>
                     <div className="row g-3">
                       <div className="col-md-6">
-                        <label htmlFor="pilih-paket" className="form-label fw-semibold">Pilih Paket *</label>
+                        <label htmlFor="pilih-paket" className="form-label fw-semibold">
+                          Pilih Paket *
+                        </label>
                         <select
                           id="pilih-paket"
                           name="paket"
                           className="form-select"
-                          value={selectedPackage}
+                          value={selectedPackageId}
                           onChange={handleChange}
                           required
                         >
-                          <option value="basic">Paket Basic - Rp 50.000 (Maks. 30 detik, 1x revisi)</option>
-                          <option value="standard">Paket Standard - Rp 100.000 (Maks. 60 detik, 3x revisi)</option>
-                          <option value="premium">Paket Premium - Rp 200.000 (Maks. 3 menit, revisi tak terbatas)</option>
+                          {packages.map((p) => (
+                            <option key={p.id} value={p.id}>
+                              {p.name} — {p.priceFormatted} ({p.desc})
+                            </option>
+                          ))}
                         </select>
                       </div>
                       <div className="col-md-6">
-                        <label htmlFor="deadline" className="form-label fw-semibold">Tanggal Deadline</label>
+                        <label htmlFor="deadline" className="form-label fw-semibold">
+                          Tanggal Deadline
+                        </label>
                         <input
                           type="date"
                           id="deadline"
@@ -182,7 +299,9 @@ export default function OrderPage() {
                         <div className="form-text">Opsional. Pengerjaan standar 2-3 hari kerja.</div>
                       </div>
                       <div className="col-12">
-                        <label htmlFor="brief-proyek" className="form-label fw-semibold">Brief Proyek / Catatan untuk Talent *</label>
+                        <label htmlFor="brief-proyek" className="form-label fw-semibold">
+                          Brief Proyek / Catatan untuk Talent *
+                        </label>
                         <textarea
                           id="brief-proyek"
                           name="brief"
@@ -192,10 +311,12 @@ export default function OrderPage() {
                           onChange={handleChange}
                           placeholder="Jelaskan detail proyek kamu: tema video, gaya editing yang diinginkan, referensi video sejenis, dll."
                           required
-                        ></textarea>
+                        />
                       </div>
                       <div className="col-12">
-                        <label htmlFor="upload-aset" className="form-label fw-semibold">Upload Bahan / Aset Proyek</label>
+                        <label htmlFor="upload-aset" className="form-label fw-semibold">
+                          Upload Bahan / Aset Proyek
+                        </label>
                         <input
                           type="file"
                           id="upload-aset"
@@ -212,27 +333,28 @@ export default function OrderPage() {
 
                 <fieldset className="card border-0 shadow-sm mb-4">
                   <div className="card-body p-4">
-                    <legend className="h6 fw-semibold border-bottom pb-2 mb-4">Metode Pembayaran</legend>
+                    <legend className="h6 fw-semibold border-bottom pb-2 mb-4">
+                      Metode Pembayaran
+                      <span className="badge bg-info ms-2 fw-normal" style={{ fontSize: '0.7rem' }}>
+                        via Mock JSON lokal
+                      </span>
+                    </legend>
                     <div className="row g-2">
-                      {[
-                        { val: 'bca', label: 'Transfer Bank BCA' },
-                        { val: 'mandiri', label: 'Transfer Bank Mandiri' },
-                        { val: 'gopay', label: 'GoPay' },
-                        { val: 'ovo', label: 'OVO' },
-                        { val: 'dana', label: 'DANA' },
-                      ].map(({ val, label }) => (
-                        <div key={val} className="col-sm-4 col-6">
+                      {paymentMethods.map(({ id, label }) => (
+                        <div key={id} className="col-sm-4 col-6">
                           <div className="form-check">
                             <input
                               className="form-check-input"
                               type="radio"
-                              id={`bayar-${val}`}
+                              id={`bayar-${id}`}
                               name="metode_bayar"
-                              value={val}
-                              checked={formData.metode_bayar === val}
+                              value={id}
+                              checked={formData.metode_bayar === id}
                               onChange={handleChange}
                             />
-                            <label className="form-check-label" htmlFor={`bayar-${val}`}>{label}</label>
+                            <label className="form-check-label" htmlFor={`bayar-${id}`}>
+                              {label}
+                            </label>
                           </div>
                         </div>
                       ))}
@@ -242,7 +364,9 @@ export default function OrderPage() {
 
                 <fieldset className="card border-0 shadow-sm mb-4">
                   <div className="card-body p-4">
-                    <legend className="h6 fw-semibold border-bottom pb-2 mb-4">Konfirmasi Pesanan</legend>
+                    <legend className="h6 fw-semibold border-bottom pb-2 mb-4">
+                      Konfirmasi Pesanan
+                    </legend>
                     <div className="form-check mb-2">
                       <input
                         className="form-check-input"
@@ -270,16 +394,57 @@ export default function OrderPage() {
                         required
                       />
                       <label className="form-check-label" htmlFor="konfirmasi-data">
-                        Saya menyatakan bahwa brief dan aset yang saya unggah adalah milik saya dan tidak melanggar hak cipta pihak lain *
+                        Saya menyatakan bahwa brief dan aset yang saya unggah adalah milik saya dan
+                        tidak melanggar hak cipta pihak lain *
                       </label>
                     </div>
                   </div>
                 </fieldset>
 
                 <div className="d-flex flex-wrap gap-3 align-items-center">
-                  <p className="mb-0 fw-semibold">Total: <span className="text-primary fs-5">{pkg.totalFormatted}</span></p>
-                  <button className="btn btn-primary btn-lg px-4" type="submit">
-                    Konfirmasi &amp; Bayar Sekarang
+                  <p className="mb-0 fw-semibold">
+                    Total:{' '}
+                    <span className="text-primary fs-5">
+                      {pkg ? pkg.totalFormatted : '—'}
+                    </span>
+                    {/* ── (a) PUBLIC API: Tampilkan ekuivalen USD jika kurs tersedia ── */}
+                    {pkg && !rateLoading && toUSD(pkg.total) && (
+                      <span
+                        className="badge bg-secondary ms-2 fw-normal"
+                        title="Kurs real-time via open.er-api.com"
+                        style={{ fontSize: '0.75rem' }}
+                      >
+                        ≈ ${toUSD(pkg.total)} USD
+                      </span>
+                    )}
+                    {rateLoading && (
+                      <span className="ms-2 text-muted small">
+                        <span
+                          className="spinner-border spinner-border-sm me-1"
+                          role="status"
+                          aria-hidden="true"
+                        />
+                        Memuat kurs…
+                      </span>
+                    )}
+                  </p>
+                  <button
+                    className="btn btn-primary btn-lg px-4"
+                    type="submit"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <span
+                          className="spinner-border spinner-border-sm me-2"
+                          role="status"
+                          aria-hidden="true"
+                        />
+                        Memproses…
+                      </>
+                    ) : (
+                      'Konfirmasi & Bayar Sekarang'
+                    )}
                   </button>
                   <Link to="/detail-jasa" className="btn btn-outline-secondary">
                     Kembali ke Halaman Jasa
@@ -290,7 +455,11 @@ export default function OrderPage() {
           </div>
 
           <div className="col-lg-4">
-            <aside id="ringkasan-order" className="card border-0 shadow-sm sticky-top" style={{ top: '80px' }}>
+            <aside
+              id="ringkasan-order"
+              className="card border-0 shadow-sm sticky-top"
+              style={{ top: '80px' }}
+            >
               <div className="card-body p-4">
                 <h2 className="h5 fw-semibold mb-4">Ringkasan Pesanan</h2>
 
@@ -304,7 +473,9 @@ export default function OrderPage() {
                   />
                   <div>
                     <p className="mb-0 fw-semibold small">Rizky Aditya</p>
-                    <p className="mb-0 text-muted small">Edit Video Pendek - {pkg.name}</p>
+                    <p className="mb-0 text-muted small">
+                      Edit Video Pendek — {pkg ? pkg.name : '—'}
+                    </p>
                   </div>
                 </div>
 
@@ -319,12 +490,16 @@ export default function OrderPage() {
                     </thead>
                     <tbody>
                       <tr>
-                        <td className="small">Jasa Edit Video - {pkg.name}<br /><span className="text-muted">{pkg.desc}</span></td>
-                        <td className="small fw-semibold">{pkg.priceFormatted}</td>
+                        <td className="small">
+                          Jasa Edit Video — {pkg ? pkg.name : '—'}
+                          <br />
+                          <span className="text-muted">{pkg ? pkg.desc : ''}</span>
+                        </td>
+                        <td className="small fw-semibold">{pkg ? pkg.priceFormatted : '—'}</td>
                       </tr>
                       <tr>
                         <td className="small">Biaya Layanan (5%)</td>
-                        <td className="small">{pkg.feeFormatted}</td>
+                        <td className="small">{pkg ? pkg.feeFormatted : '—'}</td>
                       </tr>
                       <tr>
                         <td className="small">Biaya Admin</td>
@@ -334,10 +509,26 @@ export default function OrderPage() {
                     <tfoot>
                       <tr className="table-primary">
                         <th scope="row" className="small">Total Pembayaran</th>
-                        <td className="fw-bold small">{pkg.totalFormatted}</td>
+                        <td className="fw-bold small">{pkg ? pkg.totalFormatted : '—'}</td>
                       </tr>
                     </tfoot>
                   </table>
+                </div>
+
+                <div className="alert alert-light border py-2 px-3 mb-3 small">
+                  <strong>💱 Estimasi dalam USD:</strong>{' '}
+                  {rateLoading
+                    ? 'Memuat kurs real-time…'
+                    : pkg && toUSD(pkg.total)
+                      ? `≈ $${toUSD(pkg.total)} USD`
+                      : 'Kurs tidak tersedia'}
+                  {!rateLoading && usdRate && (
+                    <span className="text-muted d-block">
+                      Kurs: 1 IDR = {usdRate.toFixed(8)} USD
+                      <br />
+                      <em>Sumber: open.er-api.com</em>
+                    </span>
+                  )}
                 </div>
 
                 <p className="text-muted small mb-0">
