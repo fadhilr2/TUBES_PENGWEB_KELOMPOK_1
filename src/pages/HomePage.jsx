@@ -1,59 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function HomePage() {
-  const [testimonials, setTestimonials] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  const loadTestimonials = () => {
-    setIsLoading(true);
-    setError(null);
-    fetch('/data/testimonials.json')
-      .then((res) => {
-        if (!res.ok) throw new Error('Gagal memuat ulasan pengguna.');
-        return res.json();
-      })
-      .then((data) => {
-        setTestimonials(data);
-        setIsLoading(false);
-      })
-      .catch((err) => {
-        setError(err.message || 'Terjadi kesalahan saat memuat ulasan.');
-        setIsLoading(false);
-      });
-  };
-
   useEffect(() => {
     document.title = 'SewaSkill — Temukan Talent Terbaik untuk Proyekmu';
-    let isMounted = true;
-
-    fetch('/data/testimonials.json')
-      .then((res) => {
-        if (!res.ok) throw new Error('Gagal memuat ulasan pengguna.');
-        return res.json();
-      })
-      .then((data) => {
-        if (isMounted) {
-          setTestimonials(data);
-          setIsLoading(false);
-        }
-      })
-      .catch((err) => {
-        if (isMounted) {
-          setError(err.message || 'Terjadi kesalahan saat memuat ulasan.');
-          setIsLoading(false);
-        }
-      });
-
-    return () => {
-      isMounted = false;
-    };
   }, []);
 
   return (
     <main>
-      {/* ── HERO ─────────────────────────────────────────── */}
       <section id="hero" className="hero-section text-white py-5" aria-labelledby="judul-utama">
         <div className="container py-4">
           <div className="row align-items-center gy-5">
@@ -95,7 +49,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── KATEGORI POPULER ─────────────────────────────── */}
       <section id="kategori-populer" className="py-5 bg-light" aria-labelledby="judul-kategori">
         <div className="container">
           <div className="text-center mb-5">
@@ -148,7 +101,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── KEUNGGULAN ───────────────────────────────────── */}
       <section id="keunggulan" className="py-5 bg-primary text-white" aria-labelledby="judul-keunggulan">
         <div className="container">
           <div className="text-center mb-5">
@@ -175,7 +127,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── TESTIMONI (MOCK API FETCH) ──────────────────── */}
       <section id="testimoni" className="py-5" aria-labelledby="judul-testimoni">
         <div className="container">
           <div className="text-center mb-5">
@@ -183,55 +134,31 @@ export default function HomePage() {
             <h2 id="judul-testimoni" className="fw-bold">Apa Kata Mereka?</h2>
           </div>
 
-          {/* Loading Skeleton */}
-          {isLoading && (
-            <div className="row g-4 justify-content-center" aria-busy="true" aria-label="Memuat ulasan">
-              {[1, 2].map((n) => (
-                <div key={n} className="col-md-6">
-                  <div className="card border-0 shadow-sm p-4 h-100 placeholder-glow">
-                    <p className="card-text">
-                      <span className="placeholder col-12 mb-2 d-block"></span>
-                      <span className="placeholder col-9 mb-2 d-block"></span>
-                      <span className="placeholder col-6 d-block"></span>
-                    </p>
-                    <span className="placeholder col-4 mt-3 d-block"></span>
-                  </div>
-                </div>
-              ))}
+          <div className="row g-4 justify-content-center">
+            <div className="col-md-6">
+              <blockquote className="card border-0 shadow-sm p-4 h-100">
+                <p className="card-text fst-italic">
+                  "Saya bisa menemukan editor video yang memahami gaya konten usaha saya. Komunikasinya jelas dan hasilnya sesuai kebutuhan."
+                </p>
+                <footer className="blockquote-footer mt-2">
+                  <cite>Rina, pemilik usaha kuliner</cite>
+                </footer>
+              </blockquote>
             </div>
-          )}
-
-          {/* Error State + Retry */}
-          {!isLoading && error && (
-            <div className="alert alert-danger text-center p-4 max-w-md mx-auto shadow-sm" role="alert">
-              <p className="mb-2 text-danger fw-semibold">{error}</p>
-              <button className="btn btn-outline-danger btn-sm" onClick={loadTestimonials}>
-                🔄 Coba Lagi
-              </button>
+            <div className="col-md-6">
+              <blockquote className="card border-0 shadow-sm p-4 h-100">
+                <p className="card-text fst-italic">
+                  "Tutor kodingnya sabar menjelaskan dari dasar. Materi yang sebelumnya terasa sulit akhirnya jadi lebih mudah dipahami."
+                </p>
+                <footer className="blockquote-footer mt-2">
+                  <cite>Dimas, mahasiswa</cite>
+                </footer>
+              </blockquote>
             </div>
-          )}
-
-          {/* Dynamic Testimonials Cards (Desain Asli: Quote + Author) */}
-          {!isLoading && !error && (
-            <div className="row g-4 justify-content-center">
-              {testimonials.map((item) => (
-                <div key={item.id} className="col-md-6">
-                  <blockquote className="card border-0 shadow-sm p-4 h-100">
-                    <p className="card-text fst-italic">
-                      "{item.quote}"
-                    </p>
-                    <footer className="blockquote-footer mt-2">
-                      <cite>{item.author}</cite>
-                    </footer>
-                  </blockquote>
-                </div>
-              ))}
-            </div>
-          )}
+          </div>
         </div>
       </section>
 
-      {/* ── CTA ──────────────────────────────────────────── */}
       <section className="py-5 bg-light">
         <div className="container text-center py-3">
           <h2 className="fw-bold mb-3">Siap Menemukan Talent Terbaikmu?</h2>
