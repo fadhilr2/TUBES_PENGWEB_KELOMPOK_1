@@ -1,44 +1,69 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function HomePage() {
+  const [testimonials, setTestimonials] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
   useEffect(() => {
     document.title = 'SewaSkill - Temukan Talent Terbaik untuk Proyekmu';
+
+    let isMounted = true;
+    fetch('/data/testimonials.json')
+      .then((res) => {
+        if (!res.ok) throw new Error('Gagal memuat ulasan pengguna');
+        return res.json();
+      })
+      .then((data) => {
+        if (isMounted) {
+          setTestimonials(data);
+          setLoading(false);
+        }
+      })
+      .catch((err) => {
+        if (isMounted) {
+          setError(err.message);
+          setLoading(false);
+        }
+      });
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   return (
     <main>
-      <section className="text-white py-5 bg-primary">
-        <div className="container py-4">
-          <div className="row align-items-center gy-5">
-            <div className="col-lg-6">
+      <section
+        className="text-white py-5 position-relative"
+        style={{
+          backgroundImage: 'linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), url("https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1600&q=80")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        <div className="container py-5 text-center">
+          <div className="row justify-content-center">
+            <div className="col-lg-8">
               <p className="text-white-50 fw-semibold text-uppercase small mb-2" style={{ letterSpacing: '.08em' }}>
                 Jasa digital tepercaya dalam satu tempat
               </p>
-              <h1 className="display-5 fw-bold mb-3">
+              <h1 className="display-4 fw-bold mb-3">
                 Temukan Ahlinya, Selesaikan Proyekmu
               </h1>
-              <p className="lead text-white-50 mb-4">
+              <p className="lead text-white-50 mb-4 mx-auto" style={{ maxWidth: '650px' }}>
                 SewaSkill mempertemukanmu dengan talent digital untuk berbagai kebutuhan,
                 mulai dari desain hingga pemrograman.
               </p>
-              <div className="d-flex flex-wrap gap-3">
-                <Link className="btn btn-light btn-lg fw-semibold" to="/katalog">
+              <div className="d-flex justify-content-center flex-wrap gap-3">
+                <Link className="btn btn-primary btn-lg px-4" to="/katalog">
                   Cari Talent
                 </Link>
-                <Link className="btn btn-outline-light btn-lg" to="/tambah-jasa">
+                <Link className="btn btn-outline-light btn-lg px-4" to="/tambah-jasa">
                   Daftar Jasa
                 </Link>
               </div>
-            </div>
-            <div className="col-lg-6 position-relative text-center">
-              <img
-                src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=800&q=80"
-                alt="Tim talent digital berdiskusi bersama"
-                className="img-fluid rounded-4 shadow-lg"
-                width="800"
-                height="533"
-              />
             </div>
           </div>
         </div>
@@ -91,7 +116,7 @@ export default function HomePage() {
                     <h3 className="card-title h5 fw-semibold">{cat.title}</h3>
                     <p className="card-text text-muted small flex-grow-1">{cat.desc}</p>
                     <Link to="/katalog" className="btn btn-outline-primary btn-sm mt-2" aria-label={`Lihat jasa ${cat.title}`}>
-                      Lihat Jasa →
+                      Lihat Jasa
                     </Link>
                   </div>
                 </div>
@@ -111,15 +136,16 @@ export default function HomePage() {
 
           <div className="row g-4 justify-content-center">
             {[
-              { icon: '👥', text: 'Lebih dari 500 talent siap membantu berbagai kebutuhan digital' },
-              { icon: '⭐', text: 'Rating dan ulasan ditampilkan secara transparan' },
-              { icon: '💸', text: 'Pilihan harga terjangkau, mulai dari Rp25.000' },
-              { icon: '⚡', text: 'Proses pemesanan jasa mudah dan cepat' },
+              { stat: '500+', label: 'Talent Aktif', desc: 'Siap membantu berbagai proyek digital' },
+              { stat: '4.9/5', label: 'Rating Kepuasan', desc: 'Ulasan transparan dari klien terverifikasi' },
+              { stat: 'Rp25rb', label: 'Harga Mulai', desc: 'Pilihan biaya terjangkau dan ramah kantong' },
+              { stat: '100%', label: 'Garansi Aman', desc: 'Pembayaran terlindungi hingga pekerjaan selesai' },
             ].map((item) => (
-              <div key={item.text} className="col-sm-6 col-lg-3">
-                <div className="text-center p-3">
-                  <div className="fs-1 mb-2">{item.icon}</div>
-                  <p className="mb-0 text-white-75">{item.text}</p>
+              <div key={item.label} className="col-sm-6 col-lg-3">
+                <div className="bg-white bg-opacity-10 border border-white border-opacity-25 rounded p-4 text-center h-100">
+                  <div className="display-6 fw-bold mb-1">{item.stat}</div>
+                  <h3 className="h6 fw-semibold text-white mb-2">{item.label}</h3>
+                  <p className="small text-white-50 mb-0">{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -134,39 +160,36 @@ export default function HomePage() {
             <h2 className="fw-bold">Apa Kata Mereka?</h2>
           </div>
 
-          <div className="row g-4 justify-content-center">
-            <div className="col-md-6">
-              <blockquote className="card border-0 shadow-sm p-4 h-100">
-                <p className="card-text fst-italic">
-                  "Saya bisa menemukan editor video yang memahami gaya konten usaha saya. Komunikasinya jelas dan hasilnya sesuai kebutuhan."
-                </p>
-                <footer className="blockquote-footer mt-2">
-                  <cite>Rina, pemilik usaha kuliner</cite>
-                </footer>
-              </blockquote>
+          {loading && (
+            <div className="text-center py-4">
+              <div className="spinner-border text-primary" role="status">
+                <span className="visually-hidden">Memuat ulasan...</span>
+              </div>
             </div>
-            <div className="col-md-6">
-              <blockquote className="card border-0 shadow-sm p-4 h-100">
-                <p className="card-text fst-italic">
-                  "Tutor kodingnya sabar menjelaskan dari dasar. Materi yang sebelumnya terasa sulit akhirnya jadi lebih mudah dipahami."
-                </p>
-                <footer className="blockquote-footer mt-2">
-                  <cite>Dimas, mahasiswa</cite>
-                </footer>
-              </blockquote>
-            </div>
-          </div>
-        </div>
-      </section>
+          )}
 
-      <section className="py-5 bg-light">
-        <div className="container text-center py-3">
-          <h2 className="fw-bold mb-3">Siap Menemukan Talent Terbaikmu?</h2>
-          <p className="text-muted mb-4">Bergabung bersama ribuan pengguna SewaSkill hari ini.</p>
-          <div className="d-flex justify-content-center gap-3 flex-wrap">
-            <Link className="btn btn-primary btn-lg px-4" to="/katalog">Jelajahi Katalog</Link>
-            <Link className="btn btn-outline-primary btn-lg px-4" to="/tambah-jasa">Daftarkan Jasamu</Link>
-          </div>
+          {error && (
+            <div className="alert alert-warning text-center mx-auto" style={{ maxWidth: '500px' }}>
+              {error}
+            </div>
+          )}
+
+          {!loading && !error && (
+            <div className="row g-4 justify-content-center">
+              {testimonials.map((item) => (
+                <div key={item.id} className="col-md-6">
+                  <blockquote className="card border-0 shadow-sm p-4 h-100">
+                    <p className="card-text fst-italic">
+                      "{item.quote}"
+                    </p>
+                    <footer className="blockquote-footer mt-2">
+                      <cite>{item.author}</cite>
+                    </footer>
+                  </blockquote>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
     </main>
