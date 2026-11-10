@@ -9,7 +9,7 @@
 
 SewaSkill adalah platform web untuk mencari dan memesan jasa freelance digital skala mikro, seperti edit video, desain grafis, bimbingan koding, dan penulisan konten.
 
-Proyek ini dikembangkan menggunakan React 19 dan Bootstrap 5 dengan arsitektur Single Page Application (SPA), serta memanfaatkan Fetch API untuk mengambil data dari mock JSON lokal.
+Proyek ini dikembangkan menggunakan React 19 dan Bootstrap 5 dengan arsitektur Single Page Application (SPA), serta memanfaatkan Fetch API untuk mengambil data dari mock JSON lokal. Desain menggunakan section selebar layar, container responsif, warna hitam-putih dengan aksen biru, dan animasi ringan tanpa perpindahan tombol saat hover.
 
 ---
 
@@ -33,36 +33,41 @@ Proyek ini dikembangkan menggunakan React 19 dan Bootstrap 5 dengan arsitektur S
 - **CSS Framework:** Bootstrap 5.3
 - **Data Source:** Fetch API (Mock JSON)
 - **Linter:** ESLint 10
+- **State Demo:** React Context dan localStorage
 
 ---
 
 ## Halaman dan Fitur
 
-1. **Beranda (`/`)**
-   - Banner pengenalan platform
-   - Kategori jasa populer
-   - Seksi keunggulan layanan
-   - Ulasan pengguna
+| Halaman            | Route                                                                  | Fitur                                                                                            |
+| ------------------ | ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| Beranda            | `/`                                                                    | Hero gradien, enam contoh karya, kategori, rekomendasi kota/kebutuhan, terakhir dilihat          |
+| Katalog & favorit  | `/katalog`, `/favorit`                                                 | Pencarian jasa/talent/lokasi, filter kategori dan harga, urutan, kartu/tabel, favorit            |
+| Detail jasa        | `/detail-jasa/:serviceId`                                              | Profil penyedia, paket, portofolio, ulasan CRUD milik sendiri, pemesanan                         |
+| Login & register   | `/login`, `/register`                                                  | Akun demo tiga peran; akun baru selalu pencari jasa                                              |
+| Profil             | `/profil`                                                              | Nama/lokasi, saldo demo, pendaftaran penyedia, keluar, hapus akun dengan penjagaan pesanan aktif |
+| Kelola jasa        | `/jasa-saya`, `/tambah-jasa`, `/edit-jasa/:serviceId`                  | CRUD jasa milik sendiri; paket bernama unik dengan harga masing-masing                           |
+| Pemesanan          | `/order?service=...&package=...`                                       | Brief, deadline, pilihan paket, metode bayar, biaya layanan 5%                                   |
+| Pembayaran         | `/pembayaran/:orderId`                                                 | Simulasi berhasil/gagal dengan saldo demo, retry                                                 |
+| Riwayat            | `/riwayat`                                                             | Batal, kirim hasil, terima, komplain, dan hapus riwayat selesai                                  |
+| Dashboard penyedia | `/dashboard-penyedia`                                                  | Pembelian per jasa, pendapatan selesai, sebaran rating, ulasan terbaru                           |
+| Admin              | `/admin`, `/admin/pesanan`, `/admin/akun`, `/admin/jasa`, `/admin/log` | Ringkasan, persetujuan/refund, CRUD dan blokir akun, moderasi posting, log aktivitas             |
 
-2. **Katalog Jasa (`/katalog`)**
-   - Pencarian talent berdasarkan nama dan keahlian
-   - Filter kategori dan batas harga maksimum
-   - Pengurutan berdasarkan rating dan harga
-   - Pilihan tampilan kartu (grid) atau tabel
+### Akun Demo
 
-3. **Detail Jasa (`/detail-jasa`)**
-   - Profil talent, status ketersediaan, dan rating
-   - Pilihan paket jasa (Basic, Standard, Premium)
-   - Portofolio karya dan FAQ pemesanan
+| Peran         | Email               | Kata sandi |
+| ------------- | ------------------- | ---------- |
+| Pencari jasa  | `deva@example.com`  | `demo123`  |
+| Penyedia jasa | `rizky@example.com` | `demo123`  |
+| Admin         | `admin@example.com` | `demo123`  |
 
-4. **Tambah Jasa (`/tambah-jasa`)**
-   - Formulir pendaftaran jasa baru
-   - Validasi input form di sisi klien
+Seed dimuat dari `public/data/demo.json`. Perubahan tersimpan dengan key `sewaskill-demo-v1` di localStorage browser. Untuk mengulang demo dari awal, hapus data situs pada browser lalu muat ulang.
 
-5. **Pemesanan (`/order`)**
-   - Ringkasan pesanan dan kalkulasi biaya
-   - Formulir data pemesan dan metode pembayaran
-   - Notifikasi konfirmasi pemesanan
+Alur pesanan: `menunggu_pembayaran → dibayar → dikirim → menunggu_admin → selesai / direfund`. Pesanan belum dibayar dapat dibatalkan. Persetujuan admin menambahkan harga jasa ke saldo penyedia; penolakan mengembalikan total pembayaran ke pembeli.
+
+Versi ini mengikuti referensi fitur mobile dengan data dummy. Autentikasi, saldo, pembayaran, dan penyerahan metadata file merupakan simulasi lokal; tidak ada backend, transfer uang, atau unggahan file sungguhan. Halaman admin dan tindakan data diperiksa berdasarkan peran pada store demo.
+
+Aset visual berada di `public/assets/images/`; sumber foto dan lisensinya dicatat pada `public/assets/photo-credits.json`.
 
 ---
 
@@ -70,7 +75,7 @@ Proyek ini dikembangkan menggunakan React 19 dan Bootstrap 5 dengan arsitektur S
 
 ### 1. Prasyarat
 
-- Node.js (versi 18 ke atas)
+- Node.js 20.19+ atau 22.12+ (sesuai kebutuhan Vite 8)
 - Git
 
 ### 2. Clone Repository
@@ -116,20 +121,22 @@ Akses aplikasi melalui browser di `http://localhost:5173/`.
 ## Struktur Folder
 
 ```text
-TUBES_PENGWEB_KELOMPOK_1/
-├── public/
-│   ├── assets/icons/             # Icon SVG
-│   ├── data/                     # Data mock JSON
-│   ├── favicon.svg               # Favicon
-│   └── icons.svg                 # Sprite SVG
-├── src/
-│   ├── components/               # Komponen antarmuka (Header, Footer, ScrollToTop)
-│   ├── pages/                    # Halaman aplikasi (Home, Katalog, Detail, Tambah, Order)
-│   ├── App.jsx                   # Konfigurasi routing
-│   ├── main.jsx                  # Entry point aplikasi
-│   └── index.css                 # Custom CSS
-├── index.html                    # Dokumen HTML utama
-├── package.json                  # Konfigurasi dependensi dan script npm
-├── vite.config.js                # Konfigurasi bundler Vite
-└── README.md                     # Dokumentasi proyek
+public/
+  data/demo.json       Seed akun, jasa, pesanan, ulasan, dan log
+  assets/images/       Gambar ilustrasi dan foto; kredit di photo-credits.json
+src/
+  components/          Navbar, footer, UI bersama, kartu jasa, galeri
+  hooks/               Hook judul halaman
+  pages/               Halaman pengguna, penyedia, dan admin
+  state/               Store demo, provider, validasi, dan format
+  styles/              CSS per fitur (base, header, components, home, catalog, detail, services, account, orders, dashboard, admin, footer)
+  App.jsx              Routing dan penjagaan akses peran
+  index.css            Mengimpor semua file CSS di styles/
+```
+
+## Validasi
+
+```bash
+npm run lint
+npm run build
 ```
