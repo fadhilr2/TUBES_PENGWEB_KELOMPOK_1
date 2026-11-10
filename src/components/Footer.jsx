@@ -1,42 +1,50 @@
 import { Link } from 'react-router-dom';
+import { useDemo } from '../state/DemoContext';
 
 export default function Footer() {
+  const { user } = useDemo();
+  const isAdmin = user !== null && user !== undefined && user.role === 'admin';
+
+  let homeLink = '/';
+  let bottomLink = '/katalog';
+  let bottomLabel = 'Temukan skill-mu';
+  if (isAdmin) {
+    homeLink = '/admin';
+    bottomLink = '/admin/log';
+    bottomLabel = 'Log aktivitas';
+  }
+
+  function handleBackToTop() {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let behavior = 'smooth';
+    if (reduceMotion) {
+      behavior = 'instant';
+    }
+    window.scrollTo({ top: 0, behavior: behavior });
+  }
+
   return (
-    <footer className="bg-white border-top py-5 mt-5">
+    <footer className="footer app-footer">
       <div className="container">
-        <div className="row gy-4">
-          <div className="col-md-5">
-            <Link className="text-primary text-decoration-none fw-bold fs-5 d-flex align-items-center gap-2 mb-2" to="/">
-              <img
-                src="/favicon.svg"
-                alt="Logo SewaSkill"
-                width="30"
-                height="30"
-                className="rounded"
-              />
-              SewaSkill
-            </Link>
-            <p className="text-muted small mb-0">Platform Jasa Freelance Mikro untuk Generasi Digital Indonesia.</p>
-          </div>
-
-          <div className="col-md-3">
-            <h6 className="fw-semibold text-uppercase text-dark mb-3" style={{ fontSize: '.75rem', letterSpacing: '.05em' }}>Navigasi</h6>
-            <ul className="list-unstyled mb-0">
-              <li className="mb-2"><Link className="text-muted text-decoration-none small" to="/">Beranda</Link></li>
-              <li className="mb-2"><Link className="text-muted text-decoration-none small" to="/katalog">Katalog</Link></li>
-              <li className="mb-2"><Link className="text-muted text-decoration-none small" to="/tambah-jasa">Daftar Jasa</Link></li>
-            </ul>
-          </div>
-
-          <div className="col-md-4">
-            <h6 className="fw-semibold text-uppercase text-dark mb-3" style={{ fontSize: '.75rem', letterSpacing: '.05em' }}>Kontak</h6>
-            <p className="text-muted mb-1 small">Email: sewaskill@support.id</p>
-            <p className="text-muted mb-0 small">WhatsApp: 0812-3456-7890</p>
-          </div>
+        <div className="footer-top">
+          <Link className="wordmark" to={homeLink}>
+            <img src="/favicon.svg" width="32" height="32" alt="" />
+            sewaskill<span className="brand-dot">.</span>
+          </Link>
+          <p>
+            Skill bertemu ide.
+            <br />
+            Karya jadi cerita.
+          </p>
+          <button type="button" className="back-top" onClick={handleBackToTop}>
+            Kembali ke atas <span aria-hidden="true">↑</span>
+          </button>
         </div>
-
-        <hr className="my-4 text-secondary opacity-25" />
-        <p className="text-center text-muted small mb-0">&copy; 2025 SewaSkill. Hak Cipta Dilindungi.</p>
+        <div className="footer-bottom">
+          <span>© 2026 SewaSkill · Kelompok 1</span>
+          <span>Demo lokal · Data dan pembayaran simulasi</span>
+          <Link to={bottomLink}>{bottomLabel} ↗</Link>
+        </div>
       </div>
     </footer>
   );

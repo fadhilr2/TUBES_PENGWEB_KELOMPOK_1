@@ -1,0 +1,30 @@
+.demo-account-list {
+  display: grid;
+  gap: 13px;
+  margin-top: 28px;
+}
+
+.demo-account-list .button {
+  justify-content: space-between;
+  text-align: left;
+}
+
+.demo-account-list small {
+  display: block;
+  color: #51545d;
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+.auth-switch {
+  margin-top: 25px;
+  font-size: 15px;
+}
+
+.auth-switch .text-link {
+  margin: 0;
+}
+
+.danger-zone {
+  margin-top: 40px;
+}
