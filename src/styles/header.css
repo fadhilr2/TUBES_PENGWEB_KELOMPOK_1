@@ -1,0 +1,277 @@
+.site-header {
+  position: relative;
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ffffff20;
+}
+
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: -1.5px;
+}
+
+.brand-symbol {
+  display: inline-block;
+  font-size: 36px;
+  line-height: 1;
+  margin-right: 9px;
+  font-weight: 400;
+}
+
+.brand-dot {
+  color: #6481ff;
+}
+
+.availability {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 14px;
+  letter-spacing: 0.1px;
+  color: #d2d3dd;
+}
+
+.availability > span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #7b95ff;
+  box-shadow: 0 0 10px #5978f9;
+}
+
+.menu-toggle {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: #f9f9fb;
+  border: 0;
+  background: none;
+  font-size: 16px;
+  padding: 8px 0 8px 16px;
+}
+
+.menu-icon {
+  width: 37px;
+  height: 37px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  background: var(--blue);
+}
+
+.menu-icon i {
+  width: 13px;
+  height: 1px;
+  background: white;
+  transition: transform 0.2s;
+}
+
+.menu-toggle[aria-expanded='true'] i:first-child {
+  transform: translateY(3px) rotate(45deg);
+}
+
+.menu-toggle[aria-expanded='true'] i:last-child {
+  transform: translateY(-3px) rotate(-45deg);
+}
+
+.main-menu {
+  position: absolute;
+  right: 0;
+  top: 90px;
+  width: 310px;
+  padding: 16px;
+  border: 1px solid #3c4053;
+  border-radius: 12px;
+  box-shadow: 0 24px 60px #0006;
+}
+
+.main-menu a {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 12px;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.main-menu a:hover {
+  background: #272e46;
+}
+
+@media (max-width: 767px) {
+  .wordmark {
+    font-size: 23px;
+  }
+  .brand-symbol {
+    font-size: 31px;
+  }
+  .availability {
+    display: none;
+  }
+  .menu-toggle {
+    font-size: 14px;
+    gap: 12px;
+  }
+  .menu-icon {
+    width: 33px;
+    height: 33px;
+  }
+  .main-menu {
+    top: 74px;
+    width: min(310px, 100%);
+  }
+}
+
+.site-header {
+  z-index: 20;
+}
+
+.main-menu {
+  z-index: 21;
+  max-height: min(70svh, 440px);
+  overflow-y: auto;
+  background: #141722;
+  isolation: isolate;
+}
+
+.menu-toggle:focus-visible {
+  outline: none;
+}
+
+.menu-toggle:focus-visible .menu-icon {
+  outline: 2px solid #a0b2ff;
+  outline-offset: 4px;
+}
+
+.menu-icon {
+  transition:
+    color 220ms ease-out,
+    background-color 220ms ease-out,
+    border-color 220ms ease-out,
+    box-shadow 220ms ease-out,
+    opacity 220ms ease-out;
+}
+
+.main-menu {
+  opacity: 0;
+  transition:
+    opacity 180ms ease-out,
+    display 180ms allow-discrete,
+    overlay 180ms allow-discrete;
+}
+
+.main-menu:not([hidden]) {
+  opacity: 1;
+}
+
+@starting-style {
+  .main-menu:not([hidden]) {
+    opacity: 0;
+  }
+}
+
+.menu-toggle:hover .menu-icon {
+  background-color: #426cff;
+}
+
+@media (min-width: 768px) and (max-width: 1050px) {
+  .availability {
+    display: none;
+  }
+}
+
+.app-header {
+  background: #08090c;
+  color: #fff;
+  position: relative;
+  z-index: 50;
+}
+
+.site-header {
+  height: 96px;
+}
+
+.wordmark {
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.wordmark > img {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.header-catalog {
+  font-size: 14px;
+  color: #eeeef6;
+}
+
+.header-catalog:hover {
+  color: #9eb2ff;
+}
+
+.main-menu a.active {
+  color: #9cb2ff;
+  background: #20283e;
+}
+
+.menu-logout {
+  display: flex;
+  justify-content: space-between;
+  border: 0;
+  border-top: 1px solid #3c4053;
+  background: transparent;
+  color: #dddfea;
+  padding: 14px 12px;
+  width: 100%;
+  text-align: left;
+  font-size: 16px;
+}
+
+.menu-logout:hover {
+  background: #272e46;
+  color: #fff;
+}
+
+.main-menu a {
+  gap: 20px;
+}
+
+.loading-page .brand-symbol {
+  color: #2455f4;
+  font-size: 55px;
+}
+
+@media (max-width: 767px) {
+  .site-header {
+    height: 82px;
+  }
+  .header-catalog {
+    display: none;
+  }
+}
+
+@media (max-width: 1050px), (pointer: coarse) {
+  .wordmark {
+    min-height: 44px;
+  }
+  .header-catalog {
+    padding-block: 10px;
+  }
+}

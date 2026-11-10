@@ -1,197 +1,360 @@
-import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useTitle } from '../hooks/useTitle';
+import WorkGallery from '../components/WorkGallery';
+import MemberHome from '../components/MemberHome';
+import { skillHighlights } from '../siteContent';
 
-export default function HomePage() {
-  const [testimonials, setTestimonials] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+function canHover() {
+  return window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+}
 
-  useEffect(() => {
-    document.title = 'SewaSkill - Temukan Talent Terbaik untuk Proyekmu';
+function openService(event) {
+  if (event.pointerType === 'mouse' && canHover()) {
+    event.currentTarget.open = true;
+  }
+}
 
-    let isMounted = true;
-    fetch('/data/testimonials.json')
-      .then((res) => {
-        if (!res.ok) throw new Error('Gagal memuat ulasan pengguna');
-        return res.json();
-      })
-      .then((data) => {
-        if (isMounted) {
-          setTestimonials(data);
-          setLoading(false);
-        }
-      })
-      .catch((err) => {
-        if (isMounted) {
-          setError(err.message);
-          setLoading(false);
-        }
-      });
+function closeService(event) {
+  if (event.pointerType === 'mouse' && canHover()) {
+    event.currentTarget.open = false;
+  }
+}
 
-    return () => {
-      isMounted = false;
-    };
-  }, []);
+function clickService(event) {
+  if (event.detail > 0 && canHover()) {
+    event.preventDefault();
+    event.currentTarget.parentElement.open = true;
+  }
+}
+
+function Hero() {
+  return (
+    <div className="hero-shell">
+      <section className="hero container" aria-labelledby="hero-title">
+        <div className="hero-copy">
+          <p className="eyebrow">
+            <span className="tiny-star" aria-hidden="true">
+              ✳
+            </span>{' '}
+            RUANG TEMU IDE &amp; KEAHLIAN
+          </p>
+          <h1 id="hero-title">
+            Ide besarmu.
+            <br />
+            Skill terbaik.
+            <br />
+            <em>Jadi nyata.</em>
+          </h1>
+          <Link className="button button-white" to="/katalog">
+            Temukan skill-mu{' '}
+            <span className="button-arrow" aria-hidden="true">
+              ↗
+            </span>
+          </Link>
+        </div>
+        <div className="hero-note">
+          <span className="small-index">KOLABORASI DIMULAI DI SINI</span>
+          <p>
+            Dari tugas kecil sampai mimpi besar. Ketemu orang yang tepat untuk mewujudkan ide kamu.
+          </p>
+          <a className="hero-note-link" href="#layanan">
+            Lihat pilihan skill <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+        <div className="hero-highlights">
+          <div>
+            <strong>Skill pilihan.</strong>
+            <span>SESUAI KEBUTUHANMU</span>
+          </div>
+          <div>
+            <strong>Ide berjalan.</strong>
+            <span>MULAI DARI SATU BRIEF</span>
+          </div>
+        </div>
+        <div className="hero-bottom">
+          <span>BUKAN SEKADAR JASA. SEBUAH KOLABORASI.</span>
+          <a href="#tentang">
+            Scroll untuk kenalan <span aria-hidden="true">↓</span>
+          </a>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function PeoplePreview() {
+  return (
+    <div className="people-preview">
+      <div className="people-stack" aria-hidden="true">
+        <img
+          src="/assets/images/portrait-clem.webp"
+          alt=""
+          width="112"
+          height="112"
+          loading="lazy"
+        />
+        <img
+          src="/assets/images/portrait-michael.webp"
+          alt=""
+          width="112"
+          height="112"
+          loading="lazy"
+        />
+        <img
+          src="/assets/images/portrait-abdul.webp"
+          alt=""
+          width="112"
+          height="112"
+          loading="lazy"
+        />
+      </div>
+      <p>
+        Ide bertemu orang kreatif.
+        <br />
+        <small>Foto ilustrasi · Wikimedia Commons</small>
+      </p>
+    </div>
+  );
+}
+
+function SkillBadges() {
+  const cards = [];
+  for (const item of skillHighlights) {
+    cards.push(
+      <div className="col" key={item.title}>
+        <a className="skill-card" href="#layanan">
+          <img src={item.icon} alt="" width="160" height="160" loading="lazy" />
+          <strong>{item.title}</strong>
+          <small>{item.description}</small>
+          <span className="skill-card-link" aria-hidden="true">
+            Lihat layanan ↗
+          </span>
+        </a>
+      </div>,
+    );
+  }
 
   return (
-    <main>
-      <section
-        className="text-white py-5 position-relative"
-        style={{
-          backgroundImage: 'linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), url("https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1600&q=80")',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
-        <div className="container py-5 text-center">
-          <div className="row justify-content-center">
-            <div className="col-lg-8">
-              <p className="text-white-50 fw-semibold text-uppercase small mb-2" style={{ letterSpacing: '.08em' }}>
-                Jasa digital tepercaya dalam satu tempat
-              </p>
-              <h1 className="display-4 fw-bold mb-3">
-                Temukan Ahlinya, Selesaikan Proyekmu
-              </h1>
-              <p className="lead text-white-50 mb-4 mx-auto" style={{ maxWidth: '650px' }}>
-                SewaSkill mempertemukanmu dengan talent digital untuk berbagai kebutuhan,
-                mulai dari desain hingga pemrograman.
-              </p>
-              <div className="d-flex justify-content-center flex-wrap gap-3">
-                <Link className="btn btn-primary btn-lg px-4" to="/katalog">
-                  Cari Talent
-                </Link>
-                <Link className="btn btn-outline-light btn-lg px-4" to="/tambah-jasa">
-                  Daftar Jasa
-                </Link>
+    <div className="skill-badges" aria-label="Keahlian tersedia">
+      <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-3">{cards}</div>
+    </div>
+  );
+}
+
+function IntroSection() {
+  return (
+    <section className="intro paper" id="tentang" aria-labelledby="intro-title">
+      <div className="container">
+        <div className="benefit-strip">
+          <span>
+            <span aria-hidden="true">✳</span> Talent dengan beragam keahlian
+          </span>
+          <span>
+            <span aria-hidden="true">✳</span> Paket sesuai kebutuhan
+          </span>
+          <span>
+            <span aria-hidden="true">✳</span> Harga jelas sejak awal
+          </span>
+        </div>
+        <div className="intro-grid">
+          <div className="row gx-lg-5 gy-4">
+            <div className="col-md-4">
+              <div className="section-label">
+                <span className="line-marker"></span> ORANG YANG TEPAT.
+                <br />
+                <span className="label-indent">SKILL YANG KAMU CARI.</span>
+                <PeoplePreview />
+              </div>
+            </div>
+            <div className="col-md-8">
+              <div>
+                <h2 id="intro-title">
+                  Kamu punya ide.
+                  <br />
+                  Kami bantu temukan <em>ahlinya.</em>
+                </h2>
+                <p className="intro-description">
+                  SewaSkill mempertemukan kamu dengan talent digital untuk desain, website, video,
+                  dan konten. Pilih keahliannya, ceritakan kebutuhanmu, lalu mulai berkarya bersama.
+                </p>
+                <a className="text-link" href="#cara-kerja">
+                  Kenalan lebih dekat <span aria-hidden="true">↗</span>
+                </a>
               </div>
             </div>
           </div>
         </div>
-      </section>
+        <SkillBadges />
+      </div>
+    </section>
+  );
+}
 
-      <section className="py-5 bg-light">
-        <div className="container">
-          <div className="text-center mb-5">
-            <p className="text-primary fw-semibold text-uppercase small" style={{ letterSpacing: '.08em' }}>Pilihan terpopuler</p>
-            <h2 className="fw-bold">Kategori Jasa Populer</h2>
-            <p className="text-muted">Pilih kategori yang paling sesuai untuk proyekmu.</p>
+function ServiceItem({ number, title, keywords, description, linkText }) {
+  return (
+    <details className="service" onPointerEnter={openService} onPointerLeave={closeService}>
+      <summary onClick={clickService}>
+        <span className="service-number">{number}</span>
+        <h3>{title}</h3>
+        <span className="service-keywords">{keywords}</span>
+        <span className="service-toggle" aria-hidden="true"></span>
+      </summary>
+      <div className="service-content">
+        <p>{description}</p>
+        <Link className="text-link" to="/katalog">
+          {linkText} <span aria-hidden="true">↗</span>
+        </Link>
+      </div>
+    </details>
+  );
+}
+
+function ServicesSection() {
+  return (
+    <section className="services" id="layanan" aria-labelledby="services-title">
+      <div className="container">
+        <div className="section-top">
+          <div>
+            <p className="eyebrow">BANYAK KEBUTUHAN. SATU TEMPAT.</p>
+            <h2 id="services-title">
+              Apa pun idenya,
+              <br />
+              ada <em>skill-nya.</em>
+            </h2>
           </div>
+          <p className="services-description">
+            Biar kamu fokus ke gambaran besarnya.
+            <br />
+            Temukan bantuan untuk detailnya.
+          </p>
+        </div>
+        <div className="service-list">
+          <ServiceItem
+            number="01"
+            title="Desain &amp; Branding"
+            keywords="Logo · Brand kit · Thumbnail"
+            description="Dari kesan pertama sampai identitas yang diingat. Temukan talent untuk logo, brand kit, thumbnail, dan materi visualmu."
+            linkText="Temukan desainer"
+          />
+          <ServiceItem
+            number="02"
+            title="Web &amp; Koding"
+            keywords="Website · Frontend · Tutor"
+            description="Punya ide website atau ingin belajar pemrograman? Temukan bantuan untuk membangun halaman web dan memahami kodenya."
+            linkText="Temukan talent koding"
+          />
+          <ServiceItem
+            number="03"
+            title="Video &amp; Motion"
+            keywords="Reels · TikTok · Editing"
+            description="Ubah rekaman mentah menjadi cerita yang enak ditonton. Mulai dari video pendek untuk media sosial sampai editing kontenmu."
+            linkText="Temukan editor video"
+          />
+          <ServiceItem
+            number="04"
+            title="Konten &amp; Tulisan"
+            keywords="Artikel · Copywriting · SEO"
+            description="Temukan kata yang pas untuk idemu. Kolaborasi dengan penulis untuk artikel, konten media sosial, dan tulisan website."
+            linkText="Temukan penulis"
+          />
+        </div>
+        <div className="services-bottom">
+          <span>Punya skill yang bisa membantu orang lain?</span>
+          <Link to="/tambah-jasa">
+            Jadi bagian dari SewaSkill <span aria-hidden="true">↗</span>
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
 
-          <div className="row g-4">
-            {[
-              {
-                img: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=600&q=80',
-                alt: 'Editor video',
-                title: 'Edit Video',
-                desc: 'Jadikan rekamanmu lebih menarik untuk konten media sosial, promosi, maupun dokumentasi.',
-              },
-              {
-                img: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=600&q=80',
-                alt: 'Desainer grafis',
-                title: 'Desain Thumbnail',
-                desc: 'Dapatkan thumbnail kreatif yang membantu kontenmu tampil lebih menonjol dan profesional.',
-              },
-              {
-                img: 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=600&q=80',
-                alt: 'Programmer',
-                title: 'Tutor Koding',
-                desc: 'Pelajari dasar pemrograman atau tingkatkan skill koding bersama tutor pilihanmu.',
-              },
-              {
-                img: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=600&q=80',
-                alt: 'Penulis konten',
-                title: 'Penulisan Konten',
-                desc: 'Bangun komunikasi yang lebih kuat melalui artikel, caption, dan naskah profesional.',
-              },
-            ].map((cat) => (
-              <div key={cat.title} className="col-sm-6 col-lg-3">
-                <div className="card h-100 border-0 shadow-sm">
-                  <img
-                    src={cat.img}
-                    alt={cat.alt}
-                    className="card-img-top object-fit-cover"
-                    style={{ height: '220px' }}
-                  />
-                  <div className="card-body d-flex flex-column">
-                    <h3 className="card-title h5 fw-semibold">{cat.title}</h3>
-                    <p className="card-text text-muted small flex-grow-1">{cat.desc}</p>
-                    <Link to="/katalog" className="btn btn-outline-primary btn-sm mt-2" aria-label={`Lihat jasa ${cat.title}`}>
-                      Lihat Jasa
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            ))}
+function ProcessStep({ number, title, children }) {
+  return (
+    <div className="col">
+      <article>
+        <span className="step-number">{number}</span>
+        <h3>{title}</h3>
+        <p>{children}</p>
+      </article>
+    </div>
+  );
+}
+
+function ProcessSection() {
+  return (
+    <section className="process paper" id="cara-kerja" aria-labelledby="process-title">
+      <div className="container">
+        <div className="section-top">
+          <div>
+            <p className="eyebrow dark-eyebrow">IDE BAGUS NGGAK PERLU NUNGGU LAMA.</p>
+            <h2 id="process-title">
+              Tiga langkah.
+              <br />
+              <em>Mulai sesuatu yang besar.</em>
+            </h2>
+          </div>
+          <span className="process-decoration" aria-hidden="true">
+            ✳
+          </span>
+        </div>
+        <div className="process-grid">
+          <div className="row row-cols-1 row-cols-md-3 gx-md-5 gy-4">
+            <ProcessStep number="(01)" title="Temukan yang cocok.">
+              Jelajahi katalog. Pilih talent berdasarkan keahlian, paket jasa, dan kebutuhan
+              proyekmu.
+            </ProcessStep>
+            <ProcessStep number="(02)" title="Ceritakan idemu.">
+              Baca detail jasa, pilih paket, lalu tulis brief yang jelas saat mengisi formulir
+              pemesanan.
+            </ProcessStep>
+            <ProcessStep number="(03)" title="Wujudkan bersama.">
+              Periksa ringkasan pesananmu. Jadikan brief tadi langkah pertama menuju karya
+              berikutnya.
+            </ProcessStep>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
+  );
+}
 
-      <section className="py-5 bg-primary text-white">
-        <div className="container">
-          <div className="text-center mb-5">
-            <p className="text-white-50 fw-semibold text-uppercase small" style={{ letterSpacing: '.08em' }}>Lebih tenang saat memesan</p>
-            <h2 className="fw-bold">Mengapa SewaSkill?</h2>
-            <p className="text-white-50">Platform yang dirancang agar proses mencari jasa terasa sederhana.</p>
-          </div>
+function ClosingSection() {
+  return (
+    <section className="closing paper" aria-labelledby="closing-title">
+      <div className="container closing-inner">
+        <p className="eyebrow dark-eyebrow">SETIAP KARYA HEBAT DIMULAI DARI SATU IDE.</p>
+        <h2 id="closing-title">
+          Sekarang, giliran
+          <br />
+          <em>ide kamu.</em>
+          <span className="closing-star" aria-hidden="true">
+            ✳
+          </span>
+        </h2>
+        <Link className="button button-blue" to="/katalog">
+          Yuk, mulai sesuatu{' '}
+          <span className="button-arrow" aria-hidden="true">
+            ↗
+          </span>
+        </Link>
+      </div>
+    </section>
+  );
+}
 
-          <div className="row g-4 justify-content-center">
-            {[
-              { stat: '500+', label: 'Talent Aktif', desc: 'Siap membantu berbagai proyek digital' },
-              { stat: '4.9/5', label: 'Rating Kepuasan', desc: 'Ulasan transparan dari klien terverifikasi' },
-              { stat: 'Rp25rb', label: 'Harga Mulai', desc: 'Pilihan biaya terjangkau dan ramah kantong' },
-              { stat: '100%', label: 'Garansi Aman', desc: 'Pembayaran terlindungi hingga pekerjaan selesai' },
-            ].map((item) => (
-              <div key={item.label} className="col-sm-6 col-lg-3">
-                <div className="bg-white bg-opacity-10 border border-white border-opacity-25 rounded p-4 text-center h-100">
-                  <div className="display-6 fw-bold mb-1">{item.stat}</div>
-                  <h3 className="h6 fw-semibold text-white mb-2">{item.label}</h3>
-                  <p className="small text-white-50 mb-0">{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+export default function HomePage() {
+  useTitle('Ide besarmu, skill terbaik');
 
-      <section className="py-5">
-        <div className="container">
-          <div className="text-center mb-5">
-            <p className="text-primary fw-semibold text-uppercase small" style={{ letterSpacing: '.08em' }}>Cerita pengguna</p>
-            <h2 className="fw-bold">Apa Kata Mereka?</h2>
-          </div>
-
-          {loading && (
-            <div className="text-center py-4">
-              <div className="spinner-border text-primary" role="status">
-                <span className="visually-hidden">Memuat ulasan...</span>
-              </div>
-            </div>
-          )}
-
-          {error && (
-            <div className="alert alert-warning text-center mx-auto" style={{ maxWidth: '500px' }}>
-              {error}
-            </div>
-          )}
-
-          {!loading && !error && (
-            <div className="row g-4 justify-content-center">
-              {testimonials.map((item) => (
-                <div key={item.id} className="col-md-6">
-                  <blockquote className="card border-0 shadow-sm p-4 h-100">
-                    <p className="card-text fst-italic">
-                      "{item.quote}"
-                    </p>
-                    <footer className="blockquote-footer mt-2">
-                      <cite>{item.author}</cite>
-                    </footer>
-                  </blockquote>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-      </section>
+  return (
+    <main id="main">
+      <Hero />
+      <MemberHome />
+      <IntroSection />
+      <WorkGallery />
+      <ServicesSection />
+      <ProcessSection />
+      <ClosingSection />
     </main>
   );
 }

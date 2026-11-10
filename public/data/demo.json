@@ -1,0 +1,561 @@
+{
+  "version": 1,
+  "currentUserId": null,
+  "users": [
+    {
+      "id": "buyer",
+      "name": "Deva",
+      "email": "deva@example.com",
+      "role": "pencari",
+      "location": "Bandung, Jawa Barat",
+      "balance": 643000,
+      "avatar": "/assets/images/portrait-abdul.webp",
+      "password": "demo123",
+      "status": "aktif",
+      "createdAt": "2026-09-28T08:00:00Z"
+    },
+    {
+      "id": "seller",
+      "name": "Rizky Aditya",
+      "email": "rizky@example.com",
+      "role": "penyedia",
+      "location": "Jakarta",
+      "balance": 185000,
+      "avatar": "/assets/images/portrait-clem.webp",
+      "password": "demo123",
+      "status": "aktif",
+      "createdAt": "2026-09-28T08:00:00Z"
+    },
+    {
+      "id": "seller2",
+      "name": "Sari Dewi",
+      "email": "sari@example.com",
+      "role": "penyedia",
+      "location": "Bandung",
+      "balance": 100000,
+      "avatar": "/assets/images/portrait-michael.webp",
+      "password": "demo123",
+      "status": "aktif",
+      "createdAt": "2026-09-28T08:00:00Z"
+    },
+    {
+      "id": "seller3",
+      "name": "Budi Santoso",
+      "email": "budi@example.com",
+      "role": "penyedia",
+      "location": "Bandung",
+      "balance": 100000,
+      "avatar": "/assets/images/portrait-abdul.webp",
+      "password": "demo123",
+      "status": "aktif",
+      "createdAt": "2026-09-28T08:00:00Z"
+    },
+    {
+      "id": "seller4",
+      "name": "Maya Putri",
+      "email": "maya@example.com",
+      "role": "penyedia",
+      "location": "Surabaya",
+      "balance": 100000,
+      "avatar": "/assets/images/portrait-michael.webp",
+      "password": "demo123",
+      "status": "aktif",
+      "createdAt": "2026-09-28T08:00:00Z"
+    },
+    {
+      "id": "admin",
+      "name": "Admin SewaSkill",
+      "email": "admin@example.com",
+      "role": "admin",
+      "location": "Bandung",
+      "balance": 0,
+      "avatar": "/assets/images/portrait-abdul.webp",
+      "password": "demo123",
+      "status": "aktif",
+      "createdAt": "2026-09-28T08:00:00Z"
+    },
+    {
+      "id": "buyer2",
+      "name": "Dinda Rahayu",
+      "email": "dinda@example.com",
+      "role": "pencari",
+      "location": "Yogyakarta",
+      "balance": 1000000,
+      "avatar": "/assets/images/portrait-michael.webp",
+      "password": "demo123",
+      "status": "aktif",
+      "createdAt": "2026-09-28T08:00:00Z"
+    }
+  ],
+  "services": [
+    {
+      "id": "t1",
+      "ownerId": "seller",
+      "title": "Edit Video Pendek (Reels/TikTok)",
+      "category": "video",
+      "description": "Video editor untuk konten media sosial berdurasi pendek. Bantu susun cerita, transisi, subtitle, dan warna sesuai brief menggunakan Premiere Pro, CapCut, atau DaVinci Resolve.",
+      "location": "Jakarta",
+      "days": 3,
+      "portfolioUrl": "",
+      "image": "/assets/images/cerita-video.webp",
+      "packages": [
+        {
+          "id": "t1-p1",
+          "name": "Video singkat",
+          "description": "Maksimal 30 detik, satu kali revisi.",
+          "price": 50000
+        },
+        {
+          "id": "t1-p2",
+          "name": "Video promosi",
+          "description": "Maksimal 60 detik, subtitle dan tiga kali revisi.",
+          "price": 85000
+        },
+        {
+          "id": "t1-p3",
+          "name": "Video lengkap",
+          "description": "Maksimal tiga menit dengan penyesuaian audio dan warna.",
+          "price": 140000
+        }
+      ],
+      "hidden": false,
+      "createdAt": "2026-10-08T08:00:00Z"
+    },
+    {
+      "id": "t2",
+      "ownerId": "seller2",
+      "title": "Desain Thumbnail YouTube",
+      "category": "desain",
+      "description": "Desain thumbnail yang jelas dan sesuai identitas kanalmu. Ceritakan topik, gaya visual, dan referensimu untuk menentukan arah desain bersama.",
+      "location": "Bandung",
+      "days": 3,
+      "portfolioUrl": "",
+      "image": "/assets/images/nusa-social.webp",
+      "packages": [
+        {
+          "id": "t2-p1",
+          "name": "1 Thumbnail",
+          "description": "Satu desain thumbnail dengan dua kali revisi.",
+          "price": 35000
+        }
+      ],
+      "hidden": false,
+      "createdAt": "2026-10-08T08:00:00Z"
+    },
+    {
+      "id": "t3",
+      "ownerId": "seller3",
+      "title": "Tutor Koding (Python & Web)",
+      "category": "koding",
+      "description": "Belajar Python, HTML, CSS, dan JavaScript lewat contoh proyek nyata. Materi menyesuaikan kebutuhan pemula, dengan pembahasan kode dan latihan terarah.",
+      "location": "Bandung",
+      "days": 3,
+      "portfolioUrl": "",
+      "image": "/assets/images/studio-website.webp",
+      "packages": [
+        {
+          "id": "t3-p1",
+          "name": "Sesi 60 menit",
+          "description": "Satu sesi daring dan materi latihan.",
+          "price": 75000
+        },
+        {
+          "id": "t3-p2",
+          "name": "Paket 4 sesi",
+          "description": "Empat sesi bertahap untuk membangun proyek kecil.",
+          "price": 260000
+        }
+      ],
+      "hidden": false,
+      "createdAt": "2026-10-08T08:00:00Z"
+    },
+    {
+      "id": "t4",
+      "ownerId": "seller4",
+      "title": "Penulisan Konten & Artikel SEO",
+      "category": "konten",
+      "description": "Bantu sampaikan ide melalui artikel, caption, dan tulisan website yang mudah dibaca. Topik, nada tulisan, serta kebutuhan riset disesuaikan dengan brief.",
+      "location": "Surabaya",
+      "days": 3,
+      "portfolioUrl": "",
+      "image": "/assets/images/ruang-kata.webp",
+      "packages": [
+        {
+          "id": "t4-p1",
+          "name": "Artikel 500 kata",
+          "description": "Satu artikel singkat dengan satu revisi.",
+          "price": 40000
+        },
+        {
+          "id": "t4-p2",
+          "name": "Artikel 1000 kata",
+          "description": "Artikel mendalam dengan struktur dan subjudul.",
+          "price": 70000
+        },
+        {
+          "id": "t4-p3",
+          "name": "Artikel 1500 kata",
+          "description": "Artikel panjang dengan riset sumber dan penyuntingan.",
+          "price": 110000
+        }
+      ],
+      "hidden": false,
+      "createdAt": "2026-10-08T08:00:00Z"
+    },
+    {
+      "id": "t5",
+      "ownerId": "seller2",
+      "title": "Desain Logo & Identitas Brand",
+      "category": "desain",
+      "description": "Temukan karakter visual usaha lokalmu melalui logo, pilihan warna, dan panduan identitas sederhana. Contoh gambar memakai konsep branding Sora Coffee.",
+      "location": "Bandung",
+      "days": 3,
+      "portfolioUrl": "",
+      "image": "/assets/images/sora-branding.webp",
+      "packages": [
+        {
+          "id": "t5-p1",
+          "name": "Logo dasar",
+          "description": "Satu konsep logo dan dua kali revisi.",
+          "price": 90000
+        },
+        {
+          "id": "t5-p2",
+          "name": "Brand kit",
+          "description": "Logo, palet warna, dan panduan penggunaan.",
+          "price": 180000
+        }
+      ],
+      "hidden": false,
+      "createdAt": "2026-10-08T08:00:00Z"
+    },
+    {
+      "id": "t6",
+      "ownerId": "seller3",
+      "title": "Desain UI/UX Aplikasi Mobile",
+      "category": "desain",
+      "description": "Rancang alur dan antarmuka aplikasi yang mudah dipahami. Mulai dari wireframe sampai prototipe tampilan untuk kebutuhan presentasi atau pengembangan.",
+      "location": "Bandung",
+      "days": 3,
+      "portfolioUrl": "",
+      "image": "/assets/images/jelajah-app.webp",
+      "packages": [
+        {
+          "id": "t6-p1",
+          "name": "3 layar",
+          "description": "Tiga layar antarmuka utama.",
+          "price": 120000
+        },
+        {
+          "id": "t6-p2",
+          "name": "Prototipe 6 layar",
+          "description": "Enam layar dan alur prototipe interaktif.",
+          "price": 240000
+        }
+      ],
+      "hidden": false,
+      "createdAt": "2026-10-08T08:00:00Z"
+    }
+  ],
+  "orders": [
+    {
+      "id": "DEMO-1001",
+      "buyerId": "buyer",
+      "sellerId": "seller",
+      "serviceId": "t1",
+      "serviceTitle": "Edit Video Pendek (Reels/TikTok)",
+      "packageId": "t1-p2",
+      "packageName": "Video promosi",
+      "price": 85000,
+      "fee": 4250,
+      "total": 89250,
+      "status": "menunggu_pembayaran",
+      "brief": "Video promosi produk berdurasi 30 detik, dengan subtitle bahasa Indonesia dan warna sesuai identitas brand.",
+      "deadline": "",
+      "paymentMethod": "bca",
+      "buyerName": "Deva",
+      "email": "deva@example.com",
+      "whatsapp": "081234567890",
+      "attachments": [],
+      "resultUrl": "",
+      "complaint": "",
+      "decision": "",
+      "hiddenForBuyer": false,
+      "createdAt": "2026-11-07T08:00:00Z"
+    },
+    {
+      "id": "DEMO-1002",
+      "buyerId": "buyer",
+      "sellerId": "seller",
+      "serviceId": "t1",
+      "serviceTitle": "Edit Video Pendek (Reels/TikTok)",
+      "packageId": "t1-p2",
+      "packageName": "Video promosi",
+      "price": 85000,
+      "fee": 4250,
+      "total": 89250,
+      "status": "dibayar",
+      "brief": "Video promosi produk berdurasi 30 detik, dengan subtitle bahasa Indonesia dan warna sesuai identitas brand.",
+      "deadline": "",
+      "paymentMethod": "bca",
+      "buyerName": "Deva",
+      "email": "deva@example.com",
+      "whatsapp": "081234567890",
+      "attachments": [],
+      "resultUrl": "",
+      "complaint": "",
+      "decision": "",
+      "hiddenForBuyer": false,
+      "createdAt": "2026-11-06T08:00:00Z",
+      "paidAt": "2026-11-06T08:00:00Z",
+      "paymentResult": "berhasil"
+    },
+    {
+      "id": "DEMO-1003",
+      "buyerId": "buyer",
+      "sellerId": "seller",
+      "serviceId": "t1",
+      "serviceTitle": "Edit Video Pendek (Reels/TikTok)",
+      "packageId": "t1-p2",
+      "packageName": "Video promosi",
+      "price": 85000,
+      "fee": 4250,
+      "total": 89250,
+      "status": "dikirim",
+      "brief": "Video promosi produk berdurasi 30 detik, dengan subtitle bahasa Indonesia dan warna sesuai identitas brand.",
+      "deadline": "",
+      "paymentMethod": "bca",
+      "buyerName": "Deva",
+      "email": "deva@example.com",
+      "whatsapp": "081234567890",
+      "attachments": [],
+      "resultUrl": "Contoh hasil video final sudah siap ditinjau sesuai brief.",
+      "complaint": "",
+      "decision": "",
+      "hiddenForBuyer": false,
+      "createdAt": "2026-11-05T08:00:00Z",
+      "paidAt": "2026-11-05T08:00:00Z",
+      "paymentResult": "berhasil"
+    },
+    {
+      "id": "DEMO-1004",
+      "buyerId": "buyer",
+      "sellerId": "seller",
+      "serviceId": "t1",
+      "serviceTitle": "Edit Video Pendek (Reels/TikTok)",
+      "packageId": "t1-p2",
+      "packageName": "Video promosi",
+      "price": 85000,
+      "fee": 4250,
+      "total": 89250,
+      "status": "menunggu_admin",
+      "brief": "Video promosi produk berdurasi 30 detik, dengan subtitle bahasa Indonesia dan warna sesuai identitas brand.",
+      "deadline": "",
+      "paymentMethod": "bca",
+      "buyerName": "Deva",
+      "email": "deva@example.com",
+      "whatsapp": "081234567890",
+      "attachments": [],
+      "resultUrl": "Contoh hasil video final sudah siap ditinjau sesuai brief.",
+      "complaint": "",
+      "decision": "diterima",
+      "hiddenForBuyer": false,
+      "createdAt": "2026-11-04T08:00:00Z",
+      "paidAt": "2026-11-04T08:00:00Z",
+      "paymentResult": "berhasil"
+    },
+    {
+      "id": "DEMO-1005",
+      "buyerId": "buyer",
+      "sellerId": "seller",
+      "serviceId": "t1",
+      "serviceTitle": "Edit Video Pendek (Reels/TikTok)",
+      "packageId": "t1-p2",
+      "packageName": "Video promosi",
+      "price": 85000,
+      "fee": 4250,
+      "total": 89250,
+      "status": "selesai",
+      "brief": "Video promosi produk berdurasi 30 detik, dengan subtitle bahasa Indonesia dan warna sesuai identitas brand.",
+      "deadline": "",
+      "paymentMethod": "bca",
+      "buyerName": "Deva",
+      "email": "deva@example.com",
+      "whatsapp": "081234567890",
+      "attachments": [],
+      "resultUrl": "Contoh hasil video final sudah siap ditinjau sesuai brief.",
+      "complaint": "",
+      "decision": "diterima",
+      "hiddenForBuyer": false,
+      "createdAt": "2026-11-03T08:00:00Z",
+      "paidAt": "2026-11-03T08:00:00Z",
+      "paymentResult": "berhasil",
+      "closedAt": "2026-11-03T08:00:00Z"
+    },
+    {
+      "id": "DEMO-1006",
+      "buyerId": "buyer",
+      "sellerId": "seller",
+      "serviceId": "t1",
+      "serviceTitle": "Edit Video Pendek (Reels/TikTok)",
+      "packageId": "t1-p2",
+      "packageName": "Video promosi",
+      "price": 85000,
+      "fee": 4250,
+      "total": 89250,
+      "status": "direfund",
+      "brief": "Video promosi produk berdurasi 30 detik, dengan subtitle bahasa Indonesia dan warna sesuai identitas brand.",
+      "deadline": "",
+      "paymentMethod": "bca",
+      "buyerName": "Deva",
+      "email": "deva@example.com",
+      "whatsapp": "081234567890",
+      "attachments": [],
+      "resultUrl": "Contoh hasil video final sudah siap ditinjau sesuai brief.",
+      "complaint": "Hasil belum sesuai brief.",
+      "decision": "komplain",
+      "hiddenForBuyer": false,
+      "createdAt": "2026-11-02T08:00:00Z",
+      "paidAt": "2026-11-02T08:00:00Z",
+      "paymentResult": "berhasil",
+      "closedAt": "2026-11-02T08:00:00Z"
+    },
+    {
+      "id": "DEMO-1007",
+      "buyerId": "buyer",
+      "sellerId": "seller",
+      "serviceId": "t1",
+      "serviceTitle": "Edit Video Pendek (Reels/TikTok)",
+      "packageId": "t1-p2",
+      "packageName": "Video promosi",
+      "price": 85000,
+      "fee": 4250,
+      "total": 89250,
+      "status": "dibatalkan",
+      "brief": "Video promosi produk berdurasi 30 detik, dengan subtitle bahasa Indonesia dan warna sesuai identitas brand.",
+      "deadline": "",
+      "paymentMethod": "bca",
+      "buyerName": "Deva",
+      "email": "deva@example.com",
+      "whatsapp": "081234567890",
+      "attachments": [],
+      "resultUrl": "",
+      "complaint": "",
+      "decision": "",
+      "hiddenForBuyer": false,
+      "createdAt": "2026-11-01T08:00:00Z",
+      "closedAt": "2026-11-01T08:00:00Z"
+    }
+  ],
+  "reviews": [
+    {
+      "id": "review-t1-1",
+      "serviceId": "t1",
+      "userId": "buyer",
+      "rating": 5,
+      "comment": "Hasilnya rapi dan sesuai brief. Komunikasinya juga jelas.",
+      "createdAt": "2026-10-30T08:00:00Z"
+    },
+    {
+      "id": "review-t1-2",
+      "serviceId": "t1",
+      "userId": "buyer2",
+      "rating": 4,
+      "comment": "Pengerjaan tepat waktu. Revisi dibantu sampai sesuai kebutuhan.",
+      "createdAt": "2026-10-29T08:00:00Z"
+    },
+    {
+      "id": "review-t2-1",
+      "serviceId": "t2",
+      "userId": "buyer",
+      "rating": 5,
+      "comment": "Hasilnya rapi dan sesuai brief. Komunikasinya juga jelas.",
+      "createdAt": "2026-10-30T08:00:00Z"
+    },
+    {
+      "id": "review-t2-2",
+      "serviceId": "t2",
+      "userId": "buyer2",
+      "rating": 4,
+      "comment": "Pengerjaan tepat waktu. Revisi dibantu sampai sesuai kebutuhan.",
+      "createdAt": "2026-10-29T08:00:00Z"
+    },
+    {
+      "id": "review-t3-1",
+      "serviceId": "t3",
+      "userId": "buyer",
+      "rating": 5,
+      "comment": "Hasilnya rapi dan sesuai brief. Komunikasinya juga jelas.",
+      "createdAt": "2026-10-30T08:00:00Z"
+    },
+    {
+      "id": "review-t3-2",
+      "serviceId": "t3",
+      "userId": "buyer2",
+      "rating": 4,
+      "comment": "Pengerjaan tepat waktu. Revisi dibantu sampai sesuai kebutuhan.",
+      "createdAt": "2026-10-29T08:00:00Z"
+    },
+    {
+      "id": "review-t4-1",
+      "serviceId": "t4",
+      "userId": "buyer",
+      "rating": 5,
+      "comment": "Hasilnya rapi dan sesuai brief. Komunikasinya juga jelas.",
+      "createdAt": "2026-10-30T08:00:00Z"
+    },
+    {
+      "id": "review-t4-2",
+      "serviceId": "t4",
+      "userId": "buyer2",
+      "rating": 4,
+      "comment": "Pengerjaan tepat waktu. Revisi dibantu sampai sesuai kebutuhan.",
+      "createdAt": "2026-10-29T08:00:00Z"
+    },
+    {
+      "id": "review-t5-1",
+      "serviceId": "t5",
+      "userId": "buyer",
+      "rating": 5,
+      "comment": "Hasilnya rapi dan sesuai brief. Komunikasinya juga jelas.",
+      "createdAt": "2026-10-30T08:00:00Z"
+    },
+    {
+      "id": "review-t5-2",
+      "serviceId": "t5",
+      "userId": "buyer2",
+      "rating": 4,
+      "comment": "Pengerjaan tepat waktu. Revisi dibantu sampai sesuai kebutuhan.",
+      "createdAt": "2026-10-29T08:00:00Z"
+    },
+    {
+      "id": "review-t6-1",
+      "serviceId": "t6",
+      "userId": "buyer",
+      "rating": 5,
+      "comment": "Hasilnya rapi dan sesuai brief. Komunikasinya juga jelas.",
+      "createdAt": "2026-10-30T08:00:00Z"
+    },
+    {
+      "id": "review-t6-2",
+      "serviceId": "t6",
+      "userId": "buyer2",
+      "rating": 4,
+      "comment": "Pengerjaan tepat waktu. Revisi dibantu sampai sesuai kebutuhan.",
+      "createdAt": "2026-10-29T08:00:00Z"
+    }
+  ],
+  "favorites": {
+    "buyer": ["t2"]
+  },
+  "recent": {},
+  "logs": [
+    {
+      "id": "log-initial",
+      "actorId": null,
+      "action": "data_demo",
+      "details": "Data akun, jasa, ulasan, dan pesanan contoh dimuat. Semua transaksi merupakan simulasi lokal.",
+      "createdAt": "2026-11-07T08:00:00Z"
+    }
+  ]
+}

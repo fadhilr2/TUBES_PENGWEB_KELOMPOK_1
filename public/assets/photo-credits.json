@@ -1,0 +1,28 @@
+{
+  "license": "CC0 1.0 Universal",
+  "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "usage": "Decorative illustration of collaboration. These photos do not identify SewaSkill talents or imply endorsement.",
+  "photos": [
+    {
+      "file": "portrait-clem.webp",
+      "title": "Street portrait (Unsplash)",
+      "photographer": "Clem Onojeghuo",
+      "source": "https://commons.wikimedia.org/wiki/File:Street_portrait_(Unsplash).jpg",
+      "modifications": "Square crop, resize, WebP conversion"
+    },
+    {
+      "file": "portrait-michael.webp",
+      "title": "The Perfect Portrait? (Unsplash)",
+      "photographer": "Michael Mroczek",
+      "source": "https://commons.wikimedia.org/wiki/File:The_Perfect_Portrait%3F_(Unsplash).jpg",
+      "modifications": "Square crop, resize, WebP conversion"
+    },
+    {
+      "file": "portrait-abdul.webp",
+      "title": "My personal portrait",
+      "photographer": "Aabdulazim",
+      "source": "https://commons.wikimedia.org/wiki/File:My_personal_portrait.jpg",
+      "modifications": "Square crop, resize, WebP conversion"
+    }
+  ]
+}
