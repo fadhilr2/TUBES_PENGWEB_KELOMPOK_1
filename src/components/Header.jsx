@@ -1,75 +1,175 @@
-import { useState } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
+import { Link, NavLink, useLocation } from 'react-router-dom';
+import { useDemo } from '../state/DemoContext';
+
+function getMenuLinks(user) {
+  const links = [];
+
+  if (user && user.role === 'admin') {
+    links.push(['/admin', 'Ringkasan']);
+    links.push(['/admin/pesanan', 'Tinjau pesanan']);
+    links.push(['/admin/akun', 'Kelola akun']);
+    links.push(['/admin/jasa', 'Moderasi jasa']);
+    links.push(['/admin/log', 'Log aktivitas']);
+    return links;
+  }
+
+  links.push(['/', 'Beranda']);
+  links.push(['/katalog', 'Katalog jasa']);
+
+  if (user) {
+    links.push(['/favorit', 'Favorit']);
+    links.push(['/riwayat', 'Riwayat pesanan']);
+    links.push(['/jasa-saya', 'Jasa saya']);
+  } else {
+    links.push(['/login', 'Masuk']);
+    links.push(['/register', 'Buat akun']);
+  }
+
+  if (user && user.role === 'penyedia') {
+    links.push(['/dashboard-penyedia', 'Dashboard penyedia']);
+  }
+
+  if (user) {
+    links.push(['/profil', 'Profil saya']);
+  }
+
+  return links;
+}
+
+function getAvailabilityText(user, isAdmin) {
+  if (isAdmin) {
+    return 'Ruang kelola SewaSkill';
+  }
+  if (user) {
+    const firstName = user.name.split(' ')[0];
+    return 'Halo, ' + firstName + '. Siap berkarya?';
+  }
+  return 'Skill lokal. Kemungkinan tak terbatas.';
+}
 
 export default function Header() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+  const headerRef = useRef(null);
+  const { user, logout } = useDemo();
+  const { pathname } = useLocation();
 
-  const toggleNav = () => setIsOpen(prev => !prev);
-  const closeNav = () => setIsOpen(false);
+  const isAdmin = Boolean(user) && user.role === 'admin';
+  const links = getMenuLinks(user);
+
+  let headerClass = 'app-header ';
+  if (pathname === '/') {
+    headerClass = 'app-header header-home';
+  }
+
+  let homeLink = '/';
+  if (isAdmin) {
+    homeLink = '/admin';
+  }
+
+  useEffect(function listenForCloseEvents() {
+    function handlePointerDown(event) {
+      const headerElement = headerRef.current;
+      if (headerElement && !headerElement.contains(event.target)) {
+        setOpen(false);
+      }
+    }
+
+    function handleKeyDown(event) {
+      if (event.key === 'Escape') {
+        setOpen(false);
+        const headerElement = headerRef.current;
+        if (headerElement) {
+          const toggle = headerElement.querySelector('.menu-toggle');
+          if (toggle) {
+            toggle.focus();
+          }
+        }
+      }
+    }
+
+    document.addEventListener('pointerdown', handlePointerDown);
+    document.addEventListener('keydown', handleKeyDown);
+
+    return function removeListeners() {
+      document.removeEventListener('pointerdown', handlePointerDown);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
+  function closeMenu() {
+    setOpen(false);
+  }
+
+  function toggleMenu() {
+    setOpen(!open);
+  }
+
+  function handleLogout() {
+    logout();
+    setOpen(false);
+  }
+
+  function isExactLink(path) {
+    return path === '/' || path === '/admin';
+  }
+
+  const menuItems = links.map(function renderLink(item) {
+    const path = item[0];
+    const label = item[1];
+    return (
+      <NavLink key={path} to={path} end={isExactLink(path)} onClick={closeMenu}>
+        {label}
+        <span aria-hidden="true">↗</span>
+      </NavLink>
+    );
+  });
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm">
-      <div className="container">
-        <Link 
-          className="navbar-brand fw-bold text-primary d-flex align-items-center gap-2" 
-          to="/" 
-          onClick={closeNav}
-          aria-label="SewaSkill, kembali ke beranda"
+    <header ref={headerRef} className={headerClass}>
+      <div className="site-header container">
+        <Link
+          className="wordmark"
+          to={homeLink}
+          onClick={closeMenu}
+          aria-label="SewaSkill, kembali ke awal"
         >
-          <img
-            src="/favicon.svg"
-            alt="Logo SewaSkill"
-            width="36"
-            height="36"
-            className="rounded"
-          />
-          SewaSkill
+          <img src="/favicon.svg" width="34" height="34" alt="" />
+          sewaskill<span className="brand-dot">.</span>
         </Link>
-
-        <button
-          className={`navbar-toggler ${isOpen ? '' : 'collapsed'}`}
-          type="button"
-          onClick={toggleNav}
-          aria-controls="main-nav"
-          aria-expanded={isOpen}
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-
-        <div className={`collapse navbar-collapse ${isOpen ? 'show' : ''}`} id="main-nav">
-          <ul className="navbar-nav ms-auto align-items-lg-center gap-1 gap-lg-2">
-            <li className="nav-item">
-              <NavLink
-                className={({ isActive }) => 'nav-link px-3' + (isActive ? ' active fw-semibold' : '')}
-                to="/"
-                end
-                onClick={closeNav}
-              >
-                Beranda
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                className={({ isActive }) => 'nav-link px-3' + (isActive ? ' active fw-semibold' : '')}
-                to="/katalog"
-                onClick={closeNav}
-              >
-                Katalog
-              </NavLink>
-            </li>
-            <li className="nav-item ms-lg-2 mt-2 mt-lg-0">
-              <NavLink
-                className={({ isActive }) => 'btn btn-primary btn-sm px-3 py-2 fw-medium' + (isActive ? ' active' : '')}
-                to="/tambah-jasa"
-                onClick={closeNav}
-              >
-                Daftar Jasa
-              </NavLink>
-            </li>
-          </ul>
+        <span className="availability">
+          <span />
+          {getAvailabilityText(user, isAdmin)}
+        </span>
+        <div className="header-actions">
+          {!isAdmin && (
+            <Link className="header-catalog" to="/katalog">
+              Jelajahi jasa ↗
+            </Link>
+          )}
+          <button
+            type="button"
+            className="menu-toggle"
+            onClick={toggleMenu}
+            aria-controls="main-menu"
+            aria-expanded={open}
+          >
+            <span>Menu</span>
+            <span className="menu-icon" aria-hidden="true">
+              <i />
+              <i />
+            </span>
+          </button>
         </div>
+        <nav id="main-menu" className="main-menu" hidden={!open} aria-label="Navigasi utama">
+          {menuItems}
+          {user && (
+            <button type="button" className="menu-logout" onClick={handleLogout}>
+              Keluar ↗
+            </button>
+          )}
+        </nav>
       </div>
-    </nav>
+    </header>
   );
 }
