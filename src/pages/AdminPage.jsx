@@ -51,7 +51,7 @@ export default function AdminPage() {
 
   useEffect(
     function updateDocumentTitle() {
-      document.title = `${title} — Admin SewaSkill`;
+      document.title = `${title} - Admin SewaSkill`;
     },
     [title],
   );

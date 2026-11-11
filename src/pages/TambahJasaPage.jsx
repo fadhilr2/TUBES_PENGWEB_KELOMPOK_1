@@ -300,7 +300,7 @@ function PreviewPanel({ form, packages, user }) {
     previewTitle = form.title;
   }
 
-  let previewDays = '—';
+  let previewDays = '-';
   if (form.days) {
     previewDays = form.days;
   }
@@ -553,7 +553,7 @@ export default function TambahJasaPage() {
       if (serviceId) {
         label = 'Edit jasa';
       }
-      document.title = `${label} — SewaSkill`;
+      document.title = `${label} - SewaSkill`;
     },
     [serviceId],
   );

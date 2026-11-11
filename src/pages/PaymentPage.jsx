@@ -176,7 +176,7 @@ export default function PaymentPage() {
   });
 
   useEffect(function () {
-    document.title = 'Pembayaran Demo — SewaSkill';
+    document.title = 'Pembayaran Demo - SewaSkill';
   }, []);
 
   function handleOutcomeChange(event) {

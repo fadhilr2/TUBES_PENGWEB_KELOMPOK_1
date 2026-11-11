@@ -18,7 +18,7 @@ const finished = ['selesai', 'direfund', 'dibatalkan'];
 function orderDate(value) {
   const date = new Date(value);
   if (Number.isNaN(date.getTime())) {
-    return '—';
+    return '-';
   }
   const formatter = new Intl.DateTimeFormat('id-ID', {
     dateStyle: 'medium',
@@ -556,7 +556,7 @@ export default function HistoryPage() {
   }).length;
 
   useEffect(function () {
-    document.title = 'Riwayat Pesanan — SewaSkill';
+    document.title = 'Riwayat Pesanan - SewaSkill';
   }, []);
 
   function runAction(action, successMessage) {

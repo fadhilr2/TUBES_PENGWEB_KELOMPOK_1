@@ -51,7 +51,7 @@ function AccountRow({ account, currentUserId, onEdit, onToggleBlock, onDelete })
         <strong>{account.name}</strong>
         <small>{account.email}</small>
       </td>
-      <td>{account.location || '—'}</td>
+      <td>{account.location || '-'}</td>
       <td>
         <StatusBadge status={account.role} />
       </td>

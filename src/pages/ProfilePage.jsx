@@ -317,7 +317,7 @@ export default function ProfilePage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.title = 'Profil — SewaSkill';
+    document.title = 'Profil - SewaSkill';
   }, []);
 
   function handleLogout() {

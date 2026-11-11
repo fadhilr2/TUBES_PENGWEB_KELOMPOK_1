@@ -199,7 +199,7 @@ function ProjectFieldset({ service, selectedPackage, onPackageChange }) {
               {service.packages.map(function (item) {
                 return (
                   <option value={item.id} key={item.id}>
-                    {item.name} — {money(item.price)}
+                    {item.name} - {money(item.price)}
                   </option>
                 );
               })}
@@ -340,7 +340,7 @@ export default function OrderPage() {
   const total = price + fee;
 
   useEffect(function () {
-    document.title = 'Pesan Jasa — SewaSkill';
+    document.title = 'Pesan Jasa - SewaSkill';
   }, []);
 
   function handlePackageChange(event) {

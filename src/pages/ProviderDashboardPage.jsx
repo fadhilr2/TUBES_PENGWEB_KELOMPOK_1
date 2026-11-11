@@ -234,7 +234,7 @@ export default function ProviderDashboardPage() {
   const { state, user } = useDemo();
 
   useEffect(() => {
-    document.title = 'Dashboard Penyedia — SewaSkill';
+    document.title = 'Dashboard Penyedia - SewaSkill';
   }, []);
 
   let userId = null;
@@ -274,7 +274,7 @@ export default function ProviderDashboardPage() {
 
   const reviews = state.reviews.filter((review) => serviceIds.has(review.serviceId));
 
-  let average = '—';
+  let average = '-';
   if (reviews.length > 0) {
     average = (sumRatings(reviews) / reviews.length).toFixed(1);
   }

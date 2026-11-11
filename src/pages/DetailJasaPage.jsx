@@ -596,7 +596,7 @@ export default function DetailJasaPage() {
 
   useEffect(
     function updateTitle() {
-      document.title = `${serviceTitle || 'Detail jasa'} — SewaSkill`;
+      document.title = `${serviceTitle || 'Detail jasa'} - SewaSkill`;
     },
     [serviceTitle],
   );

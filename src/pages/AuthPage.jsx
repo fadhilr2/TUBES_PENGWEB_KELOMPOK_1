@@ -218,9 +218,9 @@ export default function AuthPage() {
 
   useEffect(() => {
     if (isRegister) {
-      document.title = 'Daftar — SewaSkill';
+      document.title = 'Daftar - SewaSkill';
     } else {
-      document.title = 'Masuk — SewaSkill';
+      document.title = 'Masuk - SewaSkill';
     }
   }, [isRegister]);
 

@@ -1,7 +1,7 @@
 export function formatDate(value) {
   const result = new Date(value);
   if (Number.isNaN(result.getTime())) {
-    return '—';
+    return '-';
   }
   return result.toLocaleString('id-ID', { dateStyle: 'medium', timeStyle: 'short' });
 }
