@@ -1,0 +1,135 @@
+.service-card {
+  min-width: 0;
+}
+
+.service-card-media {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #e7e9ee;
+}
+
+.service-card-media > a {
+  display: block;
+}
+
+.service-card-media img {
+  width: 100%;
+  aspect-ratio: 1.5;
+  object-fit: cover;
+}
+
+.service-card-media .project-tag {
+  font-size: 13px;
+  left: 13px;
+  top: 13px;
+  padding: 6px 10px;
+  pointer-events: none;
+}
+
+.favorite-button {
+  display: grid;
+  place-items: center;
+  position: absolute;
+  right: 13px;
+  top: 13px;
+  width: 38px;
+  height: 38px;
+  border: 1px solid #fff;
+  background: #fff;
+  color: #282c38;
+  border-radius: 50%;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.favorite-button:hover,
+.favorite-button.is-favorite {
+  color: #2455f4;
+  border-color: #2455f4;
+  background: #edf1ff;
+}
+
+.service-card-copy {
+  padding: 18px 0;
+}
+
+.service-owner {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 13px;
+  color: #51545d;
+  margin-bottom: 11px;
+}
+
+.service-owner span {
+  text-align: right;
+}
+
+.page-section .service-card h2 {
+  font-size: 21px;
+  font-weight: 550;
+  letter-spacing: -0.4px;
+  margin: 0 0 20px;
+  min-height: 56px;
+}
+
+.service-card h2 a:hover {
+  color: var(--blue);
+}
+
+.service-card-bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 13px;
+  padding-top: 13px;
+  border-top: 1px solid #dcdde1;
+}
+
+.service-card-bottom strong {
+  font-size: 16px;
+}
+
+.catalog-filters {
+  border-bottom: 1px solid #dcdde1;
+  padding-bottom: 35px;
+}
+
+.catalog-toolbar {
+  padding: 27px 0;
+  color: #51545d;
+}
+
+.favorite-button,
+.service-card h2 a {
+  transition:
+    color 220ms ease-out,
+    background-color 220ms ease-out,
+    border-color 220ms ease-out,
+    box-shadow 220ms ease-out,
+    opacity 220ms ease-out;
+}
+
+@media (max-width: 767px) {
+  .service-card h2 {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 1050px), (pointer: coarse) {
+  .favorite-button {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+@media (max-width: 1050px), (pointer: coarse) {
+  .service-card h2 a {
+    display: block;
+    padding-block: 8px;
+    margin-block: -8px;
+  }
+}
