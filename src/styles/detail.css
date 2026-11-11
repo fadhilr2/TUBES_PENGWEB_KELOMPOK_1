@@ -1,0 +1,66 @@
+.package-grid {
+  margin: 28px 0;
+}
+
+.package-option {
+  padding: 24px 0;
+  border-top: 1px solid #cbd0dd;
+}
+
+.package-option p {
+  color: #51545d;
+  margin: 14px 0;
+}
+
+.detail-cover {
+  width: 100%;
+  aspect-ratio: 1.6;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 24px;
+}
+
+.provider-heading {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+.provider-heading .avatar-sm {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.provider-heading h2 {
+  margin: 6px 0;
+}
+
+.provider-heading p {
+  color: #51545d;
+}
+
+.package-option.selected {
+  border-color: #2455f4;
+}
+
+.faq-item {
+  border-top: 1px solid #dedfe4;
+  padding: 18px 0;
+}
+
+.faq-item summary {
+  cursor: pointer;
+  font-weight: 550;
+}
+
+.faq-item p {
+  margin-top: 15px;
+  color: #51545d;
+}
+
+.faq-item summary {
+  padding-block: 10px;
+}
