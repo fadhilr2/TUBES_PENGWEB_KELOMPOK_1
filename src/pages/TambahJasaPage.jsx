@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { EmptyState, Notice, PageHeading } from '../components/UI';
 import { useDemo } from '../state/DemoContext';
 import { categoryImages, categoryLabels, money } from '../state/format';
+import placeholderJasa from '../data/placeholder-jasa.json';
 
 function newPackage() {
   return { id: `package-${crypto.randomUUID()}`, name: '', description: '', price: '' };
@@ -365,6 +366,53 @@ function ServiceEditor({ service, user, saveService }) {
   });
   const [agreed, setAgreed] = useState(false);
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  useEffect(
+    function fetchPlaceholderData() {
+      if (service) {
+        return;
+      }
+
+      setLoading(true);
+
+      // Simulasi fetch async dari data JSON placeholder
+      new Promise(function resolve(res) {
+        setTimeout(function delay() {
+          res(placeholderJasa);
+        }, 300);
+      })
+        .then(function applyData(data) {
+          setForm({
+            title: data.title || '',
+            category: data.category || 'desain',
+            description: data.description || '',
+            days: data.days || 3,
+            portfolioUrl: data.portfolioUrl || '',
+          });
+
+          if (Array.isArray(data.packages) && data.packages.length > 0) {
+            setPackages(
+              data.packages.map(function toPackage(pkg) {
+                return {
+                  id: 'package-' + crypto.randomUUID(),
+                  name: pkg.name || '',
+                  description: pkg.description || '',
+                  price: pkg.price || '',
+                };
+              }),
+            );
+          }
+        })
+        .catch(function handleError(err) {
+          console.warn('Placeholder data tidak tersedia:', err.message);
+        })
+        .finally(function done() {
+          setLoading(false);
+        });
+    },
+    [service],
+  );
 
   function handleFieldChange(event) {
     const nextForm = Object.assign({}, form);
@@ -444,6 +492,14 @@ function ServiceEditor({ service, user, saveService }) {
   let errorBox = null;
   if (error) {
     errorBox = <Notice type="error">{error}</Notice>;
+  }
+
+  if (loading) {
+    return (
+      <div className="text-center py-5">
+        <p>Memuat data placeholder…</p>
+      </div>
+    );
   }
 
   return (

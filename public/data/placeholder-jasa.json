@@ -1,0 +1,25 @@
+{
+  "title": "Jasa Desain Logo Profesional",
+  "category": "desain",
+  "description": "Saya menawarkan jasa desain logo profesional untuk bisnis, UMKM, dan startup. Dengan pengalaman lebih dari 3 tahun di bidang desain grafis, saya akan membantu Anda mendapatkan identitas visual yang unik dan berkesan. Proses kerja meliputi riset brand, sketsa konsep, digitalisasi, dan revisi hingga sesuai keinginan Anda. Format file yang diberikan: PNG, SVG, dan PDF.",
+  "days": 5,
+  "portfolioUrl": "https://portofolio.example.com/desain-logo",
+  "packages": [
+    {
+      "name": "Paket Starter",
+      "description": "1 konsep logo, 2 kali revisi, file PNG dan SVG.",
+      "price": 75000
+    },
+    {
+      "name": "Paket Bisnis",
+      "description": "3 konsep logo, 4 kali revisi, file PNG, SVG, dan PDF, plus panduan warna.",
+      "price": 150000
+    },
+    {
+      "name": "Paket Premium",
+      "description": "5 konsep logo, revisi tanpa batas, brand guideline lengkap, mockup presentasi.",
+      "price": 300000
+    }
+  ]
+}
+
