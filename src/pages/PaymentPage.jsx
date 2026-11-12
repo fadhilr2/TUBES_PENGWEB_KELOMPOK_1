@@ -191,7 +191,6 @@ export default function PaymentPage() {
     setMessage(null);
 
     try {
-      // Mock POST request ke JSONPlaceholder untuk simulasi pengiriman data transaksi pembayaran
       await fetch('https://jsonplaceholder.typicode.com/posts', {
         method: 'POST',
         headers: {
