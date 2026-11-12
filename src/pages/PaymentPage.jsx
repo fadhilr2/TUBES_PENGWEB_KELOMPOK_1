@@ -204,7 +204,6 @@ export default function PaymentPage() {
         }),
       });
 
-      // Cek apakah server mengembalikan respons yang berhasil (status 200-299)
       if (!response.ok) {
         throw new Error(
           `Server pembayaran tidak merespons dengan benar (status: ${response.status}). Coba lagi beberapa saat.`,
@@ -224,11 +223,7 @@ export default function PaymentPage() {
         });
       }
     } catch (error) {
-      // Tangani dua jenis error:
-      // 1. Jaringan bermasalah (fetch gagal, misal: tidak ada internet)
-      // 2. Error dari server (response.ok === false) atau dari payOrder
       if (error instanceof TypeError) {
-        // TypeError biasanya muncul ketika tidak ada koneksi internet atau URL tidak bisa dijangkau
         setMessage({
           tone: 'error',
           text: 'Tidak dapat terhubung ke server pembayaran. Periksa koneksi internetmu dan coba lagi.',
