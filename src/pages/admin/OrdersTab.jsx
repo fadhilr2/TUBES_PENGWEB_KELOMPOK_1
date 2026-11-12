@@ -29,7 +29,7 @@ function OrderCard({ order, state, runAction, reviewOrder }) {
   function approveOrder() {
     runAction(
       function approve() {
-        reviewOrder(order.id, true);
+        return reviewOrder(order.id, true);
       },
       `Pesanan ${order.id} disetujui. Harga jasa diteruskan ke saldo penyedia.`,
     );
@@ -44,7 +44,7 @@ function OrderCard({ order, state, runAction, reviewOrder }) {
     }
     runAction(
       function reject() {
-        reviewOrder(order.id, false);
+        return reviewOrder(order.id, false);
       },
       `Pesanan ${order.id} ditolak. Total pembayaran dikembalikan ke pembeli.`,
     );

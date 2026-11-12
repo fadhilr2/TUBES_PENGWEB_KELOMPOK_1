@@ -205,7 +205,7 @@ export default function PaymentPage() {
         }),
       });
 
-      payOrder(order.id, outcome === 'success');
+      await payOrder(order.id, outcome === 'success');
       if (outcome === 'success') {
         setMessage({
           tone: 'success',

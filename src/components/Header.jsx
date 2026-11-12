@@ -105,9 +105,9 @@ export default function Header() {
     setOpen(!open);
   }
 
-  function handleLogout() {
-    logout();
+  async function handleLogout() {
     setOpen(false);
+    await logout();
   }
 
   function isExactLink(path) {

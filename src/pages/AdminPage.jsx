@@ -60,10 +60,10 @@ export default function AdminPage() {
     setNotice(null);
   }
 
-  function runAction(action, message) {
+  async function runAction(action, message) {
     setNotice(null);
     try {
-      action();
+      await action();
       setNotice({ type: 'success', message: message });
       return true;
     } catch (cause) {

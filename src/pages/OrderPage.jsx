@@ -347,7 +347,7 @@ export default function OrderPage() {
     setPackageChoice(event.target.value);
   }
 
-  function handleSubmitOrder(event) {
+  async function handleSubmitOrder(event) {
     event.preventDefault();
     setMessage('');
 
@@ -360,7 +360,7 @@ export default function OrderPage() {
     }
 
     try {
-      const order = createOrder({
+      const order = await createOrder({
         serviceId: service.id,
         packageId: selectedPackage.id,
         buyerName: readText(formData, 'buyerName'),

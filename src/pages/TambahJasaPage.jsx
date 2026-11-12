@@ -418,7 +418,7 @@ function ServiceEditor({ service, user, saveService }) {
     return payload;
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
     setError('');
     if (!agreed) {
@@ -430,7 +430,7 @@ function ServiceEditor({ service, user, saveService }) {
       return;
     }
     try {
-      const result = saveService(buildPayload());
+      const result = await saveService(buildPayload());
       let notice = 'Jasa berhasil ditambahkan dan tersedia di katalog.';
       if (service) {
         notice = 'Jasa berhasil diperbarui.';

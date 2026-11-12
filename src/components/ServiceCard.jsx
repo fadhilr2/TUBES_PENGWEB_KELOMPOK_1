@@ -49,8 +49,12 @@ export default function ServiceCard({ service }) {
     favoriteClass = 'favorite-button is-favorite';
   }
 
-  function handleToggleFavorite() {
-    toggleFavorite(service.id);
+  async function handleToggleFavorite() {
+    try {
+      await toggleFavorite(service.id);
+    } catch (error) {
+      window.alert(error.message);
+    }
   }
 
   return (

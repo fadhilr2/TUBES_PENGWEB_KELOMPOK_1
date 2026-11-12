@@ -78,7 +78,7 @@ function ReviewEditor({ existing, serviceId, saveReview, onNotice }) {
     setComment(event.target.value);
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
     const payload = {
       serviceId: serviceId,
@@ -89,7 +89,7 @@ function ReviewEditor({ existing, serviceId, saveReview, onNotice }) {
       payload.id = existing.id;
     }
     try {
-      saveReview(payload);
+      await saveReview(payload);
       if (existing) {
         onNotice({ type: 'success', message: 'Ulasan berhasil diperbarui.' });
       } else {
@@ -610,9 +610,9 @@ export default function DetailJasaPage() {
     [available, serviceId, userId, userRole, viewService],
   );
 
-  function runAction(callback, message) {
+  async function runAction(callback, message) {
     try {
-      callback();
+      await callback();
       setNotice({ type: 'success', message: message });
     } catch (cause) {
       setNotice({ type: 'error', message: cause.message });
@@ -633,7 +633,7 @@ export default function DetailJasaPage() {
       message = 'Jasa dihapus dari favorit.';
     }
     runAction(function toggle() {
-      toggleFavorite(service.id);
+      return toggleFavorite(service.id);
     }, message);
   }
 
@@ -643,7 +643,7 @@ export default function DetailJasaPage() {
       return;
     }
     runAction(function remove() {
-      deleteReview(reviewId);
+      return deleteReview(reviewId);
     }, 'Ulasan berhasil dihapus.');
   }
 

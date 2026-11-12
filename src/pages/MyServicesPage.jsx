@@ -74,13 +74,13 @@ export default function MyServicesPage() {
     return item.ownerId === user.id;
   });
 
-  function handleDelete(id) {
+  async function handleDelete(id) {
     const confirmed = window.confirm('Hapus jasa ini beserta ulasannya?');
     if (!confirmed) {
       return;
     }
     try {
-      deleteService(id);
+      await deleteService(id);
       setError('');
     } catch (cause) {
       setError(cause.message);
