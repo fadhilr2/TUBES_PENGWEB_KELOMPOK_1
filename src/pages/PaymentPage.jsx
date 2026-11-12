@@ -191,7 +191,7 @@ export default function PaymentPage() {
     setMessage(null);
 
     try {
-      await fetch('https://jsonplaceholder.typicode.com/posts', {
+      const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -203,6 +203,13 @@ export default function PaymentPage() {
           status: outcome === 'success' ? 'SUCCESS' : 'FAILED',
         }),
       });
+
+      // Cek apakah server mengembalikan respons yang berhasil (status 200-299)
+      if (!response.ok) {
+        throw new Error(
+          `Server pembayaran tidak merespons dengan benar (status: ${response.status}). Coba lagi beberapa saat.`,
+        );
+      }
 
       await payOrder(order.id, outcome === 'success');
       if (outcome === 'success') {
@@ -217,7 +224,18 @@ export default function PaymentPage() {
         });
       }
     } catch (error) {
-      setMessage({ tone: 'error', text: error.message });
+      // Tangani dua jenis error:
+      // 1. Jaringan bermasalah (fetch gagal, misal: tidak ada internet)
+      // 2. Error dari server (response.ok === false) atau dari payOrder
+      if (error instanceof TypeError) {
+        // TypeError biasanya muncul ketika tidak ada koneksi internet atau URL tidak bisa dijangkau
+        setMessage({
+          tone: 'error',
+          text: 'Tidak dapat terhubung ke server pembayaran. Periksa koneksi internetmu dan coba lagi.',
+        });
+      } else {
+        setMessage({ tone: 'error', text: error.message });
+      }
     } finally {
       setLoading(false);
     }
