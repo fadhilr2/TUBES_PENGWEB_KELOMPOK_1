@@ -65,7 +65,7 @@ export default function ServicesTab({ state, runAction, moderateService, deleteS
       message = 'Jasa ditampilkan kembali di katalog.';
     }
     runAction(function moderate() {
-      moderateService(service.id, !service.hidden);
+      return moderateService(service.id, !service.hidden);
     }, message);
   }
 
@@ -75,7 +75,7 @@ export default function ServicesTab({ state, runAction, moderateService, deleteS
       return;
     }
     runAction(function remove() {
-      deleteService(service.id);
+      return deleteService(service.id);
     }, 'Posting jasa berhasil dihapus.');
   }
 

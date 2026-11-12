@@ -327,3 +327,7 @@ fieldset {
     transition: none !important;
   }
 }
+
+small {
+  font-size: max(0.875em, 13px);
+}

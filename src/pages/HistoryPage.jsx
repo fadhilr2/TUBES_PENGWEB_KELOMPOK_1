@@ -97,7 +97,7 @@ function PayAndCancelActions({ order, runAction, actions }) {
   function handleCancel() {
     if (window.confirm('Batalkan pesanan yang belum dibayar ini?')) {
       runAction(function () {
-        actions.cancelOrder(order.id);
+        return actions.cancelOrder(order.id);
       }, 'Pesanan dibatalkan. Saldo demo tidak berkurang.');
     }
   }
@@ -120,7 +120,7 @@ function DeliverForm({ order, runAction, actions }) {
     const data = new FormData(event.currentTarget);
     const resultUrl = String(data.get('resultUrl')).trim();
     runAction(function () {
-      actions.deliverOrder(order.id, resultUrl);
+      return actions.deliverOrder(order.id, resultUrl);
     }, 'Hasil dikirim. Pembeli dapat memeriksa tautan pekerjaan.');
   }
 
@@ -154,7 +154,7 @@ function AcceptOrComplain({ order, runAction, actions }) {
 
   function handleAccept() {
     runAction(function () {
-      actions.acceptOrder(order.id);
+      return actions.acceptOrder(order.id);
     }, 'Pekerjaan diterima dan diteruskan ke admin untuk persetujuan.');
   }
 
@@ -167,7 +167,7 @@ function AcceptOrComplain({ order, runAction, actions }) {
     const data = new FormData(event.currentTarget);
     const complaint = String(data.get('complaint')).trim();
     runAction(function () {
-      actions.complainOrder(order.id, complaint);
+      return actions.complainOrder(order.id, complaint);
     }, 'Komplain diteruskan kepada admin untuk ditinjau.');
   }
 
@@ -233,7 +233,7 @@ function DeleteHistoryButton({ order, runAction, actions }) {
       'Hapus pesanan ini dari riwayatmu? Catatan transaksi untuk admin tetap disimpan.';
     if (window.confirm(question)) {
       runAction(function () {
-        actions.deleteOrder(order.id);
+        return actions.deleteOrder(order.id);
       }, 'Pesanan dihapus dari riwayatmu.');
     }
   }
@@ -559,9 +559,9 @@ export default function HistoryPage() {
     document.title = 'Riwayat Pesanan - SewaSkill';
   }, []);
 
-  function runAction(action, successMessage) {
+  async function runAction(action, successMessage) {
     try {
-      action();
+      await action();
       setMessage({ tone: 'success', text: successMessage });
     } catch (error) {
       setMessage({ tone: 'error', text: error.message });

@@ -2,8 +2,15 @@ import { Link } from 'react-router-dom';
 import { useDemo } from '../state/DemoContext';
 
 export default function Footer() {
-  const { user } = useDemo();
+  const { user, reset } = useDemo();
   const isAdmin = user !== null && user !== undefined && user.role === 'admin';
+
+  function handleReset() {
+    if (window.confirm('Kembalikan semua data demo ke kondisi awal?')) {
+      reset();
+      window.location.assign('/');
+    }
+  }
 
   let homeLink = '/';
   let bottomLink = '/katalog';
@@ -42,7 +49,12 @@ export default function Footer() {
         </div>
         <div className="footer-bottom">
           <span>© 2026 SewaSkill · Kelompok 1</span>
-          <span>Demo lokal · Data dan pembayaran simulasi</span>
+          <span>
+            Demo lokal · Data dan pembayaran simulasi ·{' '}
+            <button className="text-link" type="button" onClick={handleReset}>
+              Reset data
+            </button>
+          </span>
           <Link to={bottomLink}>{bottomLabel} ↗</Link>
         </div>
       </div>

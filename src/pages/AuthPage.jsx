@@ -231,17 +231,17 @@ export default function AuthPage() {
     return undefined;
   }
 
-  function enter(email, password) {
+  async function enter(email, password) {
     setError('');
     try {
-      const account = login(email, password);
+      const account = await login(email, password);
       navigate(nextPath(getFromState(), account.role), { replace: true });
     } catch (cause) {
       setError(cause.message);
     }
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
     if (!isRegister) {
       enter(form.email, form.password);
@@ -249,7 +249,7 @@ export default function AuthPage() {
     }
     setError('');
     try {
-      const account = register(form);
+      const account = await register(form);
       navigate(nextPath(getFromState(), account.role), { replace: true });
     } catch (cause) {
       setError(cause.message);

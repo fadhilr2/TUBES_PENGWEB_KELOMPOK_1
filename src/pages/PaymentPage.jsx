@@ -183,10 +183,10 @@ export default function PaymentPage() {
     setOutcome(event.target.value);
   }
 
-  function handleSubmitPayment(event) {
+  async function handleSubmitPayment(event) {
     event.preventDefault();
     try {
-      payOrder(order.id, outcome === 'success');
+      await payOrder(order.id, outcome === 'success');
       if (outcome === 'success') {
         setMessage({
           tone: 'success',

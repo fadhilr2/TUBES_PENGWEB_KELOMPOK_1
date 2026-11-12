@@ -109,7 +109,7 @@ export default function AccountsTab({
     }
   }
 
-  function submitForm(event) {
+  async function submitForm(event) {
     event.preventDefault();
     const accountData = { ...accountForm, balance: Number(accountForm.balance) };
     let message = 'Akun demo berhasil ditambahkan.';
@@ -117,8 +117,8 @@ export default function AccountsTab({
       accountData.id = editingId;
       message = 'Data akun berhasil diperbarui.';
     }
-    const saved = runAction(function save() {
-      saveUser(accountData);
+    const saved = await runAction(function save() {
+      return saveUser(accountData);
     }, message);
     if (saved) {
       resetForm();
@@ -133,7 +133,7 @@ export default function AccountsTab({
       message = 'Akun diaktifkan kembali.';
     }
     runAction(function save() {
-      saveUser({ ...account, password: '', status: newStatus });
+      return saveUser({ ...account, password: '', status: newStatus });
     }, message);
   }
 
@@ -143,7 +143,7 @@ export default function AccountsTab({
       return;
     }
     runAction(function remove() {
-      deleteUser(account.id);
+      return deleteUser(account.id);
     }, 'Akun berhasil dihapus.');
   }
 
