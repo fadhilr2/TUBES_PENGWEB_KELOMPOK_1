@@ -300,7 +300,7 @@ function PreviewPanel({ form, packages, user }) {
     previewTitle = form.title;
   }
 
-  let previewDays = '—';
+  let previewDays = '-';
   if (form.days) {
     previewDays = form.days;
   }
@@ -418,7 +418,7 @@ function ServiceEditor({ service, user, saveService }) {
     return payload;
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
     setError('');
     if (!agreed) {
@@ -430,7 +430,7 @@ function ServiceEditor({ service, user, saveService }) {
       return;
     }
     try {
-      const result = saveService(buildPayload());
+      const result = await saveService(buildPayload());
       let notice = 'Jasa berhasil ditambahkan dan tersedia di katalog.';
       if (service) {
         notice = 'Jasa berhasil diperbarui.';
@@ -553,7 +553,7 @@ export default function TambahJasaPage() {
       if (serviceId) {
         label = 'Edit jasa';
       }
-      document.title = `${label} — SewaSkill`;
+      document.title = `${label} - SewaSkill`;
     },
     [serviceId],
   );

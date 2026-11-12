@@ -225,10 +225,10 @@ function ProfileEditor({ user, updateProfile, becomeProvider, deleteAccount, has
   const [deletion, setDeletion] = useState('');
   const [notice, setNotice] = useState(null);
 
-  function runAction(action, message) {
+  async function runAction(action, message) {
     setNotice(null);
     try {
-      action();
+      await action();
       setNotice({ type: 'success', message: message });
     } catch (cause) {
       setNotice({ type: 'error', message: cause.message });
@@ -253,8 +253,8 @@ function ProfileEditor({ user, updateProfile, becomeProvider, deleteAccount, has
     if (deletion !== 'HAPUS') {
       return;
     }
-    runAction(() => {
-      deleteAccount();
+    runAction(async () => {
+      await deleteAccount();
       navigate('/login', { replace: true });
     }, 'Akun dihapus.');
   }
@@ -317,11 +317,11 @@ export default function ProfilePage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.title = 'Profil — SewaSkill';
+    document.title = 'Profil - SewaSkill';
   }, []);
 
-  function handleLogout() {
-    logout();
+  async function handleLogout() {
+    await logout();
     navigate('/login');
   }
 

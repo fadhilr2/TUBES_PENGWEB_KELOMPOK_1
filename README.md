@@ -9,7 +9,7 @@
 
 SewaSkill adalah platform web untuk mencari dan memesan jasa freelance digital skala mikro, seperti edit video, desain grafis, bimbingan koding, dan penulisan konten.
 
-Proyek ini dikembangkan menggunakan React 19 dan Bootstrap 5 dengan arsitektur Single Page Application (SPA), serta memanfaatkan Fetch API untuk mengambil data dari mock JSON lokal. Desain menggunakan section selebar layar, container responsif, warna hitam-putih dengan aksen biru, dan animasi ringan tanpa perpindahan tombol saat hover.
+Proyek ini dikembangkan menggunakan React 19 dan Bootstrap 5 dengan arsitektur Single Page Application (SPA), serta menyimpan data di localStorage dengan seed dari JSON lokal. Desain menggunakan section selebar layar, container responsif, warna hitam-putih dengan aksen biru, dan animasi ringan tanpa perpindahan tombol saat hover.
 
 ---
 
@@ -31,9 +31,9 @@ Proyek ini dikembangkan menggunakan React 19 dan Bootstrap 5 dengan arsitektur S
 - **Build Tool:** Vite 8
 - **Routing:** React Router DOM v7
 - **CSS Framework:** Bootstrap 5.3
-- **Data Source:** Fetch API (Mock JSON)
+- **Data:** localStorage (tanpa backend), seed awal dari `src/data/demo.json`
 - **Linter:** ESLint 10
-- **State Demo:** React Context dan localStorage
+- **State:** React Context di atas `src/state/store.js`
 
 ---
 
@@ -61,11 +61,11 @@ Proyek ini dikembangkan menggunakan React 19 dan Bootstrap 5 dengan arsitektur S
 | Penyedia jasa | `rizky@example.com` | `demo123`  |
 | Admin         | `admin@example.com` | `demo123`  |
 
-Seed dimuat dari `public/data/demo.json`. Perubahan tersimpan dengan key `sewaskill-demo-v1` di localStorage browser. Untuk mengulang demo dari awal, hapus data situs pada browser lalu muat ulang.
+Seed dimuat dari `src/data/demo.json`. Perubahan tersimpan di localStorage dengan key `sewaskill-data-v2`. Untuk mengulang demo dari awal, klik tombol **Reset data** di footer atau hapus data situs pada browser.
 
 Alur pesanan: `menunggu_pembayaran → dibayar → dikirim → menunggu_admin → selesai / direfund`. Pesanan belum dibayar dapat dibatalkan. Persetujuan admin menambahkan harga jasa ke saldo penyedia; penolakan mengembalikan total pembayaran ke pembeli.
 
-Versi ini mengikuti referensi fitur mobile dengan data dummy. Autentikasi, saldo, pembayaran, dan penyerahan metadata file merupakan simulasi lokal; tidak ada backend, transfer uang, atau unggahan file sungguhan. Halaman admin dan tindakan data diperiksa berdasarkan peran pada store demo.
+Versi ini mengikuti referensi fitur mobile. Autentikasi, saldo, pembayaran, dan penyerahan metadata file merupakan simulasi lokal; tidak ada backend, transfer uang, atau unggahan file sungguhan. Aturan peran dan validasi dijalankan di `src/state/store.js`.
 
 Aset visual berada di `public/assets/images/`; sumber foto dan lisensinya dicatat pada `public/assets/photo-credits.json`.
 
@@ -122,13 +122,13 @@ Akses aplikasi melalui browser di `http://localhost:5173/`.
 
 ```text
 public/
-  data/demo.json       Seed akun, jasa, pesanan, ulasan, dan log
   assets/images/       Gambar ilustrasi dan foto; kredit di photo-credits.json
 src/
+  data/demo.json       Seed akun, jasa, pesanan, ulasan, dan log
   components/          Navbar, footer, UI bersama, kartu jasa, galeri
   hooks/               Hook judul halaman
   pages/               Halaman pengguna, penyedia, dan admin
-  state/               Store demo, provider, validasi, dan format
+  state/               store.js (data + aturan), validators.js, provider, dan format
   styles/              CSS per fitur (base, header, components, home, catalog, detail, services, account, orders, dashboard, admin, footer)
   App.jsx              Routing dan penjagaan akses peran
   index.css            Mengimpor semua file CSS di styles/
