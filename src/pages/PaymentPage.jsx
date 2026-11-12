@@ -84,8 +84,8 @@ function OutcomeOption({ value, label, outcome, onChange }) {
   );
 }
 
-function PaymentForm({ outcome, insufficient, onOutcomeChange, onSubmit }) {
-  const payDisabled = outcome === 'success' && insufficient;
+function PaymentForm({ outcome, insufficient, loading, onOutcomeChange, onSubmit }) {
+  const payDisabled = (outcome === 'success' && insufficient) || loading;
 
   return (
     <form onSubmit={onSubmit} className="form-stack d-grid gap-4 mt-4">
@@ -116,7 +116,8 @@ function PaymentForm({ outcome, insufficient, onOutcomeChange, onSubmit }) {
         </Notice>
       )}
       <button className="button button-blue" type="submit" disabled={payDisabled}>
-        Bayar sekarang <span aria-hidden="true">↗</span>
+        {loading ? 'Memproses pembayaran...' : 'Bayar sekarang'}{' '}
+        <span aria-hidden="true">↗</span>
       </button>
     </form>
   );
@@ -169,6 +170,7 @@ export default function PaymentPage() {
   const { state, user, payOrder } = useDemo();
   const [outcome, setOutcome] = useState('success');
   const [message, setMessage] = useState(null);
+  const [loading, setLoading] = useState(false);
   const userId = getUserId(user);
 
   const order = state.orders.find(function (item) {
@@ -183,9 +185,26 @@ export default function PaymentPage() {
     setOutcome(event.target.value);
   }
 
-  function handleSubmitPayment(event) {
+  async function handleSubmitPayment(event) {
     event.preventDefault();
+    setLoading(true);
+    setMessage(null);
+
     try {
+      // Mock POST request ke JSONPlaceholder untuk simulasi pengiriman data transaksi pembayaran
+      await fetch('https://jsonplaceholder.typicode.com/posts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          orderId: order.id,
+          amount: order.total,
+          paymentMethod: order.paymentMethod,
+          status: outcome === 'success' ? 'SUCCESS' : 'FAILED',
+        }),
+      });
+
       payOrder(order.id, outcome === 'success');
       if (outcome === 'success') {
         setMessage({
@@ -200,6 +219,8 @@ export default function PaymentPage() {
       }
     } catch (error) {
       setMessage({ tone: 'error', text: error.message });
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -247,6 +268,7 @@ export default function PaymentPage() {
                   <PaymentForm
                     outcome={outcome}
                     insufficient={insufficient}
+                    loading={loading}
                     onOutcomeChange={handleOutcomeChange}
                     onSubmit={handleSubmitPayment}
                   />
