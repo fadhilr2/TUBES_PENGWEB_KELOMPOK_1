@@ -1,0 +1,165 @@
+.footer {
+  color: #eeeef3;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  align-items: center;
+  padding-bottom: 45px;
+}
+
+.footer-top > p {
+  line-height: 1.7;
+}
+
+.back-top {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.back-top > span {
+  width: 31px;
+  height: 31px;
+  border: 1px solid #484b54;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 16px;
+}
+
+.footer-bottom {
+  border-top: 1px solid #303136;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 23px 0;
+}
+
+.footer a:hover {
+  color: #98b0ff;
+}
+
+@media (max-width: 767px) {
+  .footer {
+    padding-top: 33px;
+  }
+  .footer-top {
+    row-gap: 24px;
+    padding-bottom: 28px;
+  }
+  .footer-top > p {
+    grid-column: 1;
+    font-size: 14px;
+  }
+  .back-top {
+    font-size: 13px;
+    gap: 9px;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 10px;
+    padding: 21px 0;
+    font-size: 13px;
+  }
+  .footer-bottom > a {
+    padding-top: 3px;
+  }
+}
+
+.footer {
+  max-width: none;
+  width: 100%;
+  margin-inline: 0;
+}
+
+.back-top {
+  font-size: 16px;
+}
+
+.footer {
+  padding-top: 38px;
+  background: #08090c;
+}
+
+.footer-top > p {
+  font-size: 16px;
+  color: #d0d2dc;
+}
+
+.footer-bottom {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #c3c6d2;
+}
+
+.back-top > span {
+  transition:
+    color 220ms ease-out,
+    background-color 220ms ease-out,
+    border-color 220ms ease-out,
+    box-shadow 220ms ease-out,
+    opacity 220ms ease-out;
+}
+
+.back-top:hover {
+  color: #7795ff;
+}
+
+@media (min-width: 768px) and (max-width: 1050px) {
+  .footer {
+    width: 100%;
+  }
+  .footer-bottom {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 767px) {
+  .footer {
+    width: 100%;
+  }
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .footer-top > p {
+    grid-row: auto;
+  }
+  .back-top {
+    justify-self: start;
+  }
+}
+
+.app-footer .wordmark img {
+  width: 32px;
+  height: 32px;
+}
+
+.app-footer .back-top {
+  background: transparent;
+  border: 0;
+  color: #eeeef3;
+  padding: 0;
+}
+
+.app-footer .footer-bottom {
+  gap: 25px;
+}
+
+@media (max-width: 767px) {
+  .app-footer .footer-bottom {
+    gap: 12px;
+  }
+}
+
+.back-top,
+.footer-bottom > a {
+  min-height: 44px;
+}
+
+.footer-bottom > a {
+  display: inline-flex;
+  align-items: center;
+}
