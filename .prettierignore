@@ -1,0 +1,8 @@
+node_modules
+dist
+coverage
+package-lock.json
+frontend/public
+backend/prisma/migrations
+backend/prisma/fixtures
+artifacts
