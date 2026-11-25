@@ -112,7 +112,6 @@ Environment lokal, database, `node_modules`, build output, dan artefak pengujian
 - [Frontend](frontend/README.md): halaman, komponen, ikon, konfigurasi API, dan pengujian UI.
 - [Backend](backend/README.md): database, environment, endpoint, autentikasi, dan aturan transaksi.
 - [PRD](docs/PRD.md): kebutuhan dan cakupan implementasi.
-- [Catatan implementasi](docs/IMPLEMENTATION.md): perubahan dan hasil verifikasi.
 
 ## Tim pengembang
 

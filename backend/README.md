@@ -261,4 +261,4 @@ Perintah root ini menghapus data demo pada target lokal dan menjalankan seed kem
 
 ## Batas fitur
 
-API hanya terhubung ke Midtrans mode sandbox. Transfer uang sungguhan, chat, OAuth, dan layanan email tidak tersedia. Saldo tetap simulasi; lampiran hanya metadata. Pengujian frontend dan catatan hasil tersedia pada [README frontend](../frontend/README.md) dan [catatan implementasi](../docs/IMPLEMENTATION.md).
+API hanya terhubung ke Midtrans mode sandbox. Transfer uang sungguhan, chat, OAuth, dan layanan email tidak tersedia. Saldo tetap simulasi; lampiran hanya metadata. Pengujian frontend dan catatan hasil tersedia pada [README frontend](../frontend/README.md).

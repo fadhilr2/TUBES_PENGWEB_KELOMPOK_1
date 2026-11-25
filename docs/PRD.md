@@ -1,7 +1,7 @@
 # PRD SewaSkill: Frontend dan Backend API NestJS
 
 Tanggal: 12 November 2026  
-Status: Implementasi selesai dan diverifikasi; lihat `docs/IMPLEMENTATION.md` untuk hasil pemeriksaan.  
+Status: Implementasi selesai dan diverifikasi.  
 Target: MVP tugas besar dengan data bersama di server dan pembayaran simulasi
 
 ## 1. Tujuan dan batas pekerjaan
