@@ -1,0 +1,218 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  pencari
+  penyedia
+  admin
+}
+
+enum AccountStatus {
+  aktif
+  diblokir
+}
+
+enum OrderStatus {
+  menunggu_pembayaran
+  dibayar
+  dikirim
+  menunggu_admin
+  selesai
+  direfund
+  dibatalkan
+}
+
+model User {
+  id             String        @id @default(uuid())
+  name           String
+  email          String        @unique
+  passwordHash   String
+  role           Role          @default(pencari)
+  status         AccountStatus @default(aktif)
+  location       String
+  balance        BigInt        @default(500000)
+  avatar         String        @default("")
+  latitude       Float?
+  longitude      Float?
+  skills         String        @default("")
+  experience     String        @default("")
+  sessionVersion Int           @default(0)
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+  deletedAt      DateTime?
+  services       Service[]
+  reviews        Review[]
+  purchases      Order[]       @relation("Buyer")
+  sales          Order[]       @relation("Seller")
+  favorites      Favorite[]
+  recent         RecentView[]
+  logs           ActivityLog[]
+  entries        BalanceEntry[]
+}
+
+model Service {
+  id           String           @id @default(uuid())
+  ownerId      String
+  owner        User             @relation(fields: [ownerId], references: [id])
+  title        String
+  category     String
+  description  String
+  days         Int
+  portfolioUrl String           @default("")
+  image        String
+  hidden       Boolean          @default(false)
+  createdAt    DateTime         @default(now())
+  updatedAt    DateTime         @updatedAt
+  deletedAt    DateTime?
+  packages     ServicePackage[]
+  reviews      Review[]
+  orders       Order[]
+  favorites    Favorite[]
+  recent       RecentView[]
+  @@index([ownerId])
+  @@index([category, hidden])
+}
+
+model ServicePackage {
+  id          String  @id @default(uuid())
+  serviceId   String
+  service     Service @relation(fields: [serviceId], references: [id])
+  name        String
+  description String  @default("")
+  price       Int
+  position    Int     @default(0)
+  active      Boolean @default(true)
+  orders      Order[]
+  @@index([serviceId, active])
+}
+
+model Order {
+  id                String         @id @default(uuid())
+  buyerId           String
+  sellerId          String
+  serviceId         String
+  packageId         String
+  buyer             User           @relation("Buyer", fields: [buyerId], references: [id])
+  seller            User           @relation("Seller", fields: [sellerId], references: [id])
+  service           Service        @relation(fields: [serviceId], references: [id])
+  package           ServicePackage @relation(fields: [packageId], references: [id])
+  serviceTitle      String
+  packageName       String
+  price             Int
+  fee               Int
+  total             Int
+  status            OrderStatus    @default(menunggu_pembayaran)
+  brief             String
+  deadline          String         @default("")
+  paymentMethod     String
+  buyerName         String
+  email             String
+  whatsapp          String         @default("")
+  attachments       Json           @default("[]")
+  resultUrl         String         @default("")
+  complaint         String         @default("")
+  decision          String         @default("")
+  hiddenForBuyer    Boolean        @default(false)
+  createdAt         DateTime       @default(now())
+  paymentAttemptAt  DateTime?
+  paidAt            DateTime?
+  deliveredAt       DateTime?
+  reviewedByBuyerAt DateTime?
+  closedAt          DateTime?
+  paymentResult     String         @default("")
+  adminId           String?
+  entries           BalanceEntry[]
+  midtrans          MidtransPayment?
+  @@index([buyerId, createdAt])
+  @@index([sellerId, createdAt])
+  @@index([status])
+}
+
+model MidtransPayment {
+  id          String   @id @default(uuid())
+  orderId     String   @unique
+  order       Order    @relation(fields: [orderId], references: [id])
+  amount      Int
+  token       String   @default("")
+  redirectUrl String   @default("")
+  status      String   @default("creating")
+  paidAt      DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Review {
+  id        String   @id @default(uuid())
+  serviceId String
+  userId    String
+  service   Service  @relation(fields: [serviceId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
+  rating    Int
+  comment   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@unique([serviceId, userId])
+}
+
+model Favorite {
+  userId    String
+  serviceId String
+  user      User    @relation(fields: [userId], references: [id])
+  service   Service @relation(fields: [serviceId], references: [id])
+  @@id([userId, serviceId])
+}
+
+model RecentView {
+  userId    String
+  serviceId String
+  viewedAt  DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+  service   Service  @relation(fields: [serviceId], references: [id])
+  @@id([userId, serviceId])
+  @@index([userId, viewedAt])
+}
+
+model ActivityLog {
+  id        String   @id @default(uuid())
+  actorId   String?
+  actor     User?    @relation(fields: [actorId], references: [id])
+  action    String
+  details   String
+  createdAt DateTime @default(now())
+  @@index([createdAt])
+}
+
+model BalanceEntry {
+  id           String   @id @default(uuid())
+  userId       String
+  user         User     @relation(fields: [userId], references: [id])
+  orderId      String?
+  order        Order?   @relation(fields: [orderId], references: [id])
+  kind         String
+  amount       BigInt
+  operationKey String   @unique
+  createdAt    DateTime @default(now())
+  @@index([userId, createdAt])
+}
+
+model Session {
+  sid    String   @id @db.VarChar
+  sess   Json
+  expire DateTime @db.Timestamp(6)
+  @@index([expire], map: "IDX_session_expire")
+  @@map("session")
+}
+
+model RevokedToken {
+  jti       String   @id
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@index([expiresAt])
+}
